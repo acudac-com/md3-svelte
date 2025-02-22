@@ -3,6 +3,6 @@
 	let props: Props = $props();
 </script>
 
-<div class={flexClasses(props, 'flex-row')}>
+<div class={flexClasses(props, 'flex-row', 'w-full')}>
 	{@render props.children()}
 </div>

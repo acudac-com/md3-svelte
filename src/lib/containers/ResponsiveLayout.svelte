@@ -1,9 +1,9 @@
 <script lang="ts" module>
-	import { type NavButtonProps } from '$lib/components/NavButton.svelte';
+	import { type NavBtnProps } from '$lib/components/NavBtn.svelte';
 	interface LayoutProps {
 		content: Snippet;
 		settings: Snippet;
-		navButtons: NavButtonProps[];
+		navButtons: NavBtnProps[];
 		railClass?: ClassNameValue;
 		topBarClass?: ClassNameValue;
 		bottomBarClass?: ClassNameValue;
@@ -15,11 +15,9 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import Row from '$lib/containers/Row.svelte';
-	import NavButton from '$lib/components/NavButton.svelte';
+	import NavBtn from '$lib/components/NavBtn.svelte';
 	import Col from '$lib/containers/Col.svelte';
 	import ReversedCol from '$lib/containers/ReversedCol.svelte';
-	import SpreadRow from '$lib/containers/SpreadRow.svelte';
-	import SpreadCol from '$lib/containers/SpreadCol.svelte';
 	import ReversedRow from './ReversedRow.svelte';
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
 
@@ -34,13 +32,13 @@
 </script>
 
 <!-- DESKTOP VIEW -->
-<Row desktopOnly>
-	<Col class={twMerge('bg-surface-container w-[90px] shrink-0 py-4', railClass)}>
+<Row full desktopOnly>
+	<Col container spaced noShrink class={twMerge('w-[90px]', railClass)}>
 		<!-- TOP -->
-		<Col class="gap-4">
+		<Col>
 			<img src={logo} alt="Logo" width={logoSize + 'px'} class="mb-4" />
 			{#each props.navButtons as nb}
-				<NavButton
+				<NavBtn
 					href={nb.href}
 					selectedIcon={nb.selectedIcon}
 					unselectedIcon={nb.unselectedIcon}
@@ -54,25 +52,25 @@
 			{@render props.settings()}
 		</ReversedCol>
 	</Col>
-	<Col class="p-4">
+	<Col full spaced>
 		{@render props.content()}
 	</Col>
 </Row>
 
 <!-- MOBILE VIEW -->
-<SpreadCol mobileOnly class="h-dvh">
-	<SpreadRow class={twMerge('bg-surface-container h-[70px] shrink-0 px-4', topBarClass)}>
+<Col mobileOnly justify class="h-dvh">
+	<Row container justify spaced noShrink class={twMerge('h-[70px]', topBarClass)}>
 		<img src={logo} alt="Logo" width={logoSize + 'px'} />
 		<ReversedRow>
 			{@render props.settings()}
 		</ReversedRow>
-	</SpreadRow>
-	<Col class="p-4">
+	</Row>
+	<Col full spaced>
 		{@render props.content()}
 	</Col>
-	<Row class={twMerge('bg-surface-container h-[70px] shrink-0 justify-around', bottomBarClass)}>
+	<Row justifyAround noShrink container class={twMerge('h-[70px]', bottomBarClass)}>
 		{#each props.navButtons as nb}
-			<NavButton
+			<NavBtn
 				href={nb.href}
 				selectedIcon={nb.selectedIcon}
 				unselectedIcon={nb.unselectedIcon}
@@ -80,4 +78,4 @@
 			/>
 		{/each}
 	</Row>
-</SpreadCol>
+</Col>
