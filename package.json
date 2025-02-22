@@ -1,6 +1,6 @@
 {
 	"name": "@acudac/md3-svelte",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Material design 3 components for svelte. Extends m3-svelte.",
 	"license": "MIT",
 	"author": {
