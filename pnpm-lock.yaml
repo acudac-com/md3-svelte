@@ -22,7 +22,7 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(@sveltejs/kit@2.17.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.2)(vite@6.1.1(jiti@1.21.7)(yaml@2.7.0)))(svelte@5.20.2)(vite@6.1.1(jiti@1.21.7)(yaml@2.7.0)))
       '@sveltejs/kit':
-        specifier: ^2.16.0
+        specifier: ^2.17.2
         version: 2.17.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.2)(vite@6.1.1(jiti@1.21.7)(yaml@2.7.0)))(svelte@5.20.2)(vite@6.1.1(jiti@1.21.7)(yaml@2.7.0))
       '@sveltejs/package':
         specifier: ^2.0.0
