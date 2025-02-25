@@ -1,8 +1,9 @@
 <script lang="ts" module>
 	export interface NavBtnProps {
 		href: string;
-		unselectedIcon: IconifyIcon;
-		selectedIcon: IconifyIcon;
+		icon: IconifyIcon;
+		showSelectedIfPrefix?: boolean;
+		selectedIcon?: IconifyIcon;
 		label?: string;
 	}
 </script>
@@ -12,9 +13,14 @@
 	import { NavListLink } from 'm3-svelte';
 	import { page } from '$app/state';
 
-	let { href, unselectedIcon, selectedIcon, label }: NavBtnProps = $props();
-	let selected = $derived(!page.route.id || page.route.id.startsWith(href));
-	let icon = $derived(selected ? selectedIcon : unselectedIcon);
+	let { href, selectedIcon, showSelectedIfPrefix, icon, label }: NavBtnProps = $props();
+	let selected = $derived.by(() => {
+		if (!page.route.id) return false;
+		if (showSelectedIfPrefix && page.route.id.startsWith(href)) return true;
+		if (page.route.id == href) return true;
+		return false;
+	});
+	let derivedIcon = $derived(selected && selectedIcon ? selectedIcon : icon);
 </script>
 
-<NavListLink type="auto" {href} {icon} {selected}>{label}</NavListLink>
+<NavListLink type="auto" {href} icon={derivedIcon} {selected}>{label}</NavListLink>

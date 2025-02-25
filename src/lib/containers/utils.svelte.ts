@@ -1,5 +1,6 @@
 import type { Snippet } from "svelte";
 import { twMerge, type ClassNameValue } from "tailwind-merge";
+import { page } from '$app/state';
 
 export interface Props {
     overflowScroll?: boolean
@@ -23,6 +24,25 @@ export interface Props {
     containerSecondary?: boolean
     containerTertiary?: boolean
 
+    hover?: boolean
+    hoverLowest?: boolean
+    hoverLow?: boolean
+    hoverHigh?: boolean
+    hoverHighest?: boolean
+    hoverPrimary?: boolean
+    hoverSecondary?: boolean
+    hoverTertiary?: boolean
+
+    href?: string
+    selected?: boolean
+    selectLowest?: boolean
+    selectLow?: boolean
+    selectHigh?: boolean
+    selectHighest?: boolean
+    selectPrimary?: boolean
+    selectSecondary?: boolean
+    selectTertiary?: boolean
+
     rounded?: boolean
     roundedSm?: boolean
     roundedMd?: boolean
@@ -38,6 +58,8 @@ export interface Props {
     justifyEnd?: boolean
 
     spaced?: boolean
+    gap?: boolean
+    pad?: boolean
     noShrink?: boolean
 
     desktopOnly?: boolean
@@ -51,6 +73,10 @@ export function flexClasses(props: Props, ...additionalBaseClasses: string[]) {
 
     if (props.spaced) {
         baseClass.push('gap-2', 'p-2', 'md:gap-4', 'md:p-4')
+    } else if (props.gap) {
+        baseClass.push('gap-2', 'md:gap-4')
+    } else if (props.pad) {
+        baseClass.push('p-2', 'md:p-4')
     }
 
     if (props.hFull || props.full) {
@@ -85,22 +111,67 @@ export function flexClasses(props: Props, ...additionalBaseClasses: string[]) {
         baseClass.push('overflow-clip', 'flex-nowrap')
     }
 
-    if (props.container) {
-        baseClass.push('bg-surface-container')
-    } else if (props.containerLowest) {
-        baseClass.push('bg-surface-container-lowest')
-    } else if (props.containerLow) {
-        baseClass.push('bg-surface-container-low')
-    } else if (props.containerHigh) {
-        baseClass.push('bg-surface-container-high')
-    } else if (props.containerHighest) {
-        baseClass.push('bg-surface-container-highest')
-    } else if (props.containerPrimary) {
-        baseClass.push('bg-primary-container')
-    } else if (props.containerSecondary) {
-        baseClass.push('bg-secondary-container')
-    } else if (props.containerTertiary) {
-        baseClass.push('bg-tertiary-container')
+    let selected = false
+    if (props.href != undefined) {
+        if (props.href == page.route.id || "") {
+            selected = true
+        }
+    }
+
+    if (props.selected || selected) {
+        if (props.selectLowest) {
+            baseClass.push('bg-surface-container-lowest')
+        } else if (props.selectLow) {
+            baseClass.push('bg-surface-container-low')
+        } else if (props.selectHigh) {
+            baseClass.push('bg-surface-container-high')
+        } else if (props.selectHighest) {
+            baseClass.push('bg-surface-container-highest')
+        } else if (props.selectPrimary) {
+            baseClass.push('bg-primary-container')
+        } else if (props.selectSecondary) {
+            baseClass.push('bg-secondary-container')
+        } else if (props.selectTertiary) {
+            baseClass.push('bg-tertiary-container')
+        } else {
+            baseClass.push('bg-primary-container')
+        }
+    } else {
+        if (props.container) {
+            baseClass.push('bg-surface-container')
+        } else if (props.containerLowest) {
+            baseClass.push('bg-surface-container-lowest')
+        } else if (props.containerLow) {
+            baseClass.push('bg-surface-container-low')
+        } else if (props.containerHigh) {
+            baseClass.push('bg-surface-container-high')
+        } else if (props.containerHighest) {
+            baseClass.push('bg-surface-container-highest')
+        } else if (props.containerPrimary) {
+            baseClass.push('bg-primary-container')
+        } else if (props.containerSecondary) {
+            baseClass.push('bg-secondary-container')
+        } else if (props.containerTertiary) {
+            baseClass.push('bg-tertiary-container')
+        }
+
+        if (props.hover) {
+            baseClass.push('hover:bg-secondary-container')
+        } else if (props.hoverLowest) {
+            baseClass.push('hover:bg-surface-container-lowest')
+        } else if (props.hoverLow) {
+            baseClass.push('hover:bg-surface-container-low')
+        } else if (props.hoverHigh) {
+            baseClass.push('hover:bg-surface-container-high')
+        } else if (props.hoverHighest) {
+            baseClass.push('hover:bg-surface-container-highest')
+        } else if (props.hoverPrimary) {
+            baseClass.push('hover:bg-primary-container')
+        } else if (props.hoverSecondary) {
+            baseClass.push('hover:bg-secondary-container')
+        } else if (props.hoverTertiary) {
+            baseClass.push('hover:bg-tertiary-container')
+        }
     }
 
     if (props.rounded) {
@@ -117,6 +188,8 @@ export function flexClasses(props: Props, ...additionalBaseClasses: string[]) {
         baseClass.push('rounded-xl md:rounded-2xl')
     } else if (props.rounded3xl) {
         baseClass.push('rounded-2xl md:rounded-3xl')
+    } else if (props.roundedFull) {
+        baseClass.push('rounded-full')
     }
 
     if (props.noShrink) {

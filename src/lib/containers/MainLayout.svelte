@@ -33,15 +33,16 @@
 
 <!-- DESKTOP VIEW -->
 <Row full desktopOnly>
-	<Col container spaced noShrink class={twMerge('w-[90px]', railClass)}>
+	<Col container spaced noShrink class={twMerge('w-[80px]', railClass)}>
 		<!-- TOP -->
 		<Col>
 			<img src={logo} alt="Logo" width={logoSize + 'px'} class="mb-4" />
 			{#each props.navButtons as nb}
 				<NavBtn
 					href={nb.href}
+					showSelectedIfPrefix
 					selectedIcon={nb.selectedIcon}
-					unselectedIcon={nb.unselectedIcon}
+					icon={nb.icon}
 					label={nb.label}
 				/>
 			{/each}
@@ -59,7 +60,7 @@
 
 <!-- MOBILE VIEW -->
 <Col mobileOnly justify class="h-dvh">
-	<Row container justify spaced noShrink class={twMerge('h-[70px]', topBarClass)}>
+	<Row container justify spaced noShrink class={twMerge('h-[64px]', topBarClass)}>
 		<img src={logo} alt="Logo" width={logoSize + 'px'} />
 		<ReversedRow>
 			{@render props.settings()}
@@ -68,12 +69,13 @@
 	<Col full spaced>
 		{@render props.content()}
 	</Col>
-	<Row justifyAround noShrink container class={twMerge('h-[70px]', bottomBarClass)}>
+	<Row justifyAround noShrink container class={twMerge('h-[80px]', bottomBarClass)}>
 		{#each props.navButtons as nb}
 			<NavBtn
 				href={nb.href}
+				showSelectedIfPrefix
 				selectedIcon={nb.selectedIcon}
-				unselectedIcon={nb.unselectedIcon}
+				icon={nb.icon}
 				label={nb.label}
 			/>
 		{/each}
