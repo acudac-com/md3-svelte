@@ -7,3 +7,147 @@
 @import 'md_css/light-hc.css';
 @import 'md_css/light-mc.css';
 @import 'md_css/light.css';
+
+.display-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 57pt;
+    line-height: 64pt;
+    letter-spacing: -0.25pt;
+}
+
+.display-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 45pt;
+    line-height: 52pt;
+    letter-spacing: 0pt;
+}
+
+.display-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 36pt;
+    line-height: 44pt;
+    letter-spacing: 0pt;
+}
+
+.headline-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 32pt;
+    line-height: 40pt;
+    letter-spacing: 0pt;
+}
+
+.headline-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 28pt;
+    line-height: 36pt;
+    letter-spacing: 0pt;
+}
+
+.headline-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 24pt;
+    line-height: 32pt;
+    letter-spacing: 0pt;
+}
+
+.title-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 22pt;
+    line-height: 28pt;
+    letter-spacing: 0pt;
+}
+
+.title-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16pt;
+    line-height: 24pt;
+    letter-spacing: 0.15pt;
+}
+
+.title-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 20pt;
+    letter-spacing: 0.1pt;
+}
+
+.body-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16pt;
+    line-height: 24pt;
+    letter-spacing: 0.5pt;
+}
+
+.body-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14pt;
+    line-height: 20pt;
+    letter-spacing: 0.25pt;
+}
+
+.body-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 16pt;
+    letter-spacing: 0.4pt;
+}
+
+.label-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 20pt;
+    letter-spacing: 0.1pt;
+}
+
+.label-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 16pt;
+    letter-spacing: 0.5pt;
+}
+
+.label-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11pt;
+    line-height: 16pt;
+    letter-spacing: 0.5pt;
+}
+
+.prominent-label-large {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 14pt;
+    line-height: 20pt;
+    letter-spacing: 0.1pt;
+}
+
+.prominent-label-medium {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 16pt;
+    letter-spacing: 0.5pt;
+}
+
+.prominent-label-small {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+    line-height: 16pt;
+    letter-spacing: 0.5pt;
+}

@@ -1,0 +1,22 @@
+<script lang="ts">
+	import type { IconButtonProps } from './iconButton.svelte';
+	import IconButton from './iconButton.svelte';
+
+	let {
+		class: cls = undefined,
+		disabled,
+		selected = $bindable(false),
+		...rest
+	}: IconButtonProps = $props();
+</script>
+
+<IconButton
+	class={disabled
+		? 'bg-on-surface/10 text-on-surface/40'
+		: selected
+			? 'bg-secondary-container text-on-secondary-container hover:bg-on-secondary-container/10 hover:text-on-secondary-container'
+			: 'bg-surface-container-highest text-on-surface-variant hover:bg-on-surface-variant/10 hover:text-on-surface-variant'}
+	{disabled}
+	bind:selected
+	{...rest}
+/>
