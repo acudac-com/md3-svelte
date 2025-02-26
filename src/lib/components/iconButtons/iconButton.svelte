@@ -17,6 +17,7 @@
 	import Icon from '../Icon.svelte';
 	import { Tooltip } from 'bits-ui';
 	import { scale } from 'svelte/transition';
+	import Layer from '../../ripples/Layer.svelte';
 	let {
 		icon,
 		plainTooltip,
@@ -40,7 +41,7 @@
 	<Tooltip.Root delayDuration={300}>
 		<Tooltip.Trigger
 			class={twMerge(
-				'flex h-[40px] w-[40px] items-center justify-center rounded-full ease-in-out',
+				'relative flex h-[40px] w-[40px] items-center justify-center rounded-full ease-in-out',
 				cls
 			)}
 			title={disabled && disabledTitle ? disabledTitle : undefined}
@@ -48,7 +49,9 @@
 			onclick={() => {
 				selected = !selected;
 			}}
-			><Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" />
+		>
+			<Layer />
+			<Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" />
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
 			<Tooltip.Content forceMount={true}>

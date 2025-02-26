@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { twMerge } from 'tailwind-merge';
 	import type { IconButtonProps } from './iconButton.svelte';
 	import IconButton from './iconButton.svelte';
 
@@ -11,11 +12,14 @@
 </script>
 
 <IconButton
-	class={disabled
-		? 'bg-on-surface/10 text-on-surface/40'
-		: selected
-			? 'bg-primary text-on-primary hover:bg-primary/90'
-			: 'bg-surface-container-highest text-primary hover:bg-primary/10'}
+	class={twMerge(
+		disabled
+			? 'bg-on-surface/10 text-on-surface/40'
+			: selected
+				? 'bg-primary text-on-primary hover:bg-primary/90'
+				: 'bg-surface-container-highest text-primary hover:bg-primary/10',
+		cls
+	)}
 	{disabled}
 	bind:selected
 	{...rest}

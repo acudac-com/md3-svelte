@@ -1,4 +1,8 @@
 <script lang="ts">
+	import ElevatedButton from '$lib/components/buttons/ElevatedButton.svelte';
+	import FilledButton from '$lib/components/buttons/FilledButton.svelte';
+	import TextButton from '$lib/components/buttons/TextButton.svelte';
+	import TonalButton from '$lib/components/buttons/TonalButton.svelte';
 	import FilledIconBtn from '$lib/components/iconButtons/FilledIconBtn.svelte';
 	import OutlinedIconBtn from '$lib/components/iconButtons/OutlinedIconBtn.svelte';
 	import StandardIconBtn from '$lib/components/iconButtons/StandardIconBtn.svelte';
@@ -41,6 +45,10 @@
 		disabledTitle="Missing permission"
 		bind:selected={toggled}
 	/>
+	<ElevatedButton icon={mdiSettings}>Settings</ElevatedButton>
+	<FilledButton icon={mdiSettings}>Settings</FilledButton>
+	<TonalButton icon={mdiSettings}>Settings</TonalButton>
+	<TextButton icon={mdiSettings}>Settings</TextButton>
 </FittedRow>
 
 <ModeWatcher
@@ -48,4 +56,4 @@
 	lightClassNames={['light' + contrast]}
 	darkClassNames={['dark' + contrast]}
 />
-{@render children()}
+<!-- {@render children()} -->

@@ -1,5 +1,5 @@
 <script module lang="ts">
-	export type IconSize = '24' | '48' | '20' | '40' | number;
+	export type IconSize = '18' | '24' | '48' | '20' | '40' | number;
 	export interface IconProps {
 		icon: IconifyIcon;
 		size?: IconSize;
