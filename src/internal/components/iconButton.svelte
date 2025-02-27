@@ -9,6 +9,7 @@
 		disabled?: boolean;
 		selectedIcon?: IconifyIcon;
 		class?: string;
+		badge?: boolean | string;
 	}
 </script>
 
@@ -25,7 +26,8 @@
 		disabled = false,
 		disabledTitle = undefined,
 		selectedIcon,
-		class: cls = undefined
+		class: cls = undefined,
+		badge
 	}: IconButtonProps = $props();
 
 	let tooltipText = $derived.by(() => {
@@ -51,7 +53,7 @@
 			}}
 		>
 			<Layer />
-			<Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" />
+			<Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" {badge} />
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
 			<Tooltip.Content forceMount={true} side="top" sideOffset={6}>

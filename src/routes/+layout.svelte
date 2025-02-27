@@ -33,6 +33,7 @@
 	<!-- IconButtons -->
 	<FittedRow class="gap-4">
 		<StandardIconBtn
+			badge
 			icon={mdiSettingsOutline}
 			selectedIcon={mdiSettings}
 			tooltip={['This is a', 'long tooltip']}
