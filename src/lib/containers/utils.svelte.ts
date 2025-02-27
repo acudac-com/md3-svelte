@@ -9,7 +9,7 @@ export interface Props {
 }
 
 export function containerClass(props: Props, ...containerClasses: string[]) {
-    let baseClass = ['flex', 'items-center']
+    let baseClass = ['flex', 'items-center', 'relative']
     if (props.desktopOnly) {
         baseClass.push('hidden', 'md:flex')
     } else if (props.mobileOnly) {

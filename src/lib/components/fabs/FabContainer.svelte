@@ -6,7 +6,7 @@
 
 <div
 	class={twMerge(
-		'fixed bottom-[16px] right-[16px] z-50 flex h-fit flex-col items-center gap-[16px]',
+		'absolute bottom-[16px] right-[16px] z-50 flex h-fit flex-col items-center gap-[16px]',
 		cls
 	)}
 >
