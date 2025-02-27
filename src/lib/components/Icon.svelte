@@ -13,7 +13,7 @@
 	let { icon, size = '24', class: cls = undefined, badge }: IconProps = $props();
 </script>
 
-<div class="relative h-fit w-fit">
+<div class="icon relative h-fit w-fit">
 	<svg
 		width={size.toString()}
 		height={size.toString()}

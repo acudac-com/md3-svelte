@@ -19,6 +19,11 @@
 	import ExtendedFab from '$lib/components/fabs/ExtendedFab.svelte';
 	import FullRow from '$lib/containers/FullRow.svelte';
 	import SegmentedBtns from '$lib/components/segmentedButtons/SegmentedBtns.svelte';
+	import ElevatedCard from '$lib/components/cards/ElevatedCard.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import FilledCard from '$lib/components/cards/FilledCard.svelte';
+	import CardRow from '$lib/components/cards/CardRow.svelte';
+	import OutlinedCard from '$lib/components/cards/OutlinedCard.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
@@ -96,6 +101,31 @@
 		bind:selected
 		multi
 	/>
+
+	<!-- Cards -->
+	<CardRow>
+		<ElevatedCard class="min-w-[300px] grow">
+			<p class="title-large">Elevated card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</ElevatedCard>
+		<FilledCard class="w-[300px] shrink-0">
+			<p class="title-large">Filled card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</FilledCard>
+		<OutlinedCard class="w-[300px] shrink-0">
+			<p class="title-large">Outlined card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</OutlinedCard>
+	</CardRow>
 </FittedCol>
 
 <ModeWatcher
