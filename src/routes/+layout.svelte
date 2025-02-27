@@ -94,7 +94,7 @@
 	<!-- Segemented buttons -->
 	<SegmentedBtns
 		options={[
-			{ id: 'listView', icon: mdiSettings },
+			{ id: 'listView', icon: mdiSettings, text: 'Settings' },
 			{ id: 'blockView', icon: mdiSettings },
 			{ id: 'gridView', icon: mdiSettings, disabled: true }
 		]}

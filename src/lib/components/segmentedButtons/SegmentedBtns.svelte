@@ -83,16 +83,17 @@
 				toggle(option.id);
 			}}
 			><Layer />
+
 			<span class="flex items-center justify-center gap-[8px]">
 				{#if isSelected(option.id)}
-					<span in:scale class="flex items-center">
-						<Icon class="inline" icon={mdiCheck} size="18" />
-					</span>
+					<div in:scale class="flex items-center">
+						<Icon icon={mdiCheck} size="18" />
+					</div>
 				{/if}
 				{#if option.icon && (!isSelected(option.id) || !option.text)}
-					<span in:scale class="flex items-center">
-						<Icon class="inline" icon={option.icon} size="18" />
-					</span>
+					<div in:scale class="flex items-center">
+						<Icon icon={option.icon} size="18" />
+					</div>
 				{/if}
 
 				{#if option.text}
