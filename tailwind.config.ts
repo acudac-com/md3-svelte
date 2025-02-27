@@ -7,19 +7,19 @@ export default {
 	theme: {
 		extend: {
 			borderRadius: {
-				'xs': '2px',
-				'sm': '4px',
-				'md': '6px',
-				'lg': '8px',
-				'xl': '12px',
-				'2xl': '16px',
-				'3xl': '24px'
+				'xs': '4px',
+				'sm': '8px',
+				'md': '12px',
+				'lg': '16px',
+				'xl': '28px',
+				'2xl': '36px',
+				'3xl': '50px'
 			},
 			boxShadow: {
 				'l1': '0 1px 4px 0 rgba(0, 0, 0, 0.37)', // Similar to shadow-sm, adjusts to 1dp feel
-				'l2': '0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3)', // Adjusted for a 3dp feel
-				'l3': '0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3)', // Adjusted for a 6dp feel
-				'l4': '0 14px 12px 0 rgba(0, 0, 0, 0.17), 0 20px 40px 0 rgba(0, 0, 0, 0.3)', // Adjusted for an 8dp feel
+				'l2': '0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.3)', // Adjusted for a 3dp feel
+				'l3': '0 6px 4px 0 rgba(0, 0, 0, 0.10), 0 6px 13px 0 rgba(0, 0, 0, 0.3)', // Adjusted for a 6dp feel
+				'l4': '0 10px 8px 0 rgba(0, 0, 0, 0.13), 0 12px 20px 0 rgba(0, 0, 0, 0.3)', // Adjusted for an 8dp feel
 				'l5': '0 17px 17px 0 rgba(0, 0, 0, 0.15), 0 27px 55px 0 rgba(0, 0, 0, 0.3)',
 			},
 			colors: {

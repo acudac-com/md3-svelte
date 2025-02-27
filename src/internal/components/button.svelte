@@ -2,9 +2,9 @@
 	import type { IconifyIcon } from '@iconify/types';
 	import type { Snippet } from 'svelte';
 	import { twMerge } from 'tailwind-merge';
-	import Icon from '../Icon.svelte';
+	import Icon from '../../lib/components/Icon.svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
-	import Layer from '../../ripples/Layer.svelte';
+	import Layer from '../../lib/ripples/Layer.svelte';
 
 	export interface ButtonProps extends HTMLButtonAttributes {
 		children: Snippet;

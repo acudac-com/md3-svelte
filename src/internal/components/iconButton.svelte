@@ -14,10 +14,10 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import Icon from '../Icon.svelte';
+	import Icon from '../../lib/components/Icon.svelte';
 	import { Tooltip } from 'bits-ui';
 	import { scale } from 'svelte/transition';
-	import Layer from '../../ripples/Layer.svelte';
+	import Layer from '../../lib/ripples/Layer.svelte';
 	let {
 		icon,
 		plainTooltip,

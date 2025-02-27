@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import type { IconButtonProps } from './iconButton.svelte';
-	import IconButton from './iconButton.svelte';
+	import type { IconButtonProps } from '../../../internal/components/iconButton.svelte';
+	import IconButton from '../../../internal/components/iconButton.svelte';
 
 	let {
 		class: cls = undefined,
