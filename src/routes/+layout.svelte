@@ -16,6 +16,7 @@
 	import FittedCol from '$lib/containers/FittedCol.svelte';
 	import FabContainer from '$lib/components/fabs/FabContainer.svelte';
 	import SmallFab from '$lib/components/fabs/SmallFab.svelte';
+	import ExtendedFab from '$lib/components/fabs/ExtendedFab.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
@@ -75,6 +76,7 @@
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<Fab icon={mdiSettings} tooltip="Settings" />
+			<ExtendedFab icon={mdiSettings} text="Settings" minimizeOnMobile />
 		</FabContainer>
 	</FittedRow>
 </FittedCol>
