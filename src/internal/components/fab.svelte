@@ -1,41 +1,45 @@
 <script module lang="ts">
 	import type { IconifyIcon } from '@iconify/types';
 
+	export interface InternalFabProps extends FabProps {
+		iconSize?: IconSize;
+	}
 	export interface FabProps {
 		icon: IconifyIcon;
-		plainTooltip?: string | string[];
-		class?: string;
-		iconSize?: IconSize;
-		manualPlacement?: Boolean;
-		color?: 'primary' | 'secondary' | 'tertiary' | 'surface' | 'none';
+		tooltip: string | string[];
+		secondary?: Boolean;
+		tertiary?: Boolean;
+		surface?: Boolean;
 		onclick?: (e: Event) => void;
+		class?: ClassNameValue;
 	}
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
+	import { twMerge, type ClassNameValue } from 'tailwind-merge';
 	import Icon, { type IconSize } from '../../lib/components/Icon.svelte';
 	import { Tooltip } from 'bits-ui';
 	import { scale } from 'svelte/transition';
 	import Layer from '../../lib/ripples/Layer.svelte';
 	let {
 		icon,
-		plainTooltip,
+		tooltip,
 		class: cls = undefined,
-		color = 'primary',
+		secondary,
+		tertiary,
+		surface,
 		iconSize = '24',
-		manualPlacement = false,
 		onclick
-	}: FabProps = $props();
+	}: InternalFabProps = $props();
 
 	let plainToolTipText = $derived.by(() => {
-		if (plainTooltip == undefined) {
+		if (tooltip == undefined) {
 			return '';
 		}
-		if (typeof plainTooltip === 'string') {
-			return plainTooltip;
+		if (typeof tooltip === 'string') {
+			return tooltip;
 		} else {
-			return plainTooltip.join('<br>');
+			return tooltip.join('<br>');
 		}
 	});
 </script>
@@ -45,16 +49,13 @@
 		<Tooltip.Trigger
 			class={twMerge(
 				'relative flex items-center justify-center shadow-l2 ease-in-out hover:shadow-l3',
-				color == 'primary'
-					? 'bg-primary-container text-on-primary-container'
-					: color == 'secondary'
-						? 'bg-secondary-container text-on-secondary-container'
-						: color == 'tertiary'
-							? 'bg-tertiary-container text-on-tertiary-container'
-							: color == 'surface'
-								? 'text-on-surface-container bg-surface-container'
-								: '',
-				!manualPlacement ? 'fixed bottom-[16px] right-[16px] z-50' : '',
+				secondary
+					? 'bg-secondary-container text-on-secondary-container'
+					: tertiary
+						? 'bg-tertiary-container text-on-tertiary-container'
+						: surface
+							? 'text-on-surface-container bg-surface-container'
+							: 'bg-primary-container text-on-primary-container',
 				cls
 			)}
 			{onclick}
@@ -63,13 +64,13 @@
 			<Icon {icon} size={iconSize} />
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
-			<Tooltip.Content forceMount={true} class="rounded-none">
+			<Tooltip.Content forceMount={true} side="left" align="center" sideOffset={6}>
 				{#snippet child({ wrapperProps, props, open })}
 					{#if open && plainToolTipText}
-						<div class="mt-2" {...wrapperProps}>
+						<div {...wrapperProps}>
 							<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
 								<p
-									class="label-small min-h-[24px] items-center bg-inverse-surface px-[8px] text-inverse-on-surface"
+									class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] text-inverse-on-surface"
 								>
 									{@html plainToolTipText}
 								</p>

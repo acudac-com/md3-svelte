@@ -6,16 +6,27 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import Layer from '../../lib/ripples/Layer.svelte';
 
-	export interface ButtonProps extends HTMLButtonAttributes {
-		children: Snippet;
+	export interface ButtonProps {
+		text: string;
 		icon?: IconifyIcon;
 		rightIcon?: IconifyIcon;
 		class?: string | string[];
+		onclick?: (e: Event) => void;
+		disabled?: boolean;
+		buttonAttributes?: HTMLButtonAttributes;
 	}
 </script>
 
 <script lang="ts">
-	let { children, icon, rightIcon, class: cls, ...rest }: ButtonProps = $props();
+	let {
+		text,
+		icon,
+		rightIcon,
+		class: cls,
+		onclick,
+		disabled,
+		buttonAttributes
+	}: ButtonProps = $props();
 </script>
 
 <button
@@ -30,13 +41,15 @@
 					: '',
 		cls
 	)}
-	{...rest}
+	{...buttonAttributes}
+	{onclick}
+	{disabled}
 >
 	<Layer />
 	{#if icon}
 		<Icon {icon} size="18" />
 	{/if}
-	{@render children()}
+	{text}
 	{#if rightIcon}
 		<Icon icon={rightIcon} />
 	{/if}

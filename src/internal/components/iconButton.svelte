@@ -4,7 +4,7 @@
 	export interface IconButtonProps {
 		icon: IconifyIcon;
 		selected: boolean;
-		plainTooltip: string | string[];
+		tooltip: string | string[];
 		disabledTitle?: string;
 		disabled?: boolean;
 		selectedIcon?: IconifyIcon;
@@ -20,7 +20,7 @@
 	import Layer from '../../lib/ripples/Layer.svelte';
 	let {
 		icon,
-		plainTooltip,
+		tooltip,
 		selected = $bindable(false),
 		disabled = false,
 		disabledTitle = undefined,
@@ -28,11 +28,11 @@
 		class: cls = undefined
 	}: IconButtonProps = $props();
 
-	let plainToolTipText = $derived.by(() => {
-		if (typeof plainTooltip === 'string') {
-			return plainTooltip;
+	let tooltipText = $derived.by(() => {
+		if (typeof tooltip === 'string') {
+			return tooltip;
 		} else {
-			return plainTooltip.join('<br>');
+			return tooltip.join('<br>');
 		}
 	});
 </script>
@@ -54,15 +54,15 @@
 			<Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" />
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
-			<Tooltip.Content forceMount={true}>
+			<Tooltip.Content forceMount={true} side="top" sideOffset={6}>
 				{#snippet child({ wrapperProps, props, open })}
 					{#if open}
-						<div class="mt-2" {...wrapperProps}>
+						<div {...wrapperProps}>
 							<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
 								<p
-									class="label-small min-h-[24px] items-center rounded-sm bg-inverse-surface px-[8px] text-inverse-on-surface"
+									class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] text-inverse-on-surface"
 								>
-									{@html plainToolTipText}
+									{@html tooltipText}
 								</p>
 							</div>
 						</div>
