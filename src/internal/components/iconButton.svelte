@@ -1,13 +1,11 @@
 <script module lang="ts">
-	import type { IconifyIcon } from '@iconify/types';
-
 	export interface IconButtonProps {
-		icon: IconifyIcon;
+		icon: IconType;
 		selected: boolean;
 		tooltip: string | string[];
 		disabledTitle?: string;
 		disabled?: boolean;
-		selectedIcon?: IconifyIcon;
+		selectedIcon?: IconType;
 		class?: string;
 		badge?: boolean | string;
 	}
@@ -15,7 +13,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import Icon from '../../lib/components/Icon.svelte';
+	import Icon, { type IconType } from '../../lib/components/Icon.svelte';
 	import { Tooltip } from 'bits-ui';
 	import { scale } from 'svelte/transition';
 	import Layer from '../../lib/ripples/Layer.svelte';

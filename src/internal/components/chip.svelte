@@ -4,7 +4,7 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import Layer from '../../lib/ripples/Layer.svelte';
 
-	export interface ButtonProps {
+	export interface ChipProps {
 		text: string;
 		icon?: IconType;
 		rightIcon?: IconType;
@@ -12,6 +12,7 @@
 		onclick?: (e: Event) => void;
 		disabled?: boolean;
 		buttonAttributes?: HTMLButtonAttributes;
+		coloredIcons?: boolean;
 	}
 </script>
 
@@ -23,19 +24,20 @@
 		class: cls,
 		onclick,
 		disabled,
-		buttonAttributes
-	}: ButtonProps = $props();
+		buttonAttributes,
+		coloredIcons = true
+	}: ChipProps = $props();
 </script>
 
 <button
 	class={twMerge(
-		'label-large relative flex h-[40px] items-center gap-[8px] rounded-full',
+		'label-large relative flex h-[32px] items-center gap-[8px] rounded-sm',
 		!icon && !rightIcon
-			? 'px-[24px]'
+			? 'px-[16px]'
 			: !icon
-				? 'pl-[24px] pr-[16px]'
+				? 'pl-[16px] pr-[8px]'
 				: !rightIcon
-					? 'pl-[16px] pr-[24px]'
+					? 'pl-[8px] pr-[16px]'
 					: '',
 		cls
 	)}
@@ -45,10 +47,10 @@
 >
 	<Layer />
 	{#if icon}
-		<Icon {icon} size="18" />
+		<Icon class={coloredIcons ? 'text-primary' : ''} {icon} size="18" />
 	{/if}
 	{text}
 	{#if rightIcon}
-		<Icon icon={rightIcon} />
+		<Icon class={coloredIcons ? 'text-primary' : ''} icon={rightIcon} />
 	{/if}
 </button>

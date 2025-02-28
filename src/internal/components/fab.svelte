@@ -1,11 +1,9 @@
 <script module lang="ts">
-	import type { IconifyIcon } from '@iconify/types';
-
 	export interface InternalFabProps extends FabProps {
 		iconSize?: IconSize;
 	}
 	export interface FabProps {
-		icon: IconifyIcon;
+		icon: IconType;
 		tooltip: string | string[];
 		secondary?: Boolean;
 		tertiary?: Boolean;
@@ -17,7 +15,7 @@
 
 <script lang="ts">
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import Icon, { type IconSize } from '../../lib/components/Icon.svelte';
+	import Icon, { type IconSize, type IconType } from '../../lib/components/Icon.svelte';
 	import { Tooltip } from 'bits-ui';
 	import { scale } from 'svelte/transition';
 	import Layer from '../../lib/ripples/Layer.svelte';

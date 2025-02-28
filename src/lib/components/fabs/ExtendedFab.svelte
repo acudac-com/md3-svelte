@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import Fab from '../../../internal/components/fab.svelte';
-	import type { FabProps } from '../../../internal/components/fab.svelte';
-	import type { IconifyIcon } from '@iconify/types';
 	import Layer from '$lib/ripples/Layer.svelte';
 	import { Tooltip } from 'bits-ui';
-	import Icon from '../Icon.svelte';
+	import Icon, { type IconType } from '../Icon.svelte';
 	import { scale } from 'svelte/transition';
 
 	interface Props {
-		icon: IconifyIcon;
+		icon: IconType;
 		text: string;
 		minimizeOnMobile?: boolean;
 		secondary?: Boolean;

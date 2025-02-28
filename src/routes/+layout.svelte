@@ -10,7 +10,7 @@
 	import StandardIconBtn from '$lib/components/iconButtons/StandardIconBtn.svelte';
 	import TonalIconBtn from '$lib/components/iconButtons/TonalIconBtn.svelte';
 	import FittedRow from '$lib/containers/FittedRow.svelte';
-	import { mdiSettings, mdiSettingsOutline } from '../internal/icons';
+	import { mdiCheck, mdiSettings, mdiSettingsOutline, pngGoogleMeet } from '../internal/icons';
 	import '../app.css';
 	import { ModeWatcher, setMode } from 'mode-watcher';
 	import FittedCol from '$lib/containers/FittedCol.svelte';
@@ -32,12 +32,15 @@
 	import FilledCardBtn from '$lib/components/cards/FilledCardBtn.svelte';
 	import OutlinedCardBtn from '$lib/components/cards/OutlinedCardBtn.svelte';
 	import Checkbox from '$lib/components/Checkbox.svelte';
+	import FullCol from '$lib/containers/FullCol.svelte';
+	import AssistChip from '$lib/components/chips/AssistChip.svelte';
+	import FilterChip from '$lib/components/chips/FilterChip.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
 	let toggled = $state(false);
 	$inspect(toggled);
-	setMode('dark');
+	setMode('light');
 	let selected = $state([]);
 	$inspect(selected);
 </script>
@@ -47,7 +50,7 @@
 	<FittedRow class="gap-4">
 		<StandardIconBtn
 			badge
-			icon={mdiSettingsOutline}
+			icon={{ ...pngGoogleMeet, rounded: true }}
 			selectedIcon={mdiSettings}
 			tooltip={['This is a', 'long tooltip']}
 			bind:selected={toggled}
@@ -89,16 +92,25 @@
 	</FittedRow>
 
 	<!-- FABs -->
-	<FullRow class="h-[200px] items-start gap-4 bg-tertiary-container">
-		<p class="headline-large p-4">Parent of FabContainer</p>
+	<FullCol class="h-[200px] items-start border">
+		<p class="headline-large p-2">Parent of FabContainer</p>
 		<Checkbox checked error />
+		<FittedRow class="gap-1 px-2">
+			<AssistChip
+				text="Assist"
+				icon={mdiSettings}
+				onclick={() => {
+					alert('hi');
+				}}
+			/>
+			<FilterChip text="Filter" icon={mdiSettings} selectedIcon={mdiCheck} />
+		</FittedRow>
 		<FabContainer>
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<Fab icon={mdiSettings} tooltip="Settings" />
-			<ExtendedFab icon={mdiSettings} text="Settings" minimizeOnMobile />
 		</FabContainer>
-	</FullRow>
+	</FullCol>
 
 	<!-- Segemented buttons -->
 	<SegmentedBtns

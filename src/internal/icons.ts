@@ -1,3 +1,4 @@
+import type { Image } from "$lib/components/Icon.svelte";
 import type { IconifyIcon } from "@iconify/types";
 
 export const mdiAboutVariant: IconifyIcon = {
@@ -22,4 +23,9 @@ export const mdiCheck: IconifyIcon = {
     "width": 24,
     "height": 24,
     "body": "<path fill=\"currentColor\" d=\"M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z\" />"
+}
+
+export const pngGoogleMeet: Image = {
+    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
+    alt: 'Google meet image'
 }

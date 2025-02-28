@@ -2,7 +2,7 @@
 	interface SegmentedBtnOption {
 		id: string;
 		text?: string;
-		icon?: IconifyIcon;
+		icon?: IconType;
 		disabled?: boolean;
 	}
 	interface SegmentedBtnsProps {
@@ -14,11 +14,9 @@
 </script>
 
 <script lang="ts">
-	import Icon from '$lib/components/Icon.svelte';
+	import Icon, { type IconType } from '$lib/components/Icon.svelte';
 
 	import Layer from '$lib/ripples/Layer.svelte';
-	import type { IconifyIcon } from '@iconify/types';
-
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
 	import { mdiCheck } from '../../../internal/icons';
 	import { scale } from 'svelte/transition';
