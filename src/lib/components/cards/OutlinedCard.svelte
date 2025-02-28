@@ -6,7 +6,7 @@
 		children: Snippet;
 		class?: ClassNameValue;
 	}
-	let { children, class: cls } = $props();
+	let { children, class: cls }: Props = $props();
 </script>
 
 <div

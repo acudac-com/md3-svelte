@@ -24,6 +24,10 @@
 	import FilledCard from '$lib/components/cards/FilledCard.svelte';
 	import CardRow from '$lib/components/cards/CardRow.svelte';
 	import OutlinedCard from '$lib/components/cards/OutlinedCard.svelte';
+	import CardCol from '$lib/components/cards/CardCol.svelte';
+	import ElevatedCardLink from '$lib/components/cards/ElevatedCardLink.svelte';
+	import FilledCardLink from '$lib/components/cards/FilledCardLink.svelte';
+	import OutlinedCardLink from '$lib/components/cards/OutlinedCardLink.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
@@ -125,6 +129,30 @@
 			<p class="label-medium">This is a card</p>
 			<p class="label-medium">This is a card</p>
 		</OutlinedCard>
+	</CardRow>
+	<!-- Cards -->
+	<CardRow>
+		<ElevatedCardLink class="min-w-[300px] grow" href="/cardlink">
+			<p class="title-large">Elevated card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</ElevatedCardLink>
+		<FilledCardLink class="w-[300px] grow" href="/cardlink">
+			<p class="title-large">Filled card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</FilledCardLink>
+		<OutlinedCardLink class="w-[300px] shrink-0" href="/cardlink">
+			<p class="title-large">Outlined card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</OutlinedCardLink>
 	</CardRow>
 </FittedCol>
 
