@@ -10,7 +10,13 @@
 	import StandardIconBtn from '$lib/components/iconButtons/StandardIconBtn.svelte';
 	import TonalIconBtn from '$lib/components/iconButtons/TonalIconBtn.svelte';
 	import FittedRow from '$lib/containers/FittedRow.svelte';
-	import { mdiCheck, mdiSettings, mdiSettingsOutline, pngGoogleMeet } from '../internal/icons';
+	import {
+		mdiCheck,
+		mdiSettings,
+		mdiSettingsOutline,
+		pngDaniel,
+		pngGoogleMeet
+	} from '../internal/icons';
 	import '../app.css';
 	import { ModeWatcher, setMode } from 'mode-watcher';
 	import FittedCol from '$lib/containers/FittedCol.svelte';
@@ -35,6 +41,9 @@
 	import FullCol from '$lib/containers/FullCol.svelte';
 	import AssistChip from '$lib/components/chips/AssistChip.svelte';
 	import FilterChip from '$lib/components/chips/FilterChip.svelte';
+	import SuggestionChip from '$lib/components/chips/SuggestionChip.svelte';
+	import InputChip from '$lib/components/chips/InputChip.svelte';
+	import FilterChipGroup from '$lib/components/chips/FilterChipGroup.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
@@ -43,6 +52,8 @@
 	setMode('light');
 	let selected = $state([]);
 	$inspect(selected);
+	let filter = $state('');
+	$inspect(filter);
 </script>
 
 <FittedCol class="items-start gap-4 p-4">
@@ -87,14 +98,14 @@
 		/>
 		<FilledButton icon={mdiSettings} text="Settings" />
 		<TonalButton icon={mdiSettings} text="Settings" />
-		<OutlinedButton icon={mdiSettings} text="Settings" />
+		<OutlinedButton icon={mdiSettings} text="Settings" href="/asdf" />
 		<TextButton text="Settings" />
 	</FittedRow>
 
 	<!-- FABs -->
-	<FullCol class="h-[200px] items-start border">
+	<OutlinedCard class="h-[200px]">
 		<p class="headline-large p-2">Parent of FabContainer</p>
-		<Checkbox checked error />
+		<Checkbox checked />
 		<FittedRow class="gap-1 px-2">
 			<AssistChip
 				text="Assist"
@@ -103,14 +114,32 @@
 					alert('hi');
 				}}
 			/>
-			<FilterChip text="Filter" icon={mdiSettings} selectedIcon={mdiCheck} />
+			<FilterChip text="Filter" icon={pngDaniel} />
+			<InputChip
+				text="Filter"
+				icon={pngDaniel}
+				onclick={() => {
+					console.log('onclick');
+				}}
+				onremove={() => {
+					console.log('onremove');
+				}}
+			/>
+			<SuggestionChip text="Filter" icon={mdiSettings} />
 		</FittedRow>
+		<FilterChipGroup
+			chips={[
+				{ icon: mdiSettings, text: 'settings' },
+				{ icon: mdiSettings, text: 'settings2' }
+			]}
+			bind:selected={filter}
+		/>
 		<FabContainer>
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<Fab icon={mdiSettings} tooltip="Settings" />
 		</FabContainer>
-	</FullCol>
+	</OutlinedCard>
 
 	<!-- Segemented buttons -->
 	<SegmentedBtns

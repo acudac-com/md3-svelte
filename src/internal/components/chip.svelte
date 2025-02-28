@@ -8,6 +8,8 @@
 		text: string;
 		icon?: IconType;
 		rightIcon?: IconType;
+		rightIconTooltip?: string;
+		onRightIconClick?: (e: Event) => void;
 		class?: string | string[];
 		onclick?: (e: Event) => void;
 		disabled?: boolean;
@@ -21,6 +23,7 @@
 		text,
 		icon,
 		rightIcon,
+		onRightIconClick,
 		class: cls,
 		onclick,
 		disabled,
@@ -31,14 +34,14 @@
 
 <button
 	class={twMerge(
-		'label-large relative flex h-[32px] items-center gap-[8px] rounded-sm',
+		'label-medium relative flex h-[32px] w-fit shrink-0 grow-0 items-center gap-[8px] rounded-sm',
 		!icon && !rightIcon
 			? 'px-[16px]'
 			: !icon
-				? 'pl-[16px] pr-[8px]'
+				? 'pl-[16px] pr-[4px]'
 				: !rightIcon
 					? 'pl-[8px] pr-[16px]'
-					: '',
+					: 'pl-[8px] pr-[4px]',
 		cls
 	)}
 	{...buttonAttributes}
@@ -51,6 +54,23 @@
 	{/if}
 	{text}
 	{#if rightIcon}
-		<Icon class={coloredIcons ? 'text-primary' : ''} icon={rightIcon} />
+		<div
+			role="button"
+			tabindex={0}
+			class={twMerge(
+				'relative flex h-[24px] w-[24px] items-center justify-center rounded-full border-none ease-in-out hover:bg-on-surface/50',
+				cls
+			)}
+			onkeyup={(e) => {}}
+			onclick={(e) => {
+				if (onRightIconClick) {
+					onRightIconClick(e);
+					e.stopPropagation();
+				}
+			}}
+		>
+			<Layer />
+			<Icon icon={rightIcon} size="18" />
+		</div>
 	{/if}
 </button>

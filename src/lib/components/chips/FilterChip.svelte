@@ -1,24 +1,22 @@
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
 	import Chip from '../../../internal/components/chip.svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import type { IconType } from '../Icon.svelte';
+	import { mdiCheck } from '../../../internal/icons';
 	interface Props {
 		text: string;
 		icon?: IconType;
-		selectedIcon?: IconType;
+		keepIconIfChecked?: boolean;
 		class?: string | string[];
 		selected?: boolean;
 		disabled?: boolean;
-		buttonAttributes?: HTMLButtonAttributes;
-		coloredIcons?: boolean;
 	}
 	let {
 		class: cls,
 		disabled,
+		keepIconIfChecked,
 		selected = $bindable(),
 		icon,
-		selectedIcon,
 		...rest
 	}: Props = $props();
 </script>
@@ -36,7 +34,7 @@
 	onclick={() => {
 		selected = !selected;
 	}}
-	icon={selected && selectedIcon ? selectedIcon : icon}
+	icon={selected && !keepIconIfChecked ? mdiCheck : icon}
 	{disabled}
 	{...rest}
 />

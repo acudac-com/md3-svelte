@@ -2,14 +2,16 @@
 	import { twMerge } from 'tailwind-merge';
 	import Chip from '../../../internal/components/chip.svelte';
 	import type { IconType } from '../Icon.svelte';
+	import { mdiClose } from '../../../internal/icons';
 	interface Props {
 		text: string;
 		icon?: IconType;
 		class?: string | string[];
 		onclick?: (e: Event) => void;
+		onremove?: (e: Event) => void;
 		disabled?: boolean;
 	}
-	let { class: cls, disabled, ...rest }: Props = $props();
+	let { class: cls, disabled, onclick, onremove, ...rest }: Props = $props();
 </script>
 
 <Chip
@@ -20,6 +22,9 @@
 			: 'border-outline-variant text-on-surface',
 		cls
 	)}
+	rightIcon={mdiClose}
+	{onclick}
+	onRightIconClick={onremove}
 	{disabled}
 	{...rest}
 />

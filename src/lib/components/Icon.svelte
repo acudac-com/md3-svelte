@@ -23,8 +23,8 @@
 	{#if 'src' in icon}
 		<img
 			class={[icon.rounded ? 'rounded-full' : '']}
-			width={size.toString()}
-			height={size.toString()}
+			width={(Number(size) + 6).toString()}
+			height={(Number(size) + 6).toString()}
 			src={icon.src}
 			alt={icon.alt}
 		/>

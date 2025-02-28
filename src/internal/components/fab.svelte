@@ -9,6 +9,7 @@
 		tertiary?: Boolean;
 		surface?: Boolean;
 		onclick?: (e: Event) => void;
+		href?: string;
 		class?: ClassNameValue;
 	}
 </script>

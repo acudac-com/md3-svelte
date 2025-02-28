@@ -1,8 +1,9 @@
 <script module lang="ts">
 	export interface IconButtonProps {
 		icon: IconType;
-		selected: boolean;
+		selected?: boolean;
 		tooltip: string | string[];
+		onclick?: (e: Event) => void;
 		disabledTitle?: string;
 		disabled?: boolean;
 		selectedIcon?: IconType;
@@ -21,6 +22,9 @@
 		icon,
 		tooltip,
 		selected = $bindable(false),
+		onclick = (e: Event) => {
+			selected = !selected;
+		},
 		disabled = false,
 		disabledTitle = undefined,
 		selectedIcon,
@@ -46,9 +50,7 @@
 			)}
 			title={disabled && disabledTitle ? disabledTitle : undefined}
 			{disabled}
-			onclick={() => {
-				selected = !selected;
-			}}
+			{onclick}
 		>
 			<Layer />
 			<Icon icon={selected && selectedIcon ? selectedIcon : icon} size="24" {badge} />
