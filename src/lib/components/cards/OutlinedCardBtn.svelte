@@ -7,7 +7,7 @@
 		children: Snippet;
 		class?: ClassNameValue;
 		disabled?: boolean;
-		onclick: (e: Event) => void;
+		onclick?: (e: Event) => void;
 	}
 	let { children, class: cls, disabled, onclick }: Props = $props();
 </script>
