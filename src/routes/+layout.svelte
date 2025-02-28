@@ -31,12 +31,13 @@
 	import ElevatedCardBtn from '$lib/components/cards/ElevatedCardBtn.svelte';
 	import FilledCardBtn from '$lib/components/cards/FilledCardBtn.svelte';
 	import OutlinedCardBtn from '$lib/components/cards/OutlinedCardBtn.svelte';
+	import Checkbox from '$lib/components/Checkbox.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
 	let toggled = $state(false);
 	$inspect(toggled);
-	setMode('light');
+	setMode('dark');
 	let selected = $state([]);
 	$inspect(selected);
 </script>
@@ -88,8 +89,9 @@
 	</FittedRow>
 
 	<!-- FABs -->
-	<FullRow class="h-[200px] gap-4 bg-tertiary-container">
+	<FullRow class="h-[200px] items-start gap-4 bg-tertiary-container">
 		<p class="headline-large p-4">Parent of FabContainer</p>
+		<Checkbox checked error />
 		<FabContainer>
 			<SmallFab icon={mdiSettings} tooltip="Settings" />
 			<SmallFab icon={mdiSettings} tooltip="Settings" />

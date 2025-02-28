@@ -64,7 +64,7 @@
 			<Icon {icon} size={iconSize} />
 		</Tooltip.Trigger>
 		<Tooltip.Portal>
-			<Tooltip.Content forceMount={true} side="left" align="center" sideOffset={6}>
+			<Tooltip.Content forceMount={true} side="left" sideOffset={6}>
 				{#snippet child({ wrapperProps, props, open })}
 					{#if open && plainToolTipText}
 						<div {...wrapperProps}>
