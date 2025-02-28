@@ -128,7 +128,7 @@
     letter-spacing: 0.5pt;
 }
 
-.prominent-label-large {
+.prominent-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 14pt;
@@ -136,7 +136,7 @@
     letter-spacing: 0.1pt;
 }
 
-.prominent-label-medium {
+.prominent-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 12pt;
@@ -144,7 +144,7 @@
     letter-spacing: 0.5pt;
 }
 
-.prominent-label-small {
+.prominent-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 11pt;

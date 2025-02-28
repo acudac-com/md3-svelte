@@ -1,14 +1,19 @@
-<script lang="ts">
+<script module lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import type { ButtonProps } from '../../../internal/components/button.svelte';
-	import Button from '../../../internal/components/button.svelte';
+	import Button, { type ButtonProps } from '../../../internal/components/button.svelte';
 
-	let { class: cls, disabled, ...rest }: ButtonProps = $props();
+	export interface FilledButtonProps extends ButtonProps {}
+</script>
+
+<script lang="ts">
+	let { class: cls, disabled, ...rest }: FilledButtonProps = $props();
 </script>
 
 <Button
 	class={twMerge(
-		disabled ? 'bg-on-surface/10 text-on-surface/40' : 'bg-primary text-on-primary hover:shadow-l1',
+		'bg-primary text-on-primary',
+		'hover:shadow-l1',
+		disabled ? 'bg-on-surface/10 text-on-surface/40' : '',
 		cls
 	)}
 	{disabled}

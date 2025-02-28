@@ -1,13 +1,17 @@
 <script module lang="ts">
 	export type IconSize = '18' | '24' | '36' | '48' | '20' | '40' | number;
-	export interface Image {
+	export type Image = {
 		src: string;
 		alt: string;
 		rounded?: boolean;
-	}
-	export type IconType = IconifyIcon | Image;
+	};
+	export type Svg = {
+		width: number;
+		height: number;
+		body: string;
+	};
 	export interface IconProps {
-		icon: IconType;
+		icon: Svg | Image;
 		size?: IconSize;
 		class?: string;
 		badge?: boolean | string;
@@ -15,7 +19,6 @@
 </script>
 
 <script lang="ts">
-	import type { IconifyIcon } from '@iconify/types';
 	let { icon, size = '24', class: cls = undefined, badge }: IconProps = $props();
 </script>
 
