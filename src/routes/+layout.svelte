@@ -28,6 +28,9 @@
 	import ElevatedCardLink from '$lib/components/cards/ElevatedCardLink.svelte';
 	import FilledCardLink from '$lib/components/cards/FilledCardLink.svelte';
 	import OutlinedCardLink from '$lib/components/cards/OutlinedCardLink.svelte';
+	import ElevatedCardBtn from '$lib/components/cards/ElevatedCardBtn.svelte';
+	import FilledCardBtn from '$lib/components/cards/FilledCardBtn.svelte';
+	import OutlinedCardBtn from '$lib/components/cards/OutlinedCardBtn.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
@@ -130,7 +133,8 @@
 			<p class="label-medium">This is a card</p>
 		</OutlinedCard>
 	</CardRow>
-	<!-- Cards -->
+
+	<!-- Card links -->
 	<CardRow>
 		<ElevatedCardLink class="min-w-[300px] grow" href="/cardlink">
 			<p class="title-large">Elevated card</p>
@@ -153,6 +157,37 @@
 			<p class="label-medium">This is a card</p>
 			<p class="label-medium">This is a card</p>
 		</OutlinedCardLink>
+	</CardRow>
+
+	<!-- Card buttons -->
+	<CardRow>
+		<ElevatedCardBtn
+			class="min-w-[300px] grow"
+			onclick={() => {
+				alert('hi');
+			}}
+			disabled
+		>
+			<p class="title-large">Elevated card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</ElevatedCardBtn>
+		<FilledCardBtn class="w-[300px] grow">
+			<p class="title-large">Filled card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</FilledCardBtn>
+		<OutlinedCardBtn class="w-[300px] shrink-0">
+			<p class="title-large">Outlined card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+			<p class="label-medium">This is a card</p>
+		</OutlinedCardBtn>
 	</CardRow>
 </FittedCol>
 

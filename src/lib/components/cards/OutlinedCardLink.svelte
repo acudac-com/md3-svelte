@@ -8,10 +8,18 @@
 		children: Snippet;
 		class?: ClassNameValue;
 		selected?: boolean;
+		disabled?: boolean;
 		selectedClass?: ClassNameValue;
 		href: string;
 	}
-	let { children, class: cls, href, selectedClass, selected = $bindable() }: Props = $props();
+	let {
+		children,
+		class: cls,
+		href,
+		selectedClass,
+		selected = $bindable(),
+		disabled
+	}: Props = $props();
 
 	$effect(() => {
 		if (page.route.id == href) {
@@ -24,12 +32,18 @@
 
 <a
 	class={twMerge(
-		'relative flex flex-col rounded-md border border-outline-variant bg-surface p-[16px] hover:shadow-l1',
-		selected ? twMerge('border-primary bg-primary/10', selectedClass) : '',
+		'relative flex flex-col rounded-md border border-outline-variant bg-surface p-[16px]',
+		disabled
+			? 'border-outline/15 bg-surface/40 text-on-surface/40'
+			: selected
+				? twMerge('border-primary bg-primary/10 hover:shadow-l1', selectedClass)
+				: 'hover:shadow-l1',
 		cls
 	)}
-	{href}
+	href={disabled ? undefined : href}
 >
-	<Layer />
+	{#if !disabled}
+		<Layer />
+	{/if}
 	{@render children()}
 </a>
