@@ -25,13 +25,13 @@
 <Clickable
 	class={twMerge(
 		'h-[40px] gap-[8px] rounded-full',
-		!icon && !rightIcon
+		!icon && !rightIcon // no icons
 			? 'px-[24px]'
-			: !icon
+			: !icon // only right icon
 				? 'pl-[24px] pr-[16px]'
-				: !rightIcon
+				: !rightIcon // only left icon
 					? 'pl-[16px] pr-[24px]'
-					: '',
+					: 'px-[16px]', // both icons
 		cls
 	)}
 	typeScale="label-large"

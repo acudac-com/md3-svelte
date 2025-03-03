@@ -44,18 +44,25 @@
 	import SuggestionChip from '$lib/components/chips/SuggestionChip.svelte';
 	import InputChip from '$lib/components/chips/InputChip.svelte';
 	import FilterChipGroup from '$lib/components/chips/FilterChipGroup.svelte';
+	import Clickable from '../internal/components/clickable.svelte';
 	let { children } = $props();
 
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
 	let toggled = $state(false);
-	$inspect(toggled);
+	// $inspect(toggled);
 	setMode('light');
 	let selected = $state([]);
-	$inspect(selected);
+	// $inspect(selected);
 	let filter = $state('');
-	$inspect(filter);
+	// $inspect(filter);
+	let onHref = $state(false);
+	$inspect('onHref', onHref);
+	let hasQueryParam = $state(false);
+	$inspect('hasQueryParam', hasQueryParam);
 </script>
 
+<Clickable href="/cardlink" bind:onHref>href</Clickable>
+<Clickable queryParam="dogs=true" bind:hasQueryParam>queryParam</Clickable>
 <FittedCol class="items-start gap-4 p-4">
 	<!-- IconButtons -->
 	<FittedRow class="gap-4">
