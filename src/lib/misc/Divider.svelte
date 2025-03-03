@@ -8,7 +8,7 @@
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
 
-	let p = $props();
+	let p: DividerProps = $props();
 </script>
 
 <hr
