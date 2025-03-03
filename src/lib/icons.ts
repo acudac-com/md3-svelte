@@ -1,4 +1,14 @@
-import type { Image, Svg } from "$lib/components/Icon.svelte"
+export type Image = {
+    src: string;
+    alt: string;
+    rounded?: boolean;
+};
+
+export type Svg = {
+    width: number;
+    height: number;
+    body: string;
+};
 
 export const mdiAboutVariant: Svg = {
     width: 24,
@@ -33,10 +43,4 @@ export const mdiClose: Svg = {
 export const pngGoogleMeet: Image = {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
     alt: 'Google meet image'
-}
-
-export const pngDaniel: Image = {
-    src: "https://media.licdn.com/dms/image/v2/D4E0BAQFNZB9nzS0EiQ/company-logo_200_200/company-logo_200_200/0/1664808649913/alisx_logo?e=2147483647&v=beta&t=UvsWWepD3gfhSfj6bBLCv-NGZyMTdLlhsU3JBKNjs_I",
-    alt: 'Daniel van Niekerk',
-    rounded: true
 }
