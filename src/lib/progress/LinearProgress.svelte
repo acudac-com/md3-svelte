@@ -2,6 +2,7 @@
 	export interface LinearProgressProps {
 		percentage?: number;
 		class?: string | string[];
+		innerClass?: string | string[];
 	}
 </script>
 
@@ -22,7 +23,10 @@
 		role="progressbar"
 	>
 		<div
-			class={['absolute bottom-0 top-0 rounded-full bg-primary', !p.percentage ? 'percent' : '']}
+			class={twMerge(
+				['absolute bottom-0 top-0 rounded-full bg-primary', !p.percentage ? 'percent' : ''],
+				p.innerClass
+			)}
 			style:width={p.percentage ? p.percentage.toString() + '%' : undefined}
 		></div>
 	</div>
