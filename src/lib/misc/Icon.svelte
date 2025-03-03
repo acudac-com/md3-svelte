@@ -10,6 +10,7 @@
 		size?: IconSize;
 		class?: string | string[];
 		badge?: boolean | string;
+		badgeClass?: string | string[];
 	}
 </script>
 
@@ -43,10 +44,14 @@
 	{/if}
 	{#if p.badge}
 		<div
-			class={[
-				'label-small absolute z-10 flex items-center justify-center rounded-full bg-error p-1 text-on-error',
-				typeof p.badge == 'string' ? 'bottom-3 left-3 h-[16px]' : 'right-0 top-0 size-[6px]'
-			]}
+			class={twMerge(
+				[
+					'label-small absolute z-10 flex items-center justify-center rounded-full bg-error p-1 text-on-error',
+					typeof p.badge == 'string' ? 'h-[16px]' : 'size-[6px]',
+					typeof p.badge == 'string' ? 'bottom-3 left-3' : 'right-0 top-0'
+				],
+				p.badgeClass
+			)}
 		>
 			{#if typeof p.badge == 'string'}
 				{p.badge}

@@ -1,12 +1,12 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import 'md_css/dark-hc.css';
-@import 'md_css/dark-mc.css';
-@import 'md_css/dark.css';
-@import 'md_css/light-hc.css';
-@import 'md_css/light-mc.css';
-@import 'md_css/light.css';
+@import 'theme/dark-hc.css';
+@import 'theme/dark-mc.css';
+@import 'theme/dark.css';
+@import 'theme/light-hc.css';
+@import 'theme/light-mc.css';
+@import 'theme/light.css';
 
 .display-large {
     font-family: 'Roboto', sans-serif;
@@ -128,7 +128,7 @@
     letter-spacing: 0.5pt;
 }
 
-.prominent-large {
+.prominent-label-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 14pt;
@@ -136,7 +136,7 @@
     letter-spacing: 0.1pt;
 }
 
-.prominent-medium {
+.prominent-label-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 12pt;
@@ -144,7 +144,7 @@
     letter-spacing: 0.5pt;
 }
 
-.prominent-small {
+.prominent-label-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 11pt;
