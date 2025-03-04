@@ -4,11 +4,11 @@
 	import Divider from '$lib/misc/Divider.svelte';
 </script>
 
-<Icon svg={mdiAboutVariant} />
-<Icon svg={mdiAboutVariant} size="48" />
-<Icon svg={mdiAboutVariant} badge />
-<Icon svg={mdiAboutVariant} badge="100+" />
-<Icon image={pngGoogleMeet} badge />
+<Icon icon={mdiAboutVariant} />
+<Icon icon={mdiAboutVariant} size="48" />
+<Icon icon={mdiAboutVariant} badge />
+<Icon icon={mdiAboutVariant} badge="100+" />
+<Icon icon={pngGoogleMeet} badge />
 
 <div class="h-[130px] w-full bg-surface-container-low py-[8px]">
 	<span>hi</span>

@@ -4,8 +4,7 @@
 	export type IconSize = '18' | '24' | '36' | '48' | '20' | '40' | number;
 
 	export interface IconProps {
-		svg?: Svg;
-		image?: Image;
+		icon: Svg | Image;
 		imageSizeCorrection?: number;
 		size?: IconSize;
 		class?: string | string[];
@@ -18,28 +17,25 @@
 	import { twMerge } from 'tailwind-merge';
 
 	let { size = '24', imageSizeCorrection = 6, ...p }: IconProps = $props();
-	if (!p.image && !p.svg) {
-		console.error(new Error('Icon component requires either an image or svg prop'));
-	}
 </script>
 
 <div class={twMerge('icon relative h-fit w-fit', p.class)}>
-	{#if p.image}
+	{#if 'src' in p.icon}
 		<img
-			class={[p.image.rounded ? 'rounded-full' : '']}
+			class={[p.icon.rounded ? 'rounded-full' : '']}
 			width={(Number(size) + imageSizeCorrection).toString()}
 			height={(Number(size) + imageSizeCorrection).toString()}
-			src={p.image.src}
-			alt={p.image.alt}
+			src={p.icon.src}
+			alt={p.icon.alt}
 		/>
-	{:else if p.svg}
+	{:else}
 		<svg
 			width={size.toString()}
 			height={size.toString()}
 			class={p.class}
-			viewBox="0 0 {p.svg.width} {p.svg.height}"
+			viewBox="0 0 {p.icon.width} {p.icon.height}"
 		>
-			{@html p.svg.body}
+			{@html p.icon.body}
 		</svg>
 	{/if}
 	{#if p.badge}

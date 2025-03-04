@@ -2,6 +2,8 @@
 	export interface SliderProps {
 		value?: number;
 		value2?: number;
+		icon?: Svg | Image;
+		icon2?: Svg | Image;
 		min?: number;
 		color?: MainColor;
 		max?: number;
@@ -9,6 +11,7 @@
 		disabled?: boolean;
 		ticks?: boolean;
 		class?: string | string[];
+		thumbClass?: string | string[];
 		id?: string;
 		name?: string;
 	}
@@ -16,8 +19,15 @@
 
 <script lang="ts">
 	import { Slider, Tooltip } from 'bits-ui';
-	import { BgColorClass, BgContainerColorClass, type MainColor } from '../../theme/colors';
+	import {
+		BgColorClass,
+		BgContainerColorClass,
+		TextOnColorClass,
+		type MainColor
+	} from '../../theme/colors';
 	import { twMerge } from 'tailwind-merge';
+	import { Icon } from '$lib';
+	import { mdiCheck, type Image, type Svg } from '$lib/icons';
 	let {
 		value = $bindable(),
 		value2 = $bindable(),
@@ -71,11 +81,18 @@
 					<Tooltip.Provider>
 						<Tooltip.Root delayDuration={0}>
 							<Tooltip.Trigger
-								class={[
-									'flex size-[26px] items-center rounded-full outline-none',
-									p.disabled ? 'bg-on-surface/40' : BgColorClass(p.color, 'primary')
-								]}
-							></Tooltip.Trigger>
+								class={twMerge(
+									[
+										'flex size-[26px] items-center justify-center rounded-full outline-none',
+										p.disabled ? 'bg-on-surface/40' : BgColorClass(p.color, 'primary')
+									],
+									p.thumbClass
+								)}
+							>
+								{#if p.icon}
+									<Icon icon={p.icon} size="18" class={TextOnColorClass(p.color, 'primary')} />
+								{/if}
+							</Tooltip.Trigger>
 							<Tooltip.Content
 								sideOffset={8}
 								class="rounded-full bg-inverse-surface px-[16px] py-[12px] text-surface"
@@ -126,10 +143,15 @@
 							<Tooltip.Root delayDuration={0}>
 								<Tooltip.Trigger
 									class={[
-										'flex size-[26px] items-center rounded-full outline-none',
+										'flex size-[26px] items-center justify-center rounded-full outline-none',
 										p.disabled ? 'bg-on-surface/40' : BgColorClass(p.color, 'primary')
 									]}
-								></Tooltip.Trigger>
+									>{#if p.icon && i == 0}
+										<Icon icon={p.icon} size="18" class={TextOnColorClass(p.color, 'primary')} />
+									{:else if p.icon2 && i == 1}
+										<Icon icon={p.icon2} size="18" class={TextOnColorClass(p.color, 'primary')} />
+									{/if}
+								</Tooltip.Trigger>
 								<Tooltip.Content
 									sideOffset={8}
 									class="rounded-full bg-inverse-surface px-[16px] py-[12px] text-surface"

@@ -51,7 +51,7 @@
 		]}
 	>
 		{#if checked}
-			<Icon svg={mdiCheck} size={12} />
+			<Icon icon={mdiCheck} size={12} />
 		{/if}
 	</div>
 	<div class="hover absolute flex cursor-pointer items-center justify-center rounded-full"></div>
