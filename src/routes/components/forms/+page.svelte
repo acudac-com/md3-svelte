@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Checkbox } from '$lib';
+	import { Checkbox, Slider } from '$lib';
 	import RadioButtons from '$lib/forms/RadioButtons.svelte';
 	let value = $state({ value: 'Apple' });
 	$inspect(value);
@@ -18,3 +18,8 @@
 	values={[{ value: 'Apple', disabled: true }, 'Pear', 'Banana']}
 	bind:value={value.value}
 />
+
+<p class="headline-medium">Slider</p>
+<Slider />
+<Slider step={20} color="tertiary" />
+<Slider ticks step={0.2} max={0.8} />
