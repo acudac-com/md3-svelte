@@ -77,7 +77,7 @@ export function AccentColorClass(color?: Color, defaultColor: Color = "primary")
     }
 }
 
-export function OutlineColorClass(color?: OutlineColor, defaultColor: OutlineColor = "outline") {
+export function BorderColorClass(color?: OutlineColor, defaultColor: OutlineColor = "outline") {
     if (!color) color = defaultColor
     switch (color) {
         case "primary":
