@@ -3,8 +3,8 @@
 	import RadioButtons from '$lib/forms/RadioButtons.svelte';
 	let value = $state({ value: 'Apple' });
 	let value2 = $state(40);
-	$inspect(value2);
-	$inspect(value);
+	let checked = $state(true);
+	$inspect(checked);
 </script>
 
 <p class="headline-medium">Checkbox</p>
@@ -28,4 +28,4 @@
 <Slider ticks step={0.2} max={0.8} class="w-1/2" disabled />
 
 <p class="headline-medium">Switch</p>
-<Switch />
+<Switch bind:checked />

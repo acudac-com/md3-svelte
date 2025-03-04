@@ -9,6 +9,8 @@
 		disabled?: boolean;
 		ticks?: boolean;
 		class?: string | string[];
+		id?: string;
+		name?: string;
 	}
 </script>
 
@@ -43,6 +45,7 @@
 		<Slider.Root
 			type="single"
 			bind:value
+			id={p.id}
 			{min}
 			{max}
 			{step}
