@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Checkbox, Slider, Switch, TextArea, TextField, RadioButtons } from '$lib';
+	import OutlinedTextArea from '$lib/forms/OutlinedTextArea.svelte';
 	import OutlinedTextField from '$lib/forms/OutlinedTextField.svelte';
 	import { mdiCheck, pngGoogleMeet } from '$lib/icons';
 	let value = $state({ value: 'Apple' });
@@ -37,4 +38,5 @@
 	<TextField label="Textfield" bind:value={textField} />
 	<OutlinedTextField label="Outlined Textfield" bind:value={textField} />
 	<TextArea label="Multiline" bind:value={textField} />
+	<OutlinedTextArea label="Multiline" bind:value={textField} />
 </div>
