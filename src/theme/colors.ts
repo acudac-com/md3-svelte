@@ -40,6 +40,43 @@ export function TextColorClass(color?: Color, defaultColor: Color = "primary") {
     }
 }
 
+
+export function AccentColorClass(color?: Color, defaultColor: Color = "primary") {
+    if (!color) color = defaultColor
+    switch (color) {
+        case "primary":
+            return "accent-primary"
+        case "secondary":
+            return "accent-secondary"
+        case "tertiary":
+            return "accent-tertiary"
+        case "error":
+            return "accent-error"
+        case "surface":
+            return "accent-surface"
+        case "primary-container":
+            return "accent-primary-container"
+        case "secondary-container":
+            return "accent-secondary-container"
+        case "tertiary-container":
+            return "accent-tertiary-container"
+        case "error-container":
+            return "accent-error-container"
+        case "surface-container":
+            return "accent-surface-container"
+        case "surface-container-lowest":
+            return "accent-surface-container-lowest"
+        case "surface-container-low":
+            return "accent-surface-container-low"
+        case "surface-container-highest":
+            return "accent-surface-container-highest"
+        case "surface-container-high":
+            return "accent-surface-container-high"
+        default:
+            return "accent-primary"
+    }
+}
+
 export function OutlineColorClass(color?: OutlineColor, defaultColor: OutlineColor = "outline") {
     if (!color) color = defaultColor
     switch (color) {

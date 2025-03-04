@@ -1,2 +1,5 @@
 export { default as Icon } from './misc/Icon.svelte'
 export { default as Divider } from './misc/Divider.svelte'
+export { default as LinearProgress } from './progress/LinearProgress.svelte'
+export { default as CircularProgress } from './progress/CircularProgress.svelte'
+export { default as Checkbox } from './forms/Checkbox.svelte'
