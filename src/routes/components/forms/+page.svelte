@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Checkbox, Slider, Switch, TextFieldMultiline, TextField, RadioButtons } from '$lib';
+	import { Checkbox, Slider, Switch, TextArea, TextField, RadioButtons } from '$lib';
+	import OutlinedTextField from '$lib/forms/OutlinedTextField.svelte';
 	import { mdiCheck, pngGoogleMeet } from '$lib/icons';
-	import { text } from '@sveltejs/kit';
 	let value = $state({ value: 'Apple' });
 	let value2 = $state(40);
 	let checked = $state(true);
@@ -33,5 +33,8 @@
 <Switch bind:checked />
 
 <p class="headline-medium">Text Field</p>
-<TextField label="Textfield" bind:value={textField} />
-<TextFieldMultiline label="Multiline" bind:value={textField} />
+<div class="flex flex-col gap-4">
+	<TextField label="Textfield" bind:value={textField} />
+	<OutlinedTextField label="Outlined Textfield" bind:value={textField} />
+	<TextArea label="Multiline" bind:value={textField} />
+</div>
