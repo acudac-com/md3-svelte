@@ -1,6 +1,7 @@
 <script module lang="ts">
 	export interface LinearProgressProps {
 		percentage?: number;
+		color?: MainColor;
 		class?: string | string[];
 		innerClass?: string | string[];
 	}
@@ -8,6 +9,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
+	import { BgColorClass, BgContainerColorClass, type MainColor } from '../../theme/colors';
 
 	let p: LinearProgressProps = $props();
 </script>
@@ -16,7 +18,8 @@
 	<div
 		class={twMerge(
 			[
-				'm3-container relative inline-flex h-[4px] w-full min-w-[16px] overflow-hidden rounded-full bg-primary-container'
+				'm3-container relative inline-flex h-[4px] w-full min-w-[16px] overflow-hidden rounded-full',
+				BgContainerColorClass(p.color)
 			],
 			p.class
 		)}
@@ -24,7 +27,11 @@
 	>
 		<div
 			class={twMerge(
-				['absolute bottom-0 top-0 rounded-full bg-primary', !p.percentage ? 'percent' : ''],
+				[
+					'absolute bottom-0 top-0 rounded-full',
+					BgColorClass(p.color),
+					!p.percentage ? 'percent' : ''
+				],
 				p.innerClass
 			)}
 			style:width={p.percentage ? p.percentage.toString() + '%' : undefined}

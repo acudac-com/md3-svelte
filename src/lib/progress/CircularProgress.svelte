@@ -1,11 +1,13 @@
 <script module lang="ts">
 	export interface CircularProgressProps {
+		color?: MainColor;
 		class?: string | string[];
 	}
 </script>
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
+	import { StrokeColorClass, type MainColor } from '../../theme/colors';
 
 	let p: CircularProgressProps = $props();
 </script>
@@ -13,7 +15,7 @@
 <svg
 	viewBox="0 0 40 40"
 	xmlns="http://www.w3.org/2000/svg"
-	class={twMerge('inline-flex size-[40px] stroke-primary', p.class)}
+	class={twMerge('size-[40px]', StrokeColorClass(p.color), p.class)}
 	role="progressbar"
 >
 	<circle

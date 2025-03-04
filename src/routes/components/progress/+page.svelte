@@ -4,4 +4,6 @@
 </script>
 
 <LinearProgress />
+<LinearProgress color="tertiary" />
 <CircularProgress />
+<CircularProgress color="error" class="size-[100px]" />
