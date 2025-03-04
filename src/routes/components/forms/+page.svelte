@@ -22,4 +22,4 @@
 <p class="headline-medium">Slider</p>
 <Slider />
 <Slider step={20} color="tertiary" />
-<Slider ticks step={0.2} max={0.8} />
+<Slider ticks step={0.2} max={0.8} class="w-1/2" />
