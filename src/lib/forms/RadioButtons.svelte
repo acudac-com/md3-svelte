@@ -12,6 +12,7 @@
 		color?: MainColor;
 		disabled?: boolean;
 		class?: string | string[];
+		name?: string;
 	}
 </script>
 
@@ -24,7 +25,7 @@
 	let uuid = Math.random().toString(36).substring(7);
 </script>
 
-<RadioGroup.Root bind:value disabled={p.disabled}>
+<RadioGroup.Root name={p.name} bind:value disabled={p.disabled}>
 	{#each p.values as v}
 		{@const text = typeof v == 'string' ? v : v.value}
 		{@const disabled = p.disabled ? true : typeof v == 'string' ? false : v.disabled}

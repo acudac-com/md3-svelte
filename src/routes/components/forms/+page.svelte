@@ -9,12 +9,12 @@
 </script>
 
 <p class="headline-medium">Checkbox</p>
-<Checkbox checked />
+<Checkbox checked name="asdf" />
 <Checkbox checked disabled />
 <Checkbox checked color="error" />
 
 <p class="headline-medium">Radio buttons</p>
-<RadioButtons values={['Apple', 'Pear', 'Banana']} />
+<RadioButtons name="asdf" values={['Apple', 'Pear', 'Banana']} />
 <RadioButtons color="tertiary" values={['Apple', 'Pear', 'Banana']} />
 <RadioButtons
 	color="tertiary"
@@ -25,7 +25,7 @@
 <p class="headline-medium">Slider</p>
 <Slider />
 <Slider step={20} color="tertiary" icon={pngGoogleMeet} />
-<Slider step={20} color="tertiary" bind:value2 icon2={mdiCheck} />
+<Slider step={20} color="tertiary" name2="asdf" bind:value2 icon2={mdiCheck} />
 <Slider ticks step={0.2} max={0.8} class="w-1/2" disabled />
 
 <p class="headline-medium">Switch</p>

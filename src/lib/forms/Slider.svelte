@@ -12,8 +12,8 @@
 		ticks?: boolean;
 		class?: string | string[];
 		thumbClass?: string | string[];
-		id?: string;
 		name?: string;
+		name2?: string;
 	}
 </script>
 
@@ -27,7 +27,7 @@
 	} from '../../theme/colors';
 	import { twMerge } from 'tailwind-merge';
 	import { Icon } from '$lib';
-	import { mdiCheck, type Image, type Svg } from '$lib/icons';
+	import { type Image, type Svg } from '$lib/icons';
 	let {
 		value = $bindable(),
 		value2 = $bindable(),
@@ -50,12 +50,12 @@
 	let values = new Values();
 </script>
 
-<div class={twMerge('px-[14px]', p.class)}>
+<div class={twMerge('flex items-center px-[14px]', p.class)}>
+	<input class="hidden" type="number" name={p.name} bind:value />
 	{#if !value2}
 		<Slider.Root
 			type="single"
 			bind:value
-			id={p.id}
 			{min}
 			{max}
 			{step}
@@ -172,5 +172,6 @@
 				{/if}
 			{/snippet}
 		</Slider.Root>
+		<input class="hidden" name={p.name2} type="number" bind:value={value2} />
 	{/if}
 </div>
