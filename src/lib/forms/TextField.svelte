@@ -1,6 +1,7 @@
 <script module lang="ts">
+	import { twMerge } from 'tailwind-merge';
+
 	export type TextFieldProps = {
-		name?: string;
 		label?: string;
 		value?: string;
 		disabled?: boolean;
@@ -11,8 +12,6 @@
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
-
 	let { value = $bindable(), ...p }: TextFieldProps = $props();
 	const id = crypto.randomUUID();
 </script>
@@ -21,7 +20,6 @@
 	<input
 		class="body-large rounded-tl-xs rounded-tr-xs"
 		placeholder=" "
-		name={p.name}
 		type={p.type}
 		bind:value
 		{id}

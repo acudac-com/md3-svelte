@@ -10,7 +10,6 @@
 	<input
 		class="body-large rounded-xs"
 		placeholder=" "
-		name={p.name}
 		type={p.type}
 		bind:value
 		{id}

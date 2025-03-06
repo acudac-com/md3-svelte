@@ -1,11 +1,11 @@
 <script module lang="ts">
 	import type { TextFieldProps } from './TextField.svelte';
+	import { twMerge } from 'tailwind-merge';
 
 	export type TextAreaProps = Omit<TextFieldProps, 'type'>;
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
 	let { value = $bindable(), ...p }: TextAreaProps = $props();
 	const id = crypto.randomUUID();
 	const resize = (node: HTMLElement) => {
@@ -28,7 +28,6 @@
 	<textarea
 		class="m3-font-body-large rounded-tl-xs rounded-tr-xs"
 		placeholder=" "
-		name={p.name}
 		bind:value
 		{id}
 		disabled={p.disabled}

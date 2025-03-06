@@ -1,18 +1,17 @@
 <script module lang="ts">
+	import { Icon } from '$lib';
+	import { mdiCheck } from '$lib/icons';
+	import { twMerge } from 'tailwind-merge';
+
 	export interface SwitchProps {
 		checked?: boolean;
 		disabled?: boolean;
 		class?: string | string[];
 		id?: string;
-		name?: string;
 	}
 </script>
 
 <script lang="ts">
-	import { Icon } from '$lib';
-	import { mdiCheck } from '$lib/icons';
-	import { twMerge } from 'tailwind-merge';
-
 	let { checked = $bindable(), ...p }: SwitchProps = $props();
 	let startX: number | undefined;
 	const handleMouseUp = (e: MouseEvent) => {
@@ -43,7 +42,6 @@
 			if (e.code == 'ArrowRight') checked = true;
 		}}
 		id={p.id}
-		name={p.name}
 	/>
 	<div
 		class={[

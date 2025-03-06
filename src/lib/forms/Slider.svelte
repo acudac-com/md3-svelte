@@ -1,4 +1,10 @@
 <script module lang="ts">
+	import { Slider, Tooltip } from 'bits-ui';
+	import { BgColorClass, BgContainerColorClass, TextOnColorClass, type MainColor } from '../colors';
+	import { twMerge } from 'tailwind-merge';
+	import { Icon } from '$lib';
+	import { type Image, type Svg } from '$lib/icons';
+
 	export interface SliderProps {
 		value?: number;
 		value2?: number;
@@ -12,17 +18,10 @@
 		ticks?: boolean;
 		class?: string | string[];
 		thumbClass?: string | string[];
-		name?: string;
-		name2?: string;
 	}
 </script>
 
 <script lang="ts">
-	import { Slider, Tooltip } from 'bits-ui';
-	import { BgColorClass, BgContainerColorClass, TextOnColorClass, type MainColor } from '../colors';
-	import { twMerge } from 'tailwind-merge';
-	import { Icon } from '$lib';
-	import { type Image, type Svg } from '$lib/icons';
 	let {
 		value = $bindable(),
 		value2 = $bindable(),
@@ -46,7 +45,6 @@
 </script>
 
 <div class={twMerge('flex items-center px-[14px]', p.class)}>
-	<input class="hidden" type="number" name={p.name} bind:value />
 	{#if !value2}
 		<Slider.Root
 			type="single"
@@ -167,6 +165,5 @@
 				{/if}
 			{/snippet}
 		</Slider.Root>
-		<input class="hidden" name={p.name2} type="number" bind:value={value2} />
 	{/if}
 </div>

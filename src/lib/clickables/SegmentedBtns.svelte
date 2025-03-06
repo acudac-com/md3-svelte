@@ -2,6 +2,10 @@
 	import { Icon } from '$lib';
 	import { mdiCheck, type Image, type Svg } from '$lib/icons';
 	import { scale } from 'svelte/transition';
+	import { twMerge, type ClassNameValue } from 'tailwind-merge';
+	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
+	import Clickable, { type ClickableProps } from './Clickable.svelte';
+	import { page } from '$app/state';
 
 	interface SegmentedBtnOption
 		extends Omit<
@@ -23,11 +27,6 @@
 </script>
 
 <script lang="ts">
-	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
-	import Clickable, { type ClickableProps } from './Clickable.svelte';
-	import { page } from '$app/state';
-
 	let { class: cls, selected = $bindable([]), ...p }: SegmentedBtnsProps = $props();
 
 	if (!p.multi) {

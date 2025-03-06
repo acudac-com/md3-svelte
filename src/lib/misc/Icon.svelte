@@ -1,5 +1,6 @@
 <script module lang="ts">
 	import type { Svg, Image } from '$lib/icons';
+	import { twMerge } from 'tailwind-merge';
 
 	export type IconSize = '18' | '24' | '36' | '48' | '20' | '40' | number;
 
@@ -14,8 +15,6 @@
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
-
 	let { size = '24', imageSizeCorrection = 6, ...p }: IconProps = $props();
 </script>
 

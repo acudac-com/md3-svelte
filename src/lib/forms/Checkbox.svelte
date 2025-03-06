@@ -1,23 +1,21 @@
 <script module lang="ts">
+	import { twMerge } from 'tailwind-merge';
+	import { AccentColorClass, TextOnColorClass, type MainColor } from '../colors';
+
 	export interface CheckboxProps {
 		checked?: boolean;
 		color?: MainColor;
 		class?: string | string[];
 		disabled?: boolean;
-		name?: string;
 	}
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
-	import { AccentColorClass, TextOnColorClass, type MainColor } from '../colors';
-
 	let { checked = $bindable(false), ...p }: CheckboxProps = $props();
 </script>
 
 <label class="flex size-[40px] items-center justify-center rounded-full">
 	<input
-		name={p.name}
 		class={twMerge(
 			[
 				'accent-primar size-[18px] rounded-[2px] border-2 text-on-primary',

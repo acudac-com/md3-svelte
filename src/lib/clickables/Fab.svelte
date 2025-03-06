@@ -1,7 +1,9 @@
 <script module lang="ts">
 	import type { Image, Svg } from '$lib/icons';
 	import { twMerge } from 'tailwind-merge';
-	import type { ClickableProps } from './Clickable.svelte';
+	import Clickable, { type ClickableProps } from './Clickable.svelte';
+	import { Icon } from '$lib';
+	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
 
 	export interface FabProps extends Omit<ClickableProps, 'children' | 'tooltipSide' | 'disabled'> {
 		icon: Svg | Image;
@@ -12,10 +14,6 @@
 </script>
 
 <script lang="ts">
-	import Clickable from './Clickable.svelte';
-	import { Icon } from '$lib';
-	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
-
 	let { class: cls, type = 'standard', ...p }: FabProps = $props();
 </script>
 

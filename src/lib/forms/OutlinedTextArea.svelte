@@ -21,13 +21,7 @@
 </script>
 
 <div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)} use:resize>
-	<textarea
-		class="body-large rounded-xs"
-		placeholder=" "
-		bind:value
-		{id}
-		name={p.name}
-		disabled={p.disabled}
+	<textarea class="body-large rounded-xs" placeholder=" " bind:value {id} disabled={p.disabled}
 	></textarea>
 	<div class="layer rounded-xs"></div>
 	<label class="body-large top-[12px]" for={id}>{p.label}</label>

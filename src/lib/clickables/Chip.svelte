@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { ClickableProps } from './Clickable.svelte';
+	import Clickable, { type ClickableProps } from './Clickable.svelte';
 	import type { Svg, Image } from '$lib/icons';
 	import {
 		BgContainerColorClass,
@@ -19,8 +19,6 @@
 </script>
 
 <script lang="ts">
-	import Clickable from './Clickable.svelte';
-
 	let { text, icon, class: cls, toggled = $bindable(), ...p }: ChipProps = $props();
 </script>
 

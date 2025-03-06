@@ -1,4 +1,7 @@
 <script module lang="ts">
+	import { twMerge } from 'tailwind-merge';
+	import { BgColorClass, BgContainerColorClass, type MainColor } from '../colors';
+
 	export interface LinearProgressProps {
 		percentage?: number;
 		color?: MainColor;
@@ -8,9 +11,6 @@
 </script>
 
 <script lang="ts">
-	import { twMerge } from 'tailwind-merge';
-	import { BgColorClass, BgContainerColorClass, type MainColor } from '../colors';
-
 	let p: LinearProgressProps = $props();
 </script>
 
