@@ -15,6 +15,7 @@
 		icon?: Svg | Image;
 		class?: string | string[];
 		color?: MainColor;
+		elevated?: boolean;
 	}
 </script>
 
@@ -26,6 +27,7 @@
 	class={twMerge(
 		'label-medium h-[32px] w-fit shrink-0 grow-0 gap-[8px] rounded-sm',
 		!icon ? 'px-[16px]' : 'pl-[8px] pr-[16px]',
+		p.elevated ? 'shadow-l1 hover:shadow-l2' : '',
 		p.disabled
 			? 'border border-on-surface/15 bg-on-surface/10 text-on-surface/40'
 			: toggled

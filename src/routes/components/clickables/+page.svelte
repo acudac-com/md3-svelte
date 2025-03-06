@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Chip, Clickable, Fab, IconButton, Tabs } from '$lib';
+	import { Button, Card, Chip, Clickable, Fab, IconButton, Tabs } from '$lib';
 	import SegmentedBtns from '$lib/clickables/SegmentedBtns.svelte';
 	import { mdiCheck, mdiSettings } from '$lib/icons';
 	let toggled = $state(false);
@@ -55,7 +55,7 @@
 
 <p class="display-small">Chips</p>
 <div class="flex gap-2">
-	<Chip text="Chip" href="?chip=secondary" icon={mdiSettings} />
+	<Chip elevated text="Chip" href="?chip=secondary" icon={mdiSettings} />
 	<Chip
 		text="Chip"
 		color="error"
@@ -79,4 +79,11 @@
 		color="error"
 	/>
 	<p>some content</p>
+</div>
+
+<div class="mt-2 flex gap-4 bg-surface-container">
+	<p class="display-small mr-4">Cards</p>
+	<Card>Elevated</Card>
+	<Card type="filled">Filled</Card>
+	<Card type="outlined">Outlined</Card>
 </div>
