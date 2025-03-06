@@ -15,8 +15,6 @@
 		class?: string | string[];
 		disabled?: boolean;
 		disabledTitle?: string;
-		name?: string;
-		toggledValue?: string | number | string[];
 		tooltip?: string | string[];
 		tooltipSide?: 'top' | 'bottom' | 'left' | 'right';
 	}
@@ -71,11 +69,14 @@
 	<Tooltip.Provider>
 		<Tooltip.Root delayDuration={300}>
 			<Tooltip.Trigger
-				class={twMerge('relative flex w-fit items-center justify-center rounded-full', p.class)}
 				title={p.disabled && p.disabledTitle ? p.disabledTitle : undefined}
 				disabled={p.disabled}
 			>
-				<a href={p.disabled ? undefined : p.href} title={p.disabled ? p.disabledTitle : undefined}>
+				<a
+					class={twMerge('relative flex w-fit items-center justify-center rounded-full', p.class)}
+					href={p.disabled ? undefined : p.href}
+					title={p.disabled ? p.disabledTitle : undefined}
+				>
 					<Layer />
 					{@render p.children()}
 				</a>
@@ -83,7 +84,7 @@
 			<Tooltip.Portal>
 				<Tooltip.Content forceMount={true} side={tooltipSide} sideOffset={6}>
 					{#snippet child({ wrapperProps, props, open })}
-						{#if open}
+						{#if open && tooltipText}
 							<div {...wrapperProps}>
 								<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
 									<p
@@ -103,9 +104,7 @@
 	<Tooltip.Provider>
 		<Tooltip.Root delayDuration={300}>
 			<Tooltip.Trigger
-				name={p.name}
 				title={p.disabled ? p.disabledTitle : undefined}
-				value={toggled ? p.toggledValue : undefined}
 				class={twMerge('relative flex w-fit items-center justify-center rounded-full', p.class)}
 				disabled={p.disabled}
 				onclick={p.onclick != undefined
@@ -124,7 +123,7 @@
 							<div {...wrapperProps}>
 								<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
 									<p
-										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] text-inverse-on-surface"
+										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] py-1 text-inverse-on-surface"
 									>
 										{@html tooltipText}
 									</p>
