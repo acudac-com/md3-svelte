@@ -16,7 +16,7 @@
 <p class="display-small">Icon Buttons</p>
 <div class="flex gap-2">
 	<IconButton bind:toggled icon={mdiSettings} color="error" />
-	<IconButton icon={mdiSettings} type="tonal" href="?asfd=qwer" />
+	<IconButton disabled icon={mdiSettings} type="tonal" href="?asfd=qwer" />
 	<IconButton bind:toggled icon={mdiSettings} type="filled" />
 	<IconButton bind:toggled icon={mdiSettings} type="outlined" tooltip={['asdf', 'awer']} />
 </div>
@@ -26,7 +26,7 @@
 	<Button prependIcon={mdiSettings} text="Settings" type="elevated" />
 	<Button type="filled" text="Settings" appendIcon={mdiCheck} href="/" />
 	<Button prependIcon={mdiSettings} type="tonal" text="Settings" />
-	<Button prependIcon={mdiSettings} type="outlined" text="Settings" />
+	<Button disabled prependIcon={mdiSettings} type="outlined" text="Settings" />
 	<Button prependIcon={mdiSettings} type="text" text="Settings" />
 </div>
 
@@ -43,7 +43,8 @@
 			id: 'asdf',
 			icon: mdiSettings,
 			tooltip: 'Settings',
-			href: '?asdf=true'
+			href: '?asdf=true',
+			disabled: true
 		},
 		{ id: 'qwer', icon: mdiSettings, href: '?wer=false' },
 		{ id: 'wer', icon: mdiSettings, href: '?wer=true' }

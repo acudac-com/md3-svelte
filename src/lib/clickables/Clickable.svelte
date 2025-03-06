@@ -58,7 +58,9 @@
 					href={p.disabled ? undefined : href}
 					title={p.disabled ? p.disabledTitle : undefined}
 				>
-					<Layer />
+					{#if !p.disabled}
+						<Layer />
+					{/if}
 					{@render p.children()}
 				</a>
 			</Tooltip.Trigger>
