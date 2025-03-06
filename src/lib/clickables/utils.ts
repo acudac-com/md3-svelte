@@ -9,8 +9,7 @@ export function newToggledHref(currentUrl: URL, href: string | undefined): strin
 
     const hrefParams = new URLSearchParams(href);
     const currentParams = new URLSearchParams(currentUrl.search);
-
-    const newParams = new URLSearchParams(currentParams.toString());
+    let newParams = new URLSearchParams(currentParams.toString());
 
     let allParamsPresent = true;
 
@@ -48,10 +47,11 @@ export function hrefIsToggled(currentUrl: URL, href: string | undefined): boolea
     }
 
     try {
-        if (href != undefined && href.startsWith('?')) {
-            href = currentUrl.pathname + href;
+        let fullHref = href
+        if (fullHref != undefined && fullHref.startsWith('?')) {
+            fullHref = currentUrl.pathname + fullHref;
         }
-        const hrefUrl = new URL(href, currentUrl.origin); // Ensure href is treated as relative to current origin.
+        const hrefUrl = new URL(fullHref, currentUrl.origin); // Ensure href is treated as relative to current origin.
 
         if (hrefUrl.pathname == currentUrl.pathname) {
             const hrefParams = hrefUrl.searchParams;
@@ -60,6 +60,9 @@ export function hrefIsToggled(currentUrl: URL, href: string | undefined): boolea
                 if (!currentParams.has(key) || currentParams.get(key) !== value) {
                     return false;
                 }
+            }
+            if (!href.startsWith('?') && currentParams.size != hrefParams.size) {
+                return false
             }
             return true;
         } else if (currentUrl.toString().startsWith(hrefUrl.toString().split('?')[0])) {

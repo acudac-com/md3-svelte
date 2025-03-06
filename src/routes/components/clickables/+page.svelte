@@ -16,7 +16,7 @@
 <p class="display-small">Icon Buttons</p>
 <div class="flex gap-2">
 	<IconButton bind:toggled icon={mdiSettings} color="error" />
-	<IconButton icon={mdiSettings} type="tonal" href="/components?asfd=qwer" />
+	<IconButton icon={mdiSettings} type="tonal" href="?asfd=qwer" />
 	<IconButton bind:toggled icon={mdiSettings} type="filled" />
 	<IconButton bind:toggled icon={mdiSettings} type="outlined" tooltip={['asdf', 'awer']} />
 </div>
@@ -39,9 +39,15 @@
 
 <SegmentedBtns
 	options={[
-		{ id: 'asdf', icon: mdiSettings, tooltip: 'Settings' },
-		{ id: 'qwer', icon: mdiSettings },
-		{ id: 'wer', icon: mdiSettings }
+		{
+			id: 'asdf',
+			icon: mdiSettings,
+			tooltip: 'Settings',
+			href: '/components/clickables?asdf=true'
+		},
+		{ id: 'qwer', icon: mdiSettings, href: '/components/clickables?qwer=true' },
+		{ id: 'wer', icon: mdiSettings, href: '?wer=true' }
 	]}
+	multi
 	bind:selected
 />

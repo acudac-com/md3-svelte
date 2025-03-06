@@ -1,11 +1,13 @@
 <script lang="ts" module>
 	import { Icon } from '$lib';
 	import { mdiCheck, type Image, type Svg } from '$lib/icons';
-	import Layer from '$lib/ripple/Layer.svelte';
 	import { scale } from 'svelte/transition';
 
 	interface SegmentedBtnOption
-		extends Omit<ClickableProps, 'children' | 'tooltipSide' | 'toggled' | 'noHrefAutoToggle'> {
+		extends Omit<
+			ClickableProps,
+			'children' | 'tooltipSide' | 'toggled' | 'noHrefAutoToggle' | 'onclick'
+		> {
 		id: string;
 		text?: string;
 		icon?: Svg | Image;
@@ -28,45 +30,63 @@
 		type MainColor
 	} from '../../theme/colors';
 	import Clickable, { type ClickableProps } from './Clickable.svelte';
+	import { page } from '$app/state';
 
 	let { class: cls, selected = $bindable([]), ...p }: SegmentedBtnsProps = $props();
 
-	let toggled: { [key: string]: boolean } = $state({});
-	let previousToggled: { [key: string]: boolean } = $state({});
-	$effect(() => {
-		let changedKey = '';
-		// iterate through toggled
-		for (let key in toggled) {
-			// if the value of the key has changed
-			if (toggled[key] !== previousToggled[key]) {
-				// set the changedKey to the key
-				changedKey = key;
-				// break the loop
-				break;
-			}
-		}
-		if (!p.multi) {
-			console.log('ck', changedKey);
-			// if the changed key is not empty
-			if (changedKey !== '') {
-				// iterate through toggled
-				for (let key in toggled) {
-					// if the key is not the changed key
-					if (key !== changedKey) {
-						// set the value of the key to false
-						toggled[key] = false;
+	if (!p.multi) {
+		for (let o of p.options) {
+			if (o.href && o.href.startsWith('?')) {
+				let hrefSearchParams = new URLSearchParams(o.href);
+				let finalSearchParams = new URLSearchParams(page.url.search);
+				for (let [key, value] of hrefSearchParams) {
+					if (finalSearchParams.has(key)) {
+						finalSearchParams.delete(key);
 					}
+					finalSearchParams.append(key, value);
 				}
+				o.href = page.url.pathname + '?' + finalSearchParams.toString();
 			}
 		}
-		Object.assign(previousToggled, toggled);
+	}
+
+	let toggled: { [key: string]: boolean } = $state({});
+	let previousSelected = new Set<string>();
+	$effect(() => {
 		let newSelected = [];
 		for (let option of p.options) {
 			if (toggled[option.id]) {
 				newSelected.push(option.id);
 			}
 		}
-		selected = newSelected;
+		let toggleRequiresChange = false;
+		if (newSelected.length > 1 && !p.multi) {
+			newSelected = newSelected.filter((key) => !previousSelected.has(key));
+			toggleRequiresChange = true;
+		}
+		let changed = false;
+		if (newSelected.length != selected.length) {
+			changed = true;
+		} else {
+			for (let i = 0; i < newSelected.length; i++) {
+				if (newSelected[i] !== selected[i]) {
+					changed = true;
+					break;
+				}
+			}
+		}
+		if (changed) {
+			selected = newSelected;
+		}
+		previousSelected = new Set(newSelected);
+
+		if (toggleRequiresChange) {
+			for (let key in toggled) {
+				if (!newSelected.includes(key)) {
+					toggled[key] = false;
+				}
+			}
+		}
 	});
 
 	if (p.options.length > 5 || p.options.length < 1) {
