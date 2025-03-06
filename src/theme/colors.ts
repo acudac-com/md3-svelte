@@ -143,6 +143,24 @@ export function TextOnColorClass(color?: MainColor | ContainerColor, defaultColo
     }
 }
 
+export function TextOnContainerColorClass(color?: MainColor, defaultColor: MainColor = 'primary') {
+    if (!color) color = defaultColor
+    switch (color) {
+        case "primary":
+            return "text-on-primary-container"
+        case "secondary":
+            return "text-on-secondary-container"
+        case "tertiary":
+            return "text-on-tertiary-container"
+        case "error":
+            return "text-on-error-container"
+        case "surface":
+            return "text-on-surface-container"
+        default:
+            return "text-on-primary-container"
+    }
+}
+
 export function BgColorClass(color?: Color, defaultColor: Color = "surface") {
     if (!color) color = defaultColor
     switch (color) {

@@ -10,4 +10,7 @@
 	tooltip="tooltip"
 	class={['bg-primary-container', toggled ? 'bg-primary' : '']}>Clickable</Clickable
 >
-<IconButton bind:toggled icon={mdiSettings} />
+<IconButton bind:toggled icon={mdiSettings} color="error" />
+<IconButton bind:toggled icon={mdiSettings} type="tonal" />
+<IconButton bind:toggled icon={mdiSettings} type="filled" />
+<IconButton bind:toggled icon={mdiSettings} type="outlined" />
