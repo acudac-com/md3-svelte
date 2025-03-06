@@ -10,7 +10,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import { AccentColorClass, TextOnColorClass, type MainColor } from '../../theme/colors';
+	import { AccentColorClass, TextOnColorClass, type MainColor } from '../colors';
 
 	let { checked = $bindable(false), ...p }: CheckboxProps = $props();
 </script>

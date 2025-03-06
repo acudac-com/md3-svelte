@@ -19,7 +19,7 @@
 <script lang="ts">
 	import { Label, RadioGroup } from 'bits-ui';
 	import { twMerge } from 'tailwind-merge';
-	import { BgColorClass, BorderColorClass, type MainColor } from '../../theme/colors';
+	import { BgColorClass, BorderColorClass, type MainColor } from '../colors';
 	import Layer from '$lib/ripple/Layer.svelte';
 	let { value = $bindable(''), ...p }: RadioButtonsProps = $props();
 	let uuid = Math.random().toString(36).substring(7);

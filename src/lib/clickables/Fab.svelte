@@ -14,11 +14,7 @@
 <script lang="ts">
 	import Clickable from './Clickable.svelte';
 	import { Icon } from '$lib';
-	import {
-		BgContainerColorClass,
-		TextOnContainerColorClass,
-		type MainColor
-	} from '../../theme/colors';
+	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
 
 	let { class: cls, type = 'standard', ...p }: FabProps = $props();
 </script>

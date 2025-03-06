@@ -8,7 +8,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import { BorderColorClass, type OutlineColor } from '../../theme/colors';
+	import { BorderColorClass, type OutlineColor } from '../colors';
 
 	let p: DividerProps = $props();
 </script>

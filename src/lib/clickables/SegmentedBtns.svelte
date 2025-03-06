@@ -24,11 +24,7 @@
 
 <script lang="ts">
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import {
-		BgContainerColorClass,
-		TextOnContainerColorClass,
-		type MainColor
-	} from '../../theme/colors';
+	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
 	import Clickable, { type ClickableProps } from './Clickable.svelte';
 	import { page } from '$app/state';
 

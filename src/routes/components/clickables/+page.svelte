@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Clickable, Fab, IconButton } from '$lib';
+	import { Button, Chip, Clickable, Fab, IconButton } from '$lib';
 	import SegmentedBtns from '$lib/clickables/SegmentedBtns.svelte';
 	import { mdiCheck, mdiSettings } from '$lib/icons';
 	let toggled = $state(false);
@@ -52,3 +52,15 @@
 	multi
 	bind:selected
 />
+
+<p class="display-small">Chips</p>
+<div class="flex gap-2">
+	<Chip text="Chip" href="?chip=secondary" icon={mdiSettings} />
+	<Chip
+		text="Chip"
+		color="error"
+		onclick={() => {
+			alert('hi');
+		}}
+	/>
+</div>

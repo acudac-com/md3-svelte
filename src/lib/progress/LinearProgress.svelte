@@ -9,7 +9,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import { BgColorClass, BgContainerColorClass, type MainColor } from '../../theme/colors';
+	import { BgColorClass, BgContainerColorClass, type MainColor } from '../colors';
 
 	let p: LinearProgressProps = $props();
 </script>

@@ -1,6 +1,17 @@
 <script module lang="ts">
 	import type { ClickableProps } from './Clickable.svelte';
 	import type { Image, Svg } from '$lib/icons';
+	import Clickable from './Clickable.svelte';
+	import { twMerge } from 'tailwind-merge';
+	import {
+		BgColorClass,
+		BgContainerColorClass,
+		TextColorClass,
+		TextOnColorClass,
+		TextOnContainerColorClass,
+		type MainColor
+	} from '../colors';
+	import { Icon } from '$lib';
 
 	export interface IconButtonProps extends Omit<ClickableProps, 'children' | 'tooltipSide'> {
 		icon: Svg | Image;
@@ -12,18 +23,6 @@
 </script>
 
 <script lang="ts">
-	import Clickable from './Clickable.svelte';
-	import { Icon } from '$lib';
-	import { twMerge } from 'tailwind-merge';
-	import {
-		BgColorClass,
-		BgContainerColorClass,
-		TextColorClass,
-		TextOnColorClass,
-		TextOnContainerColorClass,
-		type MainColor
-	} from '../../theme/colors';
-
 	let {
 		toggled = $bindable(false),
 		class: cls,

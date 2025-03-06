@@ -7,7 +7,7 @@
 
 <script lang="ts">
 	import { twMerge } from 'tailwind-merge';
-	import { StrokeColorClass, type MainColor } from '../../theme/colors';
+	import { StrokeColorClass, type MainColor } from '../colors';
 
 	let p: CircularProgressProps = $props();
 </script>

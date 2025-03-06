@@ -19,12 +19,7 @@
 
 <script lang="ts">
 	import { Slider, Tooltip } from 'bits-ui';
-	import {
-		BgColorClass,
-		BgContainerColorClass,
-		TextOnColorClass,
-		type MainColor
-	} from '../../theme/colors';
+	import { BgColorClass, BgContainerColorClass, TextOnColorClass, type MainColor } from '../colors';
 	import { twMerge } from 'tailwind-merge';
 	import { Icon } from '$lib';
 	import { type Image, type Svg } from '$lib/icons';
