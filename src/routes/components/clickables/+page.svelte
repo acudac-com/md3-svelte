@@ -43,9 +43,9 @@
 			id: 'asdf',
 			icon: mdiSettings,
 			tooltip: 'Settings',
-			href: '/components/clickables?asdf=true'
+			href: '?asdf=true'
 		},
-		{ id: 'qwer', icon: mdiSettings, href: '/components/clickables?qwer=true' },
+		{ id: 'qwer', icon: mdiSettings, href: '?wer=false' },
 		{ id: 'wer', icon: mdiSettings, href: '?wer=true' }
 	]}
 	multi
