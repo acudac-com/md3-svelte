@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { Button, Chip, Clickable, Fab, IconButton } from '$lib';
+	import { Button, Chip, Clickable, Fab, IconButton, Tabs } from '$lib';
 	import SegmentedBtns from '$lib/clickables/SegmentedBtns.svelte';
 	import { mdiCheck, mdiSettings } from '$lib/icons';
 	let toggled = $state(false);
 	let selected: string[] = $state([]);
-	$inspect(selected);
+	let tab: string = $state('');
+	$inspect(tab);
 </script>
 
 <p class="display-small">Clickable</p>
@@ -43,8 +44,7 @@
 			id: 'asdf',
 			icon: mdiSettings,
 			tooltip: 'Settings',
-			href: '?asdf=true',
-			disabled: true
+			href: '?asdf=true'
 		},
 		{ id: 'qwer', icon: mdiSettings, href: '?wer=false' },
 		{ id: 'wer', icon: mdiSettings, href: '?wer=true' }
@@ -63,4 +63,20 @@
 			alert('hi');
 		}}
 	/>
+</div>
+
+<div class="bg-surface-container">
+	<p class="display-small">Tabs</p>
+	<Tabs
+		bind:selected={tab}
+		options={[
+			{ text: 'Tab 1', icon: mdiSettings, href: '?tab=1' },
+			{ text: 'Tab 2', icon: mdiSettings, href: '?tab=2' },
+			{ text: 'Tab 3', icon: mdiSettings, href: '?tab=3' },
+			{ text: 'Tab 4', icon: mdiSettings, href: '?tab=4' },
+			{ text: 'Tab 5', icon: mdiSettings, href: '?tab=5' }
+		]}
+		color="error"
+	/>
+	<p>some content</p>
 </div>

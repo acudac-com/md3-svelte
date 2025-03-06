@@ -113,7 +113,7 @@
 			{...clickableProps}
 			class={twMerge(
 				[
-					'label-large relative flex h-[40px] w-full min-w-[60px] items-center justify-center overflow-x-clip whitespace-nowrap px-6',
+					'label-large h-[40px] w-full min-w-[60px] overflow-x-clip whitespace-nowrap px-6',
 					option.disabled
 						? 'bg-on-surface/10 text-on-surface/40'
 						: toggled[option.id]
