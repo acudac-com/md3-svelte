@@ -35,7 +35,7 @@
 <Clickable
 	class={twMerge(
 		[
-			'h-[40px] w-[40px] ease-in-out',
+			'h-[40px] w-[40px] rounded-full ease-in-out',
 			p.disabled ? 'text-on-surface/40' : '',
 			type == 'standard'
 				? p.disabled

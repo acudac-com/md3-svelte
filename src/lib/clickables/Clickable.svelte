@@ -5,6 +5,7 @@
 	import type { Snippet } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
+	import { hrefIsToggled, newToggledHref } from './utils';
 
 	export interface ClickableProps {
 		children: Snippet;
@@ -22,37 +23,17 @@
 
 <script lang="ts">
 	let { toggled = $bindable(), tooltipSide = 'top', ...p }: ClickableProps = $props();
-	if (
-		p.href &&
-		!p.href.startsWith('http:') &&
-		!p.href.startsWith('https:') &&
-		!p.noHrefAutoToggle
-	) {
-		let pathName = page.url.pathname;
-		let searchParams = page.url.searchParams;
 
-		let hrefUrl = new URL(p.href, page.url.origin);
-		let hrefPath = p.href;
-		if (hrefPath.startsWith('?')) {
-			hrefPath = pathName;
-		}
-		if (hrefPath.startsWith(pathName)) {
-			if (hrefUrl.searchParams.size == 0) {
+	let href = $derived(newToggledHref(page.url, p.href));
+	$effect(() => {
+		if (href) {
+			if (!p.noHrefAutoToggle && hrefIsToggled(page.url, p.href)) {
 				toggled = true;
 			} else {
-				let hasAllSearchParams = true;
-				hrefUrl.searchParams.forEach((value, key) => {
-					console.log(key, value);
-					if (searchParams.get(key) != value) {
-						hasAllSearchParams = false;
-					}
-				});
-				if (hasAllSearchParams) {
-					toggled = true;
-				}
+				toggled = false;
 			}
 		}
-	}
+	});
 	let tooltipText = $derived.by(() => {
 		if (p.tooltip == undefined) {
 			return undefined;
@@ -65,7 +46,7 @@
 	});
 </script>
 
-{#if p.href != undefined}
+{#if href != undefined}
 	<Tooltip.Provider>
 		<Tooltip.Root delayDuration={300}>
 			<Tooltip.Trigger
@@ -73,8 +54,8 @@
 				disabled={p.disabled}
 			>
 				<a
-					class={twMerge('relative flex w-fit items-center justify-center rounded-full', p.class)}
-					href={p.disabled ? undefined : p.href}
+					class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+					href={p.disabled ? undefined : href}
 					title={p.disabled ? p.disabledTitle : undefined}
 				>
 					<Layer />
@@ -105,7 +86,7 @@
 		<Tooltip.Root delayDuration={300}>
 			<Tooltip.Trigger
 				title={p.disabled ? p.disabledTitle : undefined}
-				class={twMerge('relative flex w-fit items-center justify-center rounded-full', p.class)}
+				class={twMerge('relative flex w-fit items-center justify-center', p.class)}
 				disabled={p.disabled}
 				onclick={p.onclick != undefined
 					? p.onclick

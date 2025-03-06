@@ -1,7 +1,10 @@
-<script>
-	import { Button, Clickable, IconButton } from '$lib';
+<script lang="ts">
+	import { Button, Clickable, Fab, IconButton } from '$lib';
+	import SegmentedBtns from '$lib/clickables/SegmentedBtns.svelte';
 	import { mdiCheck, mdiSettings } from '$lib/icons';
 	let toggled = $state(false);
+	let selected: string[] = $state([]);
+	$inspect(selected);
 </script>
 
 <p class="display-small">Clickable</p>
@@ -13,7 +16,7 @@
 <p class="display-small">Icon Buttons</p>
 <div class="flex gap-2">
 	<IconButton bind:toggled icon={mdiSettings} color="error" />
-	<IconButton bind:toggled icon={mdiSettings} type="tonal" />
+	<IconButton icon={mdiSettings} type="tonal" href="/components?asfd=qwer" />
 	<IconButton bind:toggled icon={mdiSettings} type="filled" />
 	<IconButton bind:toggled icon={mdiSettings} type="outlined" tooltip={['asdf', 'awer']} />
 </div>
@@ -26,3 +29,19 @@
 	<Button prependIcon={mdiSettings} type="outlined" text="Settings" />
 	<Button prependIcon={mdiSettings} type="text" text="Settings" />
 </div>
+
+<p class="display-small">Fab</p>
+<div class="flex gap-2">
+	<Fab icon={mdiSettings} />
+	<Fab icon={mdiSettings} color="tertiary" type="small" />
+	<Fab icon={mdiSettings} color="error" type="large" />
+</div>
+
+<SegmentedBtns
+	options={[
+		{ id: 'asdf', icon: mdiSettings, tooltip: 'Settings' },
+		{ id: 'qwer', icon: mdiSettings },
+		{ id: 'wer', icon: mdiSettings }
+	]}
+	bind:selected
+/>

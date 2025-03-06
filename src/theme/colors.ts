@@ -239,8 +239,6 @@ export function StrokeColorClass(color?: Color, defaultColor: Color = "primary")
             return "stroke-error-container"
         case "surface-container":
             return "stroke-surface-container"
-        case "surface-container":
-            return "stroke-surface-container"
         case "surface-container-lowest":
             return "stroke-surface-container-lowest"
         case "surface-container-low":
