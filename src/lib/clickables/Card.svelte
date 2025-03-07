@@ -30,7 +30,7 @@
 			? ['shadow-l1', p.href ? 'hover:shadow-l2' : '']
 			: type == 'filled'
 				? 'bg-surface-container-highest'
-				: 'border border-outline-variant bg-surface',
+				: 'bg-surface outline outline-outline-variant',
 		toggled ? BgContainerColorClass(p.toggledColor, 'secondary') : '',
 		toggled ? TextOnContainerColorClass(p.toggledColor, 'secondary') : '',
 		cls
