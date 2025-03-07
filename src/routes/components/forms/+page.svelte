@@ -1,7 +1,14 @@
 <script lang="ts">
-	import { Checkbox, Slider, Switch, TextArea, TextField, RadioButtons } from '$lib';
-	import OutlinedTextArea from '$lib/forms/OutlinedTextArea.svelte';
-	import OutlinedTextField from '$lib/forms/OutlinedTextField.svelte';
+	import {
+		Checkbox,
+		Slider,
+		Switch,
+		TextArea,
+		TextField,
+		RadioButtons,
+		OutlinedTextField,
+		OutlinedTextArea
+	} from '$lib';
 	import { mdiCheck, pngGoogleMeet } from '$lib/icons';
 	let value = $state({ value: 'Apple' });
 	let value2 = $state(40);
@@ -11,7 +18,7 @@
 </script>
 
 <p class="headline-medium">Checkbox</p>
-<Checkbox checked name="asdf" />
+<Checkbox checked />
 <Checkbox checked disabled />
 <Checkbox checked color="error" />
 
@@ -27,7 +34,7 @@
 <p class="headline-medium">Slider</p>
 <Slider />
 <Slider step={20} color="tertiary" icon={pngGoogleMeet} />
-<Slider step={20} color="tertiary" name2="asdf" bind:value2 icon2={mdiCheck} />
+<Slider step={20} color="tertiary" bind:value2 icon2={mdiCheck} />
 <Slider ticks step={0.2} max={0.8} class="w-1/2" disabled />
 
 <p class="headline-medium">Switch</p>
