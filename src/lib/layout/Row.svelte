@@ -6,7 +6,7 @@
 	export interface RowProps {
 		wFit?: boolean;
 		hFull?: boolean;
-		gap?: boolean;
+		gaps?: boolean;
 		justify?: boolean | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch' | 'baseline';
 		class?: string | string[];
 		children: Snippet;
@@ -23,7 +23,7 @@
 			'relative flex items-center',
 			p.wFit ? 'w-fit' : 'w-full',
 			p.hFull ? 'h-full' : 'h-fit',
-			p.gap ? 'gap-2' : '',
+			p.gaps ? 'gap-2' : '',
 			JustifyClass(p.justify)
 		],
 		p.class

@@ -4,7 +4,7 @@
 </script>
 
 <Col wFull>
-	<Row gap class="bg-surface-variant"
+	<Row gaps class="bg-surface-variant"
 		><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
 	</Row>
 	<Row justify="around" class="bg-surface-variant"
