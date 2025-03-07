@@ -156,9 +156,9 @@
 		border-radius: inherit;
 		pointer-events: none;
 
-		background-color: currentColor;
+		/* background-color: currentColor; */
 		opacity: 0;
-		transition: opacity 200ms;
+		/* transition: opacity 200ms; */
 	}
 
 	:global(:not(input:disabled + label, input:disabled + .layer-container, :disabled)) {

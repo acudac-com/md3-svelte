@@ -29,13 +29,15 @@
 		!icon ? 'px-[16px]' : 'pl-[8px] pr-[16px]',
 		p.elevated ? 'shadow-l1 hover:shadow-l2' : '',
 		p.disabled
-			? 'bg-on-surface/10 text-on-surface/40 outline outline-on-surface/15'
+			? 'border border-on-surface/15 bg-on-surface/10 text-on-surface/40'
 			: toggled
 				? [
 						BgContainerColorClass(p.color, 'secondary'),
 						TextOnContainerColorClass(p.color, 'secondary')
 					]
-				: 'text-on-surface-variant outline outline-outline-variant',
+				: 'border border-outline-variant text-on-surface-variant',
+		!p.disabled ? 'hover:bg-surface-tint/10' : '',
+
 		cls
 	)}
 	bind:toggled

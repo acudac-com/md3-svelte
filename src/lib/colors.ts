@@ -117,6 +117,46 @@ export function BorderColorClass(color?: OutlineColor, defaultColor: OutlineColo
     }
 }
 
+export function OutlineColorClass(color?: OutlineColor, defaultColor: OutlineColor = "outline") {
+    if (!color) color = defaultColor
+    switch (color) {
+        case "primary":
+            return "outline-primary"
+        case "secondary":
+            return "outline-secondary"
+        case "tertiary":
+            return "outline-tertiary"
+        case "error":
+            return "outline-error"
+        case "surface":
+            return "outline-surface"
+        case "primary-container":
+            return "outline-primary-container"
+        case "secondary-container":
+            return "outline-secondary-container"
+        case "tertiary-container":
+            return "outline-tertiary-container"
+        case "error-container":
+            return "outline-error-container"
+        case "surface-container":
+            return "outline-surface-container"
+        case "surface-container-lowest":
+            return "outline-surface-container-lowest"
+        case "surface-container-low":
+            return "outline-surface-container-low"
+        case "surface-container-highest":
+            return "outline-surface-container-highest"
+        case "surface-container-high":
+            return "outline-surface-container-high"
+        case "outline":
+            return "outline-outline"
+        case "outline-variant":
+            return "outline-outline-variant"
+        default:
+            return "outline-outline"
+    }
+}
+
 export function TextOnColorClass(color?: MainColor | ContainerColor, defaultColor: MainColor | ContainerColor = "primary") {
     if (!color) color = defaultColor
     switch (color) {
@@ -140,6 +180,32 @@ export function TextOnColorClass(color?: MainColor | ContainerColor, defaultColo
             return "text-on-error-container"
         default:
             return "text-on-primary"
+    }
+}
+
+export function OutlineOnColorClass(color?: MainColor | ContainerColor, defaultColor: MainColor | ContainerColor = "primary") {
+    if (!color) color = defaultColor
+    switch (color) {
+        case "primary":
+            return "outline-on-primary"
+        case "secondary":
+            return "outline-on-secondary"
+        case "tertiary":
+            return "outline-on-tertiary"
+        case "error":
+            return "outline-on-error"
+        case "surface":
+            return "outline-on-surface"
+        case "primary-container":
+            return "outline-on-primary-container"
+        case "secondary-container":
+            return "outline-on-secondary-container"
+        case "tertiary-container":
+            return "outline-on-tertiary-container"
+        case "error-container":
+            return "outline-on-error-container"
+        default:
+            return "outline-on-primary"
     }
 }
 
