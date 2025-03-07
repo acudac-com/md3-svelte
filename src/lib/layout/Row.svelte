@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import { JustifyClass } from '$lib/utils';
+	import { JustifyClass, type Justify } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 	import { twMerge } from 'tailwind-merge';
 
@@ -7,7 +7,7 @@
 		wFit?: boolean;
 		hFull?: boolean;
 		gaps?: boolean;
-		justify?: boolean | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch' | 'baseline';
+		justify?: Justify;
 		class?: string | string[];
 		children: Snippet;
 	}

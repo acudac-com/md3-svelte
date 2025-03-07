@@ -1,12 +1,13 @@
 <script module lang="ts">
-	import { JustifyClass } from '$lib/utils';
+	import { JustifyClass, type Justify } from '$lib/utils';
 	import type { Snippet } from 'svelte';
+	import { twMerge } from 'tailwind-merge';
 
 	export interface ColProps {
 		hFit?: boolean;
 		wFull?: boolean;
 		gap?: boolean;
-		justify?: boolean | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch' | 'baseline';
+		justify?: Justify;
 		class?: string | string[];
 		children: Snippet;
 	}
@@ -17,13 +18,16 @@
 </script>
 
 <div
-	class={[
-		'relative flex flex-col items-center',
-		p.hFit ? 'h-fit' : 'h-full',
-		p.wFull ? 'w-full' : 'w-fit',
-		p.gap ? 'gap-2' : '',
-		JustifyClass(p.justify)
-	]}
+	class={twMerge(
+		[
+			'relative flex flex-col items-center',
+			p.hFit ? 'h-fit' : 'h-full',
+			p.wFull ? 'w-full' : 'w-fit',
+			p.gap ? 'gap-2' : '',
+			JustifyClass(p.justify)
+		],
+		p.class
+	)}
 >
 	{@render p.children()}
 </div>
