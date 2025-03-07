@@ -25,17 +25,17 @@
 
 <Clickable
 	class={twMerge(
-		'label-medium h-[32px] w-fit shrink-0 grow-0 gap-[8px] rounded-sm',
+		'label-medium h-[32px] w-fit shrink-0 grow-0 gap-[8px] rounded-sm border border-transparent',
 		!icon ? 'px-[16px]' : 'pl-[8px] pr-[16px]',
 		p.elevated ? 'shadow-l1 hover:shadow-l2' : '',
 		p.disabled
-			? 'border border-on-surface/15 bg-on-surface/10 text-on-surface/40'
+			? 'border-on-surface/15 bg-on-surface/10 text-on-surface/40'
 			: toggled
 				? [
 						BgContainerColorClass(p.color, 'secondary'),
 						TextOnContainerColorClass(p.color, 'secondary')
 					]
-				: 'border border-outline-variant text-on-surface-variant',
+				: 'mx-0 border-outline-variant text-on-surface-variant',
 		!p.disabled ? 'hover:bg-surface-tint/10' : '',
 
 		cls
