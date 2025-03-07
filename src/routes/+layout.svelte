@@ -11,4 +11,6 @@
 	lightClassNames={['light' + contrast]}
 	darkClassNames={['dark' + contrast]}
 />
-{@render children()}
+<div class="relative h-full w-full">
+	{@render children()}
+</div>
