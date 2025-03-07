@@ -3,7 +3,12 @@
 	import { mdiCheck, type Image, type Svg } from '$lib/icons';
 	import { scale } from 'svelte/transition';
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '../colors';
+	import {
+		BgContainerColorClass,
+		BgHoverColorClass,
+		TextOnContainerColorClass,
+		type MainColor
+	} from '../colors';
 	import Clickable, { type ClickableProps } from './Clickable.svelte';
 	import { page } from '$app/state';
 
@@ -114,6 +119,7 @@
 			class={twMerge(
 				[
 					'label-large h-[40px] w-full min-w-[60px] overflow-x-clip whitespace-nowrap px-6',
+					!option.disabled ? BgHoverColorClass(false, p.color, 'primary') : '',
 					option.disabled
 						? 'bg-on-surface/10 text-on-surface/40'
 						: toggled[option.id]

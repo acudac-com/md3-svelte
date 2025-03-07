@@ -6,6 +6,7 @@
 	import {
 		BgColorClass,
 		BgContainerColorClass,
+		BgHoverColorClass,
 		TextColorClass,
 		TextOnColorClass,
 		TextOnContainerColorClass,
@@ -29,13 +30,21 @@
 		type = 'standard',
 		...p
 	}: IconButtonProps = $props();
+
+	let defaultColor: MainColor = $derived(type == 'tonal' ? 'secondary' : 'primary');
 </script>
 
 <Clickable
 	class={twMerge(
 		[
 			'h-[40px] w-[40px] rounded-full ease-in-out',
-			p.disabled ? 'text-on-surface/40' : '',
+			p.disabled
+				? 'text-on-surface/40'
+				: type == 'outlined'
+					? toggled
+						? 'hover:bg-outline/90'
+						: 'hover:bg-outline/10'
+					: BgHoverColorClass(toggled && type == 'filled', p.color, defaultColor),
 			type == 'standard'
 				? p.disabled
 					? ''

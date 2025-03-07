@@ -2,7 +2,7 @@
 	import { Icon } from '$lib';
 	import { type Image, type Svg } from '$lib/icons';
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
-	import { BorderColorClass, TextColorClass, type MainColor } from '../colors';
+	import { BgHoverColorClass, BorderColorClass, TextColorClass, type MainColor } from '../colors';
 	import Clickable, { type ClickableProps } from './Clickable.svelte';
 	import { page } from '$app/state';
 
@@ -87,6 +87,7 @@
 	class={twMerge(
 		[
 			'title-small flex w-full flex-nowrap justify-around overflow-x-scroll bg-surface',
+
 			'icon' in p.options[0] ? 'h-[64px]' : 'h-[48px]'
 		],
 		cls
@@ -100,13 +101,25 @@
 					selected = option.text;
 				}}
 				{...clickableProps}
-				class={twMerge(['relative flex w-full overflow-x-clip whitespace-nowrap'], oCls)}
+				class={twMerge(
+					[
+						'relative flex w-full overflow-x-clip whitespace-nowrap',
+						BgHoverColorClass(false, p.color, 'primary')
+					],
+					oCls
+				)}
 			>
 				{@render tab(option)}
 			</button>
 		{:else}
 			<a
-				class={twMerge(['relative flex w-full overflow-x-clip whitespace-nowrap'], oCls)}
+				class={twMerge(
+					[
+						'relative flex w-full overflow-x-clip whitespace-nowrap',
+						BgHoverColorClass(false, p.color, 'primary')
+					],
+					oCls
+				)}
 				href={option.href}
 			>
 				{@render tab(option)}

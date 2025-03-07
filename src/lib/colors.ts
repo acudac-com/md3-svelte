@@ -263,6 +263,77 @@ export function BgColorClass(color?: Color, defaultColor: Color = "surface") {
     }
 }
 
+export function BgHoverColorClass(toggled: boolean, color?: Color, defaultColor: Color = "surface") {
+    if (!color) color = defaultColor
+    if (!toggled) {
+        switch (color) {
+            case "primary":
+                return "hover:bg-primary/15"
+            case "secondary":
+                return "hover:bg-primary/15"
+            case "tertiary":
+                return "hover:bg-tertiary/15"
+            case "error":
+                return "hover:bg-error/15"
+            case "surface":
+                return "hover:bg-surface/15"
+            case "primary-container":
+                return "hover:bg-primary-container/15"
+            case "secondary-container":
+                return "hover:bg-secondary-container/15"
+            case "tertiary-container":
+                return "hover:bg-tertiary-container/15"
+            case "error-container":
+                return "hover:bg-error-container/15"
+            case "surface-container":
+                return "hover:bg-surface-container/15"
+            case "surface-container-lowest":
+                return "hover:bg-surface-container-lowest/15"
+            case "surface-container-low":
+                return "hover:bg-surface-container-low/15"
+            case "surface-container-highest":
+                return "hover:bg-surface-container-highest/15"
+            case "surface-container-high":
+                return "hover:bg-surface-container-high/15"
+            default:
+                return "hover:bg-primary/15"
+        }
+    } else {
+        switch (color) {
+            case "primary":
+                return "hover:bg-primary/85"
+            case "secondary":
+                return "hover:bg-primary/85"
+            case "tertiary":
+                return "hover:bg-tertiary/85"
+            case "error":
+                return "hover:bg-error/85"
+            case "surface":
+                return "hover:bg-surface/85"
+            case "primary-container":
+                return "hover:bg-primary-container/85"
+            case "secondary-container":
+                return "hover:bg-secondary-container/85"
+            case "tertiary-container":
+                return "hover:bg-tertiary-container/85"
+            case "error-container":
+                return "hover:bg-error-container/85"
+            case "surface-container":
+                return "hover:bg-surface-container/85"
+            case "surface-container-lowest":
+                return "hover:bg-surface-container-lowest/85"
+            case "surface-container-low":
+                return "hover:bg-surface-container-low/85"
+            case "surface-container-highest":
+                return "hover:bg-surface-container-highest/85"
+            case "surface-container-high":
+                return "hover:bg-surface-container-high/85"
+            default:
+                return "hover:bg-primary/85"
+        }
+    }
+}
+
 export function BgContainerColorClass(color?: MainColor, defaultColor: MainColor = "surface") {
     if (!color) color = defaultColor
     switch (color) {

@@ -3,6 +3,7 @@
 	import type { Svg, Image } from '$lib/icons';
 	import {
 		BgContainerColorClass,
+		BgHoverColorClass,
 		TextColorClass,
 		TextOnContainerColorClass,
 		type MainColor
@@ -20,7 +21,7 @@
 </script>
 
 <script lang="ts">
-	let { text, icon, class: cls, toggled = $bindable(), ...p }: ChipProps = $props();
+	let { text, icon, class: cls, toggled = $bindable(false), ...p }: ChipProps = $props();
 </script>
 
 <Clickable
@@ -36,7 +37,7 @@
 						TextOnContainerColorClass(p.color, 'secondary')
 					]
 				: 'mx-0 border-outline-variant text-on-surface-variant',
-		!p.disabled ? 'hover:bg-surface-tint/10' : '',
+		!p.disabled ? BgHoverColorClass(false, p.color, 'primary') : '',
 
 		cls
 	)}

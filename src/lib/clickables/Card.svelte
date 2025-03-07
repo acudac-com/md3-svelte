@@ -1,7 +1,12 @@
 <script lang="ts" module>
 	import { twMerge } from 'tailwind-merge';
 	import Clickable, { type ClickableProps } from './Clickable.svelte';
-	import { BgContainerColorClass, TextOnContainerColorClass, type MainColor } from '$lib/colors';
+	import {
+		BgContainerColorClass,
+		BgHoverColorClass,
+		TextOnContainerColorClass,
+		type MainColor
+	} from '$lib/colors';
 
 	export interface CardProps
 		extends Omit<
@@ -25,7 +30,10 @@
 
 <Clickable
 	class={twMerge(
-		'relative m-[1px] flex flex-col rounded-md bg-surface-container-low p-[16px]',
+		[
+			'relative m-[1px] flex flex-col rounded-md bg-surface-container-low p-[16px]',
+			p.href ? BgHoverColorClass(false, p.toggledColor, 'primary') : ''
+		],
 		type == 'elevated'
 			? ['shadow-l1', p.href ? 'hover:shadow-l2' : '']
 			: type == 'filled'

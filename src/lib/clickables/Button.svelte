@@ -6,6 +6,7 @@
 	import {
 		BgColorClass,
 		BgContainerColorClass,
+		BgHoverColorClass,
 		BorderColorClass,
 		TextColorClass,
 		TextOnColorClass,
@@ -26,6 +27,8 @@
 
 <script lang="ts">
 	let { class: cls, type = 'filled', ...p }: ButtonProps = $props();
+
+	let defaultColor: MainColor = $derived(type == 'tonal' ? 'secondary' : 'primary');
 </script>
 
 <Clickable
@@ -38,6 +41,7 @@
 				: !p.appendIcon
 					? 'pl-[16px] pr-[24px]'
 					: 'pl-[16px] pr-[16px]',
+		!p.disabled ? BgHoverColorClass(type == 'filled', p.color, defaultColor) : '',
 		type == 'elevated'
 			? p.disabled
 				? 'bg-on-surface/10 text-on-surface/40 shadow-l1'

@@ -17,7 +17,7 @@
 <p class="display-small">Icon Buttons</p>
 <div class="flex gap-2">
 	<IconButton bind:toggled icon={mdiSettings} color="error" />
-	<IconButton disabled icon={mdiSettings} type="tonal" href="?asfd=qwer" />
+	<IconButton icon={mdiSettings} type="tonal" href="?asfd=qwer" />
 	<IconButton bind:toggled icon={mdiSettings} type="filled" />
 	<IconButton bind:toggled icon={mdiSettings} type="outlined" tooltip={['asdf', 'awer']} />
 </div>
@@ -49,6 +49,7 @@
 		{ id: 'qwer', icon: mdiSettings, href: '?wer=false' },
 		{ id: 'wer', icon: mdiSettings, href: '?wer=true' }
 	]}
+	color="error"
 	multi
 	bind:selected
 />
@@ -76,14 +77,13 @@
 			{ text: 'Tab 4', icon: mdiSettings, href: '?tab=4' },
 			{ text: 'Tab 5', icon: mdiSettings, href: '?tab=5' }
 		]}
-		color="error"
 	/>
 	<p>some content</p>
 </div>
 
 <div class="mt-2 flex gap-4 bg-surface-container">
 	<p class="display-small mr-4">Cards</p>
-	<Card>Elevated</Card>
-	<Card type="filled">Filled</Card>
-	<Card type="outlined">Outlined</Card>
+	<Card href="?asdf">Elevated</Card>
+	<Card href="?qwer" type="filled">Filled</Card>
+	<Card href="?zxcv" type="outlined">Outlined</Card>
 </div>
