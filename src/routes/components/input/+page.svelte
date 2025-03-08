@@ -7,24 +7,26 @@
 		TextField,
 		RadioButtons,
 		OutlinedTextField,
-		OutlinedTextArea
+		OutlinedTextArea,
+		Select,
+		Divider,
+		Icon
 	} from '$lib';
-	import { mdiCheck, pngGoogleMeet } from '$lib/icons';
+	import { mdiCheck, mdiSettings, pngGoogleMeet } from '$lib/icons';
+	import Row from '$lib/layout/Row.svelte';
 	let value = $state({ value: 'Apple' });
 	let value2 = $state(40);
 	let checked = $state(true);
 	let textField = $state('');
-	$inspect(textField);
+	let selectValue: number | undefined = $state();
+	$inspect(selectValue);
 </script>
 
 <p class="headline-medium">Checkbox</p>
 <Checkbox checked />
-<Checkbox checked disabled />
 <Checkbox checked color="error" />
 
 <p class="headline-medium">Radio buttons</p>
-<RadioButtons name="asdf" values={['Apple', 'Pear', 'Banana']} />
-<RadioButtons color="tertiary" values={['Apple', 'Pear', 'Banana']} />
 <RadioButtons
 	color="tertiary"
 	values={[{ value: 'Apple', disabled: true }, 'Pear', 'Banana']}
@@ -32,9 +34,7 @@
 />
 
 <p class="headline-medium">Slider</p>
-<Slider />
 <Slider step={20} color="tertiary" icon={pngGoogleMeet} />
-<Slider step={20} color="tertiary" bind:value2 icon2={mdiCheck} />
 <Slider ticks step={0.2} max={0.8} class="w-1/2" disabled />
 
 <p class="headline-medium">Switch</p>
@@ -43,7 +43,21 @@
 <p class="headline-medium">Text Field</p>
 <div class="flex flex-col gap-4">
 	<TextField label="Textfield" bind:value={textField} />
-	<OutlinedTextField label="Outlined Textfield" bind:value={textField} />
 	<TextArea label="Multiline" bind:value={textField} />
-	<OutlinedTextArea label="Multiline" bind:value={textField} />
+	<OutlinedTextArea label="Outlined multiline" bind:value={textField} />
 </div>
+
+<Divider />
+<Select
+	values={[4, 5, 6, 1, 2, 3, 9, 8, 11, 12, 13, 14, 15, 16, 17, 18]}
+	bind:value={selectValue}
+	label="Fruits"
+	prependIcon={mdiSettings}
+>
+	{#snippet item(i)}
+		<Row gaps>
+			<Icon icon={mdiCheck} />
+			{i.toString()}
+		</Row>
+	{/snippet}
+</Select>

@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { ModeWatcher } from 'mode-watcher';
+	import { ModeWatcher, setMode } from 'mode-watcher';
 	import '../app.css';
 
 	let { children } = $props();
+	setMode('light');
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
 </script>
 

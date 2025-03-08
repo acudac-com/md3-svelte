@@ -8,6 +8,8 @@
 
 <div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)}>
 	<input
+		onfocus={p.onfocus}
+		oninput={p.oninput}
 		class="body-large rounded-xs"
 		placeholder=" "
 		type={p.type}

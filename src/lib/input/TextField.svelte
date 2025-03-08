@@ -8,6 +8,8 @@
 		error?: boolean;
 		type?: 'date' | 'datetime-local' | 'month' | 'number' | 'password' | 'text' | 'time' | 'week';
 		class?: string | string[];
+		onfocus?: (e: Event) => void;
+		oninput?: (e: Event) => void;
 	};
 </script>
 
@@ -19,6 +21,8 @@
 <div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)}>
 	<input
 		class="body-large rounded-tl-xs rounded-tr-xs"
+		onfocus={p.onfocus}
+		oninput={p.oninput}
 		placeholder=" "
 		type={p.type}
 		bind:value
