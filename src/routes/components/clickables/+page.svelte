@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button, Card, Chip, Clickable, Fab, IconButton, Tabs } from '$lib';
+	import NavBtn from '$lib/clickables/NavBtn.svelte';
 	import SegmentedBtns from '$lib/clickables/SegmentedBtns.svelte';
 	import { mdiCheck, mdiSettings } from '$lib/icons';
 	let toggled = $state(false);
@@ -8,6 +9,8 @@
 	$inspect(tab);
 </script>
 
+<p class="display-small">NavBtn</p>
+<NavBtn icon={mdiSettings} label="settings" href="/" badge />
 <p class="display-small">Clickable</p>
 <Clickable
 	bind:toggled
