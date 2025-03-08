@@ -1,7 +1,8 @@
 <script>
-	import { Button, Dialog, Menu, Row } from '$lib';
+	import { Button, Dialog, Fab, Menu, Row } from '$lib';
 	import Card from '$lib/clickables/Card.svelte';
 	import IconButton from '$lib/clickables/IconButton.svelte';
+	import FabContainer from '$lib/containers/FabContainer.svelte';
 	import { mdiSettings } from '$lib/icons';
 	let open = $state(false);
 	let menuOpen = $state(false);
@@ -37,3 +38,10 @@
 		</Row>
 	</Card>
 </Menu>
+
+<Card class="h-[300px] w-[400px]">
+	<FabContainer>
+		<Fab icon={mdiSettings} type="small" color="tertiary" />
+		<Fab icon={mdiSettings} />
+	</FabContainer>
+</Card>
