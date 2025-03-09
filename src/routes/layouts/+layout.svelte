@@ -1,21 +1,15 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { LayoutData } from '../layout/$types';
+	import type { LayoutData } from '../layouts/$types';
 	import { ListDetailsLayout, Row } from '$lib';
 	import Card from '$lib/clickables/Card.svelte';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
-	let open = $state(false);
 </script>
 
-<ListDetailsLayout href="/layouts" bind:open>
+<ListDetailsLayout href="/layouts">
 	<p class="title-medium">Layouts</p>
-	<Card type="filled" href="/layouts/row">
-		Row
-		{#if open}
-			(open)
-		{/if}
-	</Card>
+	<Card type="filled" href="/layouts/row">Row</Card>
 	<Card type="filled" href="/layouts/col">Col</Card>
 	<Card type="filled" href="/layouts/grid">Grid</Card>
 	{#snippet details()}

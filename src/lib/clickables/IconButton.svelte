@@ -14,12 +14,13 @@
 	} from '../colors';
 	import { Icon } from '$lib';
 
-	export interface IconButtonProps extends Omit<ClickableProps, 'children' | 'tooltipSide'> {
+	export interface IconButtonProps extends Omit<ClickableProps, 'children'> {
 		icon: Svg | Image;
 		selectedIcon?: Svg | Image;
 		badge?: boolean | string;
 		type?: 'standard' | 'filled' | 'tonal' | 'outlined';
 		color?: MainColor;
+		iconSize?: number;
 	}
 </script>
 
@@ -80,5 +81,9 @@
 	tooltipSide="top"
 	{...p}
 >
-	<Icon icon={toggled && p.selectedIcon ? p.selectedIcon : p.icon} size="24" badge={p.badge} />
+	<Icon
+		icon={toggled && p.selectedIcon ? p.selectedIcon : p.icon}
+		size={p.iconSize ? p.iconSize : '24'}
+		badge={p.badge}
+	/>
 </Clickable>

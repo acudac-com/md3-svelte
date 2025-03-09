@@ -6,7 +6,7 @@
 	export interface ColProps {
 		hFit?: boolean;
 		wFull?: boolean;
-		gap?: boolean;
+		gaps?: boolean;
 		justify?: Justify;
 		class?: string | string[];
 		desktopOnly?: boolean;
@@ -26,7 +26,7 @@
 			'relative flex flex-col items-center',
 			p.hFit ? 'h-fit' : 'h-full',
 			p.wFull ? 'w-full' : 'w-fit',
-			p.gap ? 'gap-2' : '',
+			p.gaps ? 'gap-2' : '',
 			p.desktopOnly ? 'hidden md:flex' : p.mobileOnly ? 'md:hidden' : '',
 			p.scroll ? 'flex-nowrap overflow-auto' : '',
 			JustifyClass(p.justify)

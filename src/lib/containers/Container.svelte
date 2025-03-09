@@ -6,6 +6,7 @@
 		level?: 'lowest' | 'low' | 'high' | 'highest';
 		class?: string | string[];
 		wFull?: boolean;
+		hFit?: boolean;
 		scroll?: boolean;
 		children: Snippet;
 	}
@@ -35,6 +36,7 @@
 		[
 			'relative flex h-full flex-col rounded-lg p-2 md:rounded-xl md:p-3',
 			p.wFull ? 'w-full max-w-full' : '',
+			p.hFit ? 'h-fit' : 'h-full',
 			bgClass,
 			p.scroll ? 'flex-nowrap overflow-scroll' : ''
 		],

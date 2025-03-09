@@ -71,7 +71,7 @@
 							<div {...wrapperProps}>
 								<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
 									<p
-										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] text-inverse-on-surface"
+										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] py-[2px] text-inverse-on-surface"
 									>
 										{@html tooltipText}
 									</p>

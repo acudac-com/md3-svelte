@@ -14,7 +14,7 @@
 	import { DropdownMenu } from 'bits-ui';
 	import type { Snippet } from 'svelte';
 
-	let { open = $bindable(), sideOffset = 4, ...p }: MenuProps = $props();
+	let { open = $bindable(false), sideOffset = 4, ...p }: MenuProps = $props();
 </script>
 
 <DropdownMenu.Root bind:open>
