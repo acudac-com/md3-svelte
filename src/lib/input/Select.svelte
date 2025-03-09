@@ -103,7 +103,7 @@
 				open = true;
 			}}
 			defaultValue={textValue}
-			class="body-large w-full outline-none"
+			class="body-large w-full bg-transparent outline-none"
 			oninput={(e) => (searchValue = e.currentTarget.value)}
 			placeholder={p.label}
 			aria-label={p.label}

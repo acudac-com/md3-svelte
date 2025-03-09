@@ -1,11 +1,11 @@
 <script module lang="ts">
 	import { Icon } from '$lib';
-	import { mdiSettings, type Image, type Svg } from '$lib/icons';
+	import { type Image, type Svg } from '$lib/icons';
 	import Col from '$lib/layout/Col.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import Clickable from './Clickable.svelte';
 
-	interface NavBtnProps {
+	export interface NavBtnProps {
 		icon: Image | Svg;
 		toggledIcon?: Image | Svg;
 		label: string;
@@ -23,7 +23,7 @@
 	let icon = $derived(toggled && p.toggledIcon ? p.toggledIcon : p.icon);
 </script>
 
-<Col>
+<Col justify="center">
 	<Clickable
 		class={twMerge(
 			[
@@ -50,7 +50,7 @@
 	</Clickable>
 	<p
 		class={[
-			'label-medium',
+			'label-small text-center',
 			p.disabled ? 'text-on-surface/30' : toggled ? 'text-on-surface' : 'text-on-surface-variant'
 		]}
 	>

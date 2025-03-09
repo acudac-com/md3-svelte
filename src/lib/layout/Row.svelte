@@ -9,6 +9,9 @@
 		gaps?: boolean;
 		justify?: Justify;
 		class?: string | string[];
+		desktopOnly?: boolean;
+		mobileOnly?: boolean;
+		scroll?: boolean;
 		children: Snippet;
 	}
 </script>
@@ -24,6 +27,8 @@
 			p.wFit ? 'w-fit' : 'w-full',
 			p.hFull ? 'h-full' : 'h-fit',
 			p.gaps ? 'gap-2' : '',
+			p.desktopOnly ? 'hidden md:flex' : p.mobileOnly ? 'md:hidden' : '',
+			p.scroll ? 'flex-nowrap overflow-auto' : '',
 			JustifyClass(p.justify)
 		],
 		p.class

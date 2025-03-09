@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon } from '$lib';
+	import { CircularProgress, Icon, LinearProgress } from '$lib';
 	import { mdiAboutVariant, pngGoogleMeet } from '$lib/icons';
 	import Divider from '$lib/misc/Divider.svelte';
 </script>
@@ -17,3 +17,7 @@
 	<Divider></Divider>
 	<span>hi</span>
 </div>
+<LinearProgress />
+<LinearProgress color="tertiary" />
+<CircularProgress />
+<CircularProgress color="error" class="size-[100px]" />
