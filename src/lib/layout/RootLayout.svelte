@@ -1,6 +1,6 @@
 <script module lang="ts">
-	import type { NavBtnProps } from '$lib/clickables/NavBtn.svelte';
-	import NavBtn from '$lib/clickables/NavBtn.svelte';
+	import type { NavBtnProps } from '$lib/components/NavBtn.svelte';
+	import NavBtn from '$lib/components/NavBtn.svelte';
 	import Col from '$lib/layout/Col.svelte';
 	import Row from '$lib/layout/Row.svelte';
 	import type { Snippet } from 'svelte';

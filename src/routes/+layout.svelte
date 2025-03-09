@@ -6,7 +6,6 @@
 		deviconNpm,
 		mdiAboutVariant,
 		mdiGithub,
-		mdiSettings,
 		mdiWhiteBalanceSunny,
 		solarMoon,
 		tablerLayout,

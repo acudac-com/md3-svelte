@@ -3,7 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import { Col } from '$lib';
 	import { twMerge } from 'tailwind-merge';
-	import IconButton from '$lib/clickables/IconButton.svelte';
+	import IconButton from '$lib/components/IconButton.svelte';
 	import { mdiArrowBack } from '$lib/icons';
 	import { page } from '$app/state';
 

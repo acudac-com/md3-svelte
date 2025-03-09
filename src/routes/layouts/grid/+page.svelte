@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Cell, Col, Grid } from '$lib';
-	import Chip from '$lib/clickables/Chip.svelte';
 	import Example from '$lib/internal/Example.svelte';
-	import Row from '$lib/layout/Row.svelte';
 </script>
 
 <Col wFull hFit gaps>

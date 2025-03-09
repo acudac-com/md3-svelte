@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { Chip, Col, Grid } from '$lib';
-	import Cell from '$lib/layout/Cell.svelte';
-	import Row from '$lib/layout/Row.svelte';
+	import { Cell, Chip, Col, Grid, Row } from '$lib';
 </script>
 
 <Col wFull>
