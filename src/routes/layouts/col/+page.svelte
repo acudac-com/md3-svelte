@@ -1,29 +1,72 @@
 <script lang="ts">
-	import { Chip, Col, Grid } from '$lib';
-	import Cell from '$lib/layout/Cell.svelte';
+	import { Col } from '$lib';
+	import Chip from '$lib/clickables/Chip.svelte';
+	import Example from '$lib/internal/Example.svelte';
 	import Row from '$lib/layout/Row.svelte';
 </script>
 
-<Col wFull>
-	<Row gaps class="bg-surface-variant"
-		><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-	</Row>
-	<Row justify="around" class="bg-surface-variant"
-		><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-	</Row>
+<Col wFull hFit gaps>
+	<Example
+		class="h-[300px]"
+		title="Standard"
+		code={`<Col class="border">
+	<Chip text="Element 1" />
+	<Chip text="Element 2" />
+	<Chip text="Element 3" />
+</Col>`}
+	>
+		<Col class="border">
+			<Chip text="Element 1" />
+			<Chip text="Element 2" />
+			<Chip text="Element 3" />
+		</Col>
+	</Example>
 
-	<Row hFull>
-		<Col class="w-1/4 bg-surface-variant"
-			><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
+	<Example
+		class="h-[300px]"
+		title="Justified"
+		code={`<Col justify class="border">
+	<Chip text="Element 1" />
+	<Chip text="Element 2" />
+	<Chip text="Element 3" />
+</Col>`}
+	>
+		<Col justify class="border">
+			<Chip text="Element 1" />
+			<Chip text="Element 2" />
+			<Chip text="Element 3" />
 		</Col>
-		<Col class="w-1/4 bg-surface-variant" justify
-			><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
+	</Example>
+
+	<Example
+		title="Fitted"
+		class="h-[300px]"
+		code={`<Col hFit class="border">
+	<Chip text="Element 1" />
+	<Chip text="Element 2" />
+	<Chip text="Element 3" />
+</Col>`}
+	>
+		<Col hFit class="border">
+			<Chip text="Element 1" />
+			<Chip text="Element 2" />
+			<Chip text="Element 3" />
 		</Col>
-		<Grid class="h-/1/2 w-1/2 self-start" cols="3">
-			<Cell colStart="2" rowSpan="2" class="bg-primary-container">cell 1</Cell>
-			<Cell class="bg-primary-container" justifySelf="center">cell 2</Cell>
-			<Cell>cell 3</Cell>
-			<Cell>cell 4</Cell>
-		</Grid>
-	</Row>
+	</Example>
+
+	<Example
+		class="h-[300px]"
+		title="Full"
+		code={`<Col wFull class="border">
+	<Chip text="Element 1" />
+	<Chip text="Element 2" />
+	<Chip text="Element 3" />
+</Col>`}
+	>
+		<Col wFull class="border">
+			<Chip text="Element 1" />
+			<Chip text="Element 2" />
+			<Chip text="Element 3" />
+		</Col>
+	</Example>
 </Col>

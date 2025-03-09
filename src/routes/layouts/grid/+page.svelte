@@ -1,29 +1,33 @@
 <script lang="ts">
-	import { Chip, Col, Grid } from '$lib';
-	import Cell from '$lib/layout/Cell.svelte';
+	import { Cell, Col, Grid } from '$lib';
+	import Chip from '$lib/clickables/Chip.svelte';
+	import Example from '$lib/internal/Example.svelte';
 	import Row from '$lib/layout/Row.svelte';
 </script>
 
-<Col wFull>
-	<Row gaps class="bg-surface-variant"
-		><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-	</Row>
-	<Row justify="around" class="bg-surface-variant"
-		><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-	</Row>
-
-	<Row hFull>
-		<Col class="w-1/4 bg-surface-variant"
-			><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-		</Col>
-		<Col class="w-1/4 bg-surface-variant" justify
-			><Chip text="Element 1" /><Chip text="Element 2" /><Chip text="Element 3" />
-		</Col>
-		<Grid class="h-/1/2 w-1/2 self-start" cols="3">
-			<Cell colStart="2" rowSpan="2" class="bg-primary-container">cell 1</Cell>
-			<Cell class="bg-primary-container" justifySelf="center">cell 2</Cell>
-			<Cell>cell 3</Cell>
-			<Cell>cell 4</Cell>
+<Col wFull hFit gaps>
+	<Example
+		title="Grid and Cells"
+		code={`<Grid cols="4">
+	<Cell>Cell 1</Cell>
+	<Cell>Cell 2</Cell>
+	<Cell>Cell 3</Cell>
+	<Cell>Cell 4</Cell>
+	<Cell colStart="2" colSpan="2"
+		class="bg-primary-container"
+		>Cell 5</Cell>
+	<Cell rowStart="3" 
+		class="bg-tertiary-container"
+		>Cell 6</Cell>
+</Grid>`}
+	>
+		<Grid cols="4">
+			<Cell>Cell 1</Cell>
+			<Cell>Cell 2</Cell>
+			<Cell>Cell 3</Cell>
+			<Cell>Cell 4</Cell>
+			<Cell colStart="2" colSpan="2" class="bg-primary-container">Cell 5</Cell>
+			<Cell rowStart="3" class="bg-tertiary-container">Cell 6</Cell>
 		</Grid>
-	</Row>
+	</Example>
 </Col>
