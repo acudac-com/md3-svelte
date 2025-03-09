@@ -28,7 +28,8 @@
 					]}
 				/>
 			{/snippet}
-			<pre class="mx-4 rounded-sm bg-surface p-2 shadow-l1">{p.code}</pre>
+			<pre
+				class="mx-4 max-h-[500px] max-w-[700px] overflow-scroll rounded-sm bg-surface p-2 shadow-l1">{p.code}</pre>
 		</Menu>
 	</Row>
 	<Container level="lowest" wFull class="rounded-md md:rounded-lg">
