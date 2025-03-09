@@ -14,5 +14,8 @@
 </script>
 
 <hr
-	class={twMerge(['my-[8px]', BorderColorClass(p.color), !p.fullWidth ? 'mx-[16px]' : ''], p.class)}
+	class={twMerge(
+		['my-[8px] w-full', BorderColorClass(p.color), !p.fullWidth ? 'mx-[16px]' : ''],
+		p.class
+	)}
 />

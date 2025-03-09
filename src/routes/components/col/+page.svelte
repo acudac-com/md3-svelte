@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { Chip, Col, Divider } from '$lib';
+	import { Chip, Col } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">A column is used to stack elements vertically.</p>
-	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		class="h-[300px]"
 		title="Standard"

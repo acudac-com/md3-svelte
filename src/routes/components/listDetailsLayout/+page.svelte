@@ -1,16 +1,9 @@
 <script lang="ts">
-	import { Col, Divider } from '$lib';
+	import { Col } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">
-		A ListDetailsLayout is used to list elements on the left and show their details on the right. On
-		mobile devices only the left (list) or right (detail) view is shown based on the url. This
-		component is mostly used in +layout.svelte files.
-	</p>
-	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Standard"
 		code={`<ListDetailsLayout href="/layouts">

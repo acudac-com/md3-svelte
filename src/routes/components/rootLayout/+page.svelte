@@ -1,15 +1,9 @@
 <script lang="ts">
-	import { Col, Divider } from '$lib';
+	import { Col } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">
-		A RootLayout is used in the the top +layout.svelte file. It places the main navigation targets
-		on the left on desktop and at the bottom on mobile.
-	</p>
-	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Standard"
 		code={`<RootLayout

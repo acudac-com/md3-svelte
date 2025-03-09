@@ -1,73 +1,67 @@
 <script lang="ts">
-	import { Chip, Col, Divider } from '$lib';
+	import { Chip, Col, Row } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">A column is used to stack elements vertically.</p>
-	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
-		class="h-[300px]"
 		title="Standard"
-		code={`<Col class="border">
+		code={`<Row class="border">
 	<Chip text="Element 1" />
 	<Chip text="Element 2" />
 	<Chip text="Element 3" />
-</Col>`}
+</Row>`}
 	>
-		<Col class="border">
+		<Row class="border">
 			<Chip text="Element 1" />
 			<Chip text="Element 2" />
 			<Chip text="Element 3" />
-		</Col>
+		</Row>
 	</Example>
 
 	<Example
-		class="h-[300px]"
 		title="Justified"
-		code={`<Col justify class="border">
+		code={`<Row justify class="border">
 	<Chip text="Element 1" />
 	<Chip text="Element 2" />
 	<Chip text="Element 3" />
-</Col>`}
+</Row>`}
 	>
-		<Col justify class="border">
+		<Row justify class="border">
 			<Chip text="Element 1" />
 			<Chip text="Element 2" />
 			<Chip text="Element 3" />
-		</Col>
+		</Row>
 	</Example>
 
 	<Example
 		title="Fitted"
-		class="h-[300px]"
-		code={`<Col hFit class="border">
+		code={`<Row wFit class="border">
 	<Chip text="Element 1" />
 	<Chip text="Element 2" />
 	<Chip text="Element 3" />
-</Col>`}
+</Row>`}
 	>
-		<Col hFit class="border">
+		<Row wFit class="border">
 			<Chip text="Element 1" />
 			<Chip text="Element 2" />
 			<Chip text="Element 3" />
-		</Col>
+		</Row>
 	</Example>
 
 	<Example
 		class="h-[300px]"
 		title="Full"
-		code={`<Col wFull class="border">
+		code={`<Row hFull class="border">
 	<Chip text="Element 1" />
 	<Chip text="Element 2" />
 	<Chip text="Element 3" />
-</Col>`}
+</Row>`}
 	>
-		<Col wFull class="border">
+		<Row hFull class="border">
 			<Chip text="Element 1" />
 			<Chip text="Element 2" />
 			<Chip text="Element 3" />
-		</Col>
+		</Row>
 	</Example>
 </Col>

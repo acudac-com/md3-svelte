@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { Cell, Col, Divider, Grid } from '$lib';
+	import { Cell, Col, Grid } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">A grid is used to place components in a grid with equal sized columns.</p>
-	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Grid and Cells"
 		code={`<Grid cols="4">
