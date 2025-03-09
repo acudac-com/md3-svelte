@@ -2,6 +2,7 @@
 	import { Button, Dialog, Fab, Menu, Row } from '$lib';
 	import Card from '$lib/clickables/Card.svelte';
 	import IconButton from '$lib/clickables/IconButton.svelte';
+	import Container from '$lib/containers/Container.svelte';
 	import FabContainer from '$lib/containers/FabContainer.svelte';
 	import { mdiSettings } from '$lib/icons';
 	let open = $state(false);
@@ -45,3 +46,5 @@
 		<Fab icon={mdiSettings} />
 	</FabContainer>
 </Card>
+
+<Container class="m-4">content</Container>
