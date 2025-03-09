@@ -40,6 +40,12 @@ export const mdiClose: Svg = {
     "body": "<path fill=\"currentColor\" d=\"M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z\" />"
 }
 
+export const mdiArrowBack: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M20 11v2H8l5.5 5.5l-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5L8 11z\" />"
+}
+
 export const pngGoogleMeet: Image = {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
     alt: 'Google meet image',

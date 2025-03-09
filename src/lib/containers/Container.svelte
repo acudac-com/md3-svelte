@@ -5,7 +5,8 @@
 	export interface ContainerProps {
 		level?: 'lowest' | 'low' | 'high' | 'highest';
 		class?: string | string[];
-		overflowScroll?: boolean;
+		wFull?: boolean;
+		scroll?: boolean;
 		children: Snippet;
 	}
 </script>
@@ -32,9 +33,10 @@
 <div
 	class={twMerge(
 		[
-			'relative flex h-full flex-col rounded-lg p-4 md:rounded-xl',
+			'relative flex h-full flex-col rounded-lg p-2 md:rounded-xl md:p-3',
+			p.wFull ? 'w-full max-w-full' : '',
 			bgClass,
-			p.overflowScroll ? 'flex-nowrap overflow-scroll' : ''
+			p.scroll ? 'flex-nowrap overflow-scroll' : ''
 		],
 		p.class
 	)}

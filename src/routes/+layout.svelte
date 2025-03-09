@@ -22,8 +22,8 @@
 	navBtns={[
 		{ href: '/clickables', icon: mdiSettings, label: 'Clickables' },
 		{ href: '/containers', icon: mdiSettings, label: 'Containers' },
-		{ href: '/input', icon: mdiSettings, label: 'Input' },
-		{ href: '/layout', icon: mdiSettings, label: 'Layout' },
+		{ href: '/inputs', icon: mdiSettings, label: 'Inputs' },
+		{ href: '/layouts', icon: mdiSettings, label: 'Layouts' },
 		{ href: '/misc', icon: mdiSettings, label: 'Misc' }
 	]}
 	{children}

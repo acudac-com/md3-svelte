@@ -15,6 +15,7 @@
 		> {
 		type?: 'elevated' | 'filled' | 'outlined';
 		toggledColor?: MainColor;
+		wFit?: boolean;
 	}
 </script>
 
@@ -33,7 +34,8 @@
 		class={twMerge(
 			[
 				'relative flex flex-col rounded-md bg-surface-container-low p-[16px]',
-				BgHoverColorClass(false, p.toggledColor, 'primary')
+				BgHoverColorClass(false, p.toggledColor, 'primary'),
+				p.wFit ? 'w-fit' : 'w-full'
 			],
 			type == 'elevated'
 				? ['shadow-l1', p.href ? 'hover:shadow-l2' : '']

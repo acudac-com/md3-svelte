@@ -40,7 +40,7 @@
 </Col>
 
 <Row desktopOnly hFull>
-	<Col justify class="w-[90px] max-w-[90px] bg-surface-container py-[16px]">
+	<Col justify class="w-[90px] max-w-[90px] bg-surface-container px-2 py-[16px]">
 		{#if p.start}
 			<Col hFit>{@render p.start()}</Col>
 		{:else}
