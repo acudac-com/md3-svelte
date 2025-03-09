@@ -14,11 +14,12 @@
 		detailsHeading?: Snippet;
 		widthRatio?: '1/5' | '1/4' | '1/3' | '2/5' | '1/2';
 		class?: string | string[];
+		open?: boolean;
 	}
 </script>
 
 <script lang="ts">
-	let p: ListDetailsLayoutProps = $props();
+	let { open = $bindable(false), ...p }: ListDetailsLayoutProps = $props();
 	if (p.href.endsWith('/')) {
 		p.href = p.href.slice(0, -1);
 	}
@@ -56,19 +57,20 @@
 		}
 	});
 
-	let onListView = $derived.by(() => {
+	$effect(() => {
 		let currentHref = page.url.pathname;
 		if (currentHref.startsWith(p.href) && !currentHref.startsWith(p.href + '/')) {
-			return true;
+			open = false;
+		} else {
+			open = true;
 		}
-		return false;
 	});
 </script>
 
 <Row hFull class="gap-2 p-2 md:gap-3 md:p-3">
 	<Container
 		scroll
-		class={twMerge(['gap-2', onListView ? 'w-full' : listWidthClass + ' hidden md:flex'], p.class)}
+		class={twMerge(['gap-2', !open ? 'w-full' : listWidthClass + ' hidden md:flex'], p.class)}
 	>
 		{#if p.children}
 			{@render p.children()}
@@ -76,8 +78,8 @@
 			<p class="text-error">Missing list snippet</p>
 		{/if}
 	</Container>
-	<Container class={['p-0 md:p-0', onListView ? 'hidden' : 'w-full ' + detailsWidthClass]}>
-		<Row class={['my-2 pr-3']}>
+	<Container class={['p-0 md:p-0', !open ? 'hidden' : 'w-full ' + detailsWidthClass]}>
+		<Row class={['mt-2 pr-3']}>
 			<IconButton class="mx-2" icon={mdiArrowBack} href={p.href} />
 			{#if p.detailsHeading}
 				{@render p.detailsHeading()}
