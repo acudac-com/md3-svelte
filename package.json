@@ -1,7 +1,11 @@
 {
-	"name": "md3-svelte",
+	"name": "@acudac/md3-svelte",
 	"version": "1.1.0",
 	"type": "module",
+	"repository": "acudac-com/md3-svelte",
+	"author": {
+		"name": "DanielvNiek"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -12,6 +16,15 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
 		"theme": "find src/theme -type f -exec sed -i '' -e 's/rgb(//g' -e 's/);/;/g' {} +"
+	},
+	"exports": {
+		".": {
+			"types": "./package/index.d.ts",
+			"svelte": "./package/index.js"
+		},
+		"./misc/styles.css": {
+			"import": "./package/misc/styles.css"
+		}
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
