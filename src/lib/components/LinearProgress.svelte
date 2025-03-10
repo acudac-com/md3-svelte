@@ -19,7 +19,7 @@
 		class={twMerge(
 			[
 				'm3-container relative inline-flex h-[4px] w-full min-w-[16px] overflow-hidden rounded-full',
-				BgContainerColorClass(p.color)
+				BgContainerColorClass(p.color, 'primary')
 			],
 			p.class
 		)}
@@ -29,7 +29,7 @@
 			class={twMerge(
 				[
 					'absolute bottom-0 top-0 rounded-full',
-					BgColorClass(p.color),
+					BgColorClass(p.color, 'primary'),
 					!p.percentage ? 'percent' : ''
 				],
 				p.innerClass

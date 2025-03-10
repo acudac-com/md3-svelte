@@ -29,6 +29,18 @@
 	<Card type="filled" href="/components/IconButton">IconButton</Card>
 	<Card type="filled" href="/components/IconDialog">IconDialog</Card>
 	<Card type="filled" href="/components/IconMenu">IconMenu</Card>
+	<Card type="filled" href="/components/LinearProgress">LinearProgress</Card>
+	<Card type="filled" href="/components/NavBtn">NavBtn</Card>
+	<Card type="filled" href="/components/OutlinedTextArea">OutlinedTextArea</Card>
+	<Card type="filled" href="/components/OutlinedTextField">OutlinedTextField</Card>
+	<Card type="filled" href="/components/RadioButtons">RadioButtons</Card>
+	<Card type="filled" href="/components/SegmentedBtns">SegmentedBtns</Card>
+	<Card type="filled" href="/components/Select">Select</Card>
+	<Card type="filled" href="/components/Slider">Slider</Card>
+	<Card type="filled" href="/components/Switch">Switch</Card>
+	<Card type="filled" href="/components/Tabs">Tabs</Card>
+	<Card type="filled" href="/components/TextArea">TextArea</Card>
+	<Card type="filled" href="/components/TextField">TextField</Card>
 
 	{#snippet detailsHeading()}
 		<Row class="title-small">
