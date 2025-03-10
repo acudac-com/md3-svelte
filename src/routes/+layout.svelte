@@ -15,7 +15,6 @@
 	} from '$lib/icons';
 
 	let { children } = $props();
-	setMode('light');
 	const contrast: '' | '-high-contrast' | '-medium-contrast' = '';
 
 	let darkMode = $state(false);
