@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Button, Col, Divider, Row } from '$lib';
-	import ButtonDialog from '$lib/components/ButtonDialog.svelte';
+	import { Button, ButtonDialog, Col, Divider, Row } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 
 	let open = $state(false);

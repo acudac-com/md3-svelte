@@ -19,6 +19,9 @@
 	<Card type="filled" href="/components/Card">Card</Card>
 	<Card type="filled" href="/components/Checkbox">Checkbox</Card>
 	<Card type="filled" href="/components/Chip">Chip</Card>
+	<Card type="filled" href="/components/ChipDialog">ChipDialog</Card>
+	<Card type="filled" href="/components/CircularProgress">CircularProgress</Card>
+	<Card type="filled" href="/components/Clickable">Clickable</Card>
 
 	{#snippet detailsHeading()}
 		<Row class="title-small">

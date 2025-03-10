@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-	let { open = $bindable(), dialogType, class: cls, ...p }: ChipDialogProps = $props();
+	let { open = $bindable(false), dialogType, class: cls, ...p }: ChipDialogProps = $props();
 </script>
 
 <Chip {...p} class={cls} bind:toggled={open} />
