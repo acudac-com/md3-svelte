@@ -9,7 +9,7 @@
 	<p class="title-small">Examples</p>
 	<Example title="" code={`<ChipDialog text="Primary">Open</ChipDialog>`}>
 		<Row gaps>
-			<ChipDialog text="Primary">Open</ChipDialog>
+			<ChipDialog text="Primary">Dialog content</ChipDialog>
 		</Row>
 	</Example>
 </Col>
