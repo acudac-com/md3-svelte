@@ -9,7 +9,8 @@
 <Col wFull hFit gaps>
 	<p class="body-small">
 		Dialogs open over the current content either with a scrim background or in fullscreen. Dialogs
-		provide important prompts in a user flow.
+		provide important prompts in a user flow. Also refer to the IconDialog and ChipDialog components
+		for predefined trigger components.
 	</p>
 	<Divider />
 	<p class="title-small">Examples</p>

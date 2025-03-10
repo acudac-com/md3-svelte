@@ -19,6 +19,7 @@
 	<Card type="filled" href="/layouts/Grid">Grid</Card>
 	<Card type="filled" href="/layouts/Menu">Menu</Card>
 	<Card type="filled" href="/layouts/Dialog">Dialog</Card>
+	<Card type="filled" href="/layouts/FabContainer">FabContainer</Card>
 	<Card type="filled" href="/layouts/RootLayout">RootLayout</Card>
 	<Card type="filled" href="/layouts/ListDetailsLayout">ListDetailsLayout</Card>
 	{#snippet details()}
