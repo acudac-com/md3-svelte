@@ -41,7 +41,7 @@
 		<div
 			class={twMerge(
 				[
-					'label-small absolute z-10 flex items-center justify-center rounded-full bg-error p-1 text-on-error',
+					'label-small z-1 absolute flex items-center justify-center rounded-full bg-error p-1 text-on-error',
 					typeof p.badge == 'string' ? 'h-[16px]' : 'size-[6px]',
 					typeof p.badge == 'string' ? 'bottom-3 left-3' : 'right-0 top-0'
 				],

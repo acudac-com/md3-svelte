@@ -97,5 +97,4 @@ export const deviconNpm: Svg = {
 export const pngGoogleMeet: Image = {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
     alt: 'Google meet image',
-    rounded: true
 }

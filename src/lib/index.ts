@@ -35,3 +35,5 @@ export { default as Container } from './layout/Container.svelte'
 export { default as RootLayout } from './layout/RootLayout.svelte'
 export { default as Select } from './components/Select.svelte'
 export { default as ListDetailsLayout } from './layout/ListDetailsLayout.svelte'
+
+export type { Svg, Image } from './icons'
