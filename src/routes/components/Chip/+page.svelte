@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Checkbox, Chip, Col, Divider, Row } from '$lib';
+	import { Chip, Col, Divider, Row } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 
 	let toggled = $state(false);

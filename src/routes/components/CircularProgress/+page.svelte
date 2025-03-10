@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChipDialog, Col, Divider, Row } from '$lib';
+	import { Col, Divider, Row } from '$lib';
 	import CircularProgress from '$lib/components/CircularProgress.svelte';
 	import Example from '$lib/internal/Example.svelte';
 </script>

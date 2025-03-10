@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Checkbox, Col, Divider, Row } from '$lib';
+	import { Checkbox, Col, Divider, Row } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
