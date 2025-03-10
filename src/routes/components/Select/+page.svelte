@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Col, Divider, Icon, Select } from '$lib';
-	import RadioButtons from '$lib/components/RadioButtons.svelte';
-	import SegmentedBtns from '$lib/components/SegmentedBtns.svelte';
 	import { mdiSettings } from '$lib/icons';
 	import Example from '$lib/internal/Example.svelte';
 	import Row from '$lib/layout/Row.svelte';

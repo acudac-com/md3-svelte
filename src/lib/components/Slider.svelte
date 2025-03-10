@@ -44,7 +44,7 @@
 	let values = new Values();
 </script>
 
-<div class={twMerge('flex items-center px-[14px]', p.class)}>
+<div class={twMerge('flex w-full items-center px-[14px]', p.class)}>
 	{#if !value2}
 		<Slider.Root
 			type="single"
