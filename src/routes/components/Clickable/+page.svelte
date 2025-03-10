@@ -10,7 +10,6 @@
 		(onclick). Provides a ripple effect.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example
 		title=""

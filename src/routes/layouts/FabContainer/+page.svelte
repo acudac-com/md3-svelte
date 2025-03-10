@@ -19,7 +19,7 @@
 		>
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		class="h-[300px]"
 		title="Standard"

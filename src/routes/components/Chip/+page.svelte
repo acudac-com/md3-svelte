@@ -11,7 +11,6 @@
 		'href' or 'onclick' property is specified, the chip manages its own 'toggled' state.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Toggles"
 		code={`<Chip text="Primary" bind:toggled />

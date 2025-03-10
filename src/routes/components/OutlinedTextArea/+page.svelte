@@ -9,7 +9,7 @@
 <Col wFull hFit gaps>
 	<p class="body-small">Multiline input component with an outline.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example title="" code={`<OutlinedTextArea label="Example" bind:value />`}>
 		<OutlinedTextArea label="Example" bind:value />
 	</Example>

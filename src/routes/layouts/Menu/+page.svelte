@@ -10,7 +10,7 @@
 		control over the trigger.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title="Standard"
 		code={`<Menu bind:open>

@@ -13,7 +13,7 @@
 		for predefined trigger components.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title="Standard"
 		code={`<Button type="tonal" text="Open" bind:toggled />

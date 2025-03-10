@@ -7,7 +7,7 @@
 <Col wFull hFit gaps>
 	<p class="body-small">A icon which opens a menu when clicked.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title=""
 		code={`<IconMenu icon={mdiSettings}>

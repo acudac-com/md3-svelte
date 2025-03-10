@@ -11,7 +11,6 @@
 		buttons (part of MD3 guidelines).
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Types (note the changing url when clicked)"
 		code={`<Card href="?type=elevated">Elevated</Card>

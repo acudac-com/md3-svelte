@@ -8,7 +8,7 @@
 <Col wFull hFit gaps>
 	<p class="body-small">A styled link component.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title=""
 		code={`<p>If this is your first time go to <Link href="/setup">Setup</Link>.</p>`}

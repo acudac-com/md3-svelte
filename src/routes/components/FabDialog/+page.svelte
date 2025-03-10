@@ -10,7 +10,6 @@
 		when the FAB is clicked.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example title="Colors" code={`<FabDialog icon={mdiSettings}>Dialog content</FabDialog>`}>
 		<Row gaps>

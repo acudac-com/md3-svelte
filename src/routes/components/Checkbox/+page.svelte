@@ -8,7 +8,6 @@
 		Checkboxes let users select one or more items from a list, or turn an item on or off.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Colors"
 		code={`<Checkbox />

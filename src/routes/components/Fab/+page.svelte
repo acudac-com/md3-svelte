@@ -7,7 +7,6 @@
 <Col wFull hFit gaps>
 	<p class="body-small">Floating action buttons (FABs) help people take primary actions.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example
 		title="Colors"

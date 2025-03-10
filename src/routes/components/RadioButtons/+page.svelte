@@ -8,7 +8,7 @@
 <Col wFull hFit gaps>
 	<p class="body-small">Radio buttons let people select one option from a set of options.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title="Colors"
 		code={`<RadioButtons values={['Apple', 'Banana']} bind:value />

@@ -10,7 +10,7 @@
 		Used in Navigation Rails and Navigation Bars for the main navigation targets.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title=""
 		code={`<NavBtn label="Guide" icon={mdiMap} href="/guide" />

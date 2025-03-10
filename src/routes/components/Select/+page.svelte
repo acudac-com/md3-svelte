@@ -11,7 +11,6 @@
 		Segmented buttons help people select options, switch views, or sort elements.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example title="Basic" code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />`}>
 		<Col class="items-start" wFull gaps>

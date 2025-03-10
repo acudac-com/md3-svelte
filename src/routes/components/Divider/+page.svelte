@@ -6,7 +6,6 @@
 <Col wFull hFit gaps>
 	<p class="body-small">Dividers are thin lines that group content in lists or other containers.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example title="Inset" code={`<Divider />`}>
 		<Col wFull class="border">

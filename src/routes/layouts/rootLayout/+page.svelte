@@ -9,7 +9,7 @@
 		on the left on desktop and at the bottom on mobile.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
+
 	<Example
 		title="Standard"
 		code={`<RootLayout

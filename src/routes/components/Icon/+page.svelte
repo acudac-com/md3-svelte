@@ -9,7 +9,6 @@
 		Icons are SVGs or Images that are useful for conveying information in a small space.
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example
 		title="Sizes"

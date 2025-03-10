@@ -9,7 +9,6 @@
 <Col wFull hFit gaps>
 	<p class="body-small">Sliders let users make selections from a range of values.</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 
 	<Example
 		title="Colors"

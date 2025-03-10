@@ -12,7 +12,6 @@
 		prompt a user if they really want to continue with the action (e.g. deleting something).
 	</p>
 	<Divider />
-	<p class="title-small">Examples</p>
 	<Example
 		title="Types"
 		code={`<ButtonDialog bind:open text="Scrim">
