@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import Layer from '$lib/ripple/Layer.svelte';
 	import { Tooltip } from 'bits-ui';
-	import type { Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 	import { scale } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
 	import { hrefIsToggled, newToggledHref } from './utils';
@@ -44,6 +44,18 @@
 			return p.tooltip.join('<br>');
 		}
 	});
+
+	let targetElement: HTMLElement | undefined = $state();
+
+	onMount(() => {
+		setTimeout(() => {
+			if (targetElement) {
+				if (toggled) {
+					targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				}
+			}
+		}, 100); // Adjust timeout as needed
+	});
 </script>
 
 {#if href != undefined}
@@ -57,6 +69,7 @@
 					class={twMerge('relative flex w-fit items-center justify-center', p.class)}
 					href={p.disabled ? undefined : href}
 					title={p.disabled ? p.disabledTitle : undefined}
+					bind:this={targetElement}
 				>
 					{#if !p.disabled}
 						<Layer />
