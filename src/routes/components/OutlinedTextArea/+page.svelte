@@ -1,20 +1,16 @@
 <script lang="ts">
-	import { Col, Divider, Row } from '$lib';
-	import NavBtn from '$lib/components/NavBtn.svelte';
+	import { Col, Divider } from '$lib';
 	import OutlinedTextArea from '$lib/components/OutlinedTextArea.svelte';
-	import { mdiAboutVariant, uiwComponent } from '$lib/icons';
 	import Example from '$lib/internal/Example.svelte';
+
+	let value = $state('');
 </script>
 
 <Col wFull hFit gaps>
 	<p class="body-small">Multiline input component with an outline.</p>
 	<Divider />
 	<p class="title-small">Examples</p>
-	<Example
-		title=""
-		code={`<NavBtn label="Setup" icon={mdiAboutVariant} href="/setup" />
-<NavBtn label="Components" icon={uiwComponent} href="/components" />`}
-	>
-		<OutlinedTextArea label="Example" />
+	<Example title="" code={`<OutlinedTextArea label="Example" bind:value />`}>
+		<OutlinedTextArea label="Example" bind:value />
 	</Example>
 </Col>
