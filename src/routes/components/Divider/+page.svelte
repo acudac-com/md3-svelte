@@ -1,14 +1,10 @@
 <script lang="ts">
 	import { Col, Divider } from '$lib';
-	import Clickable from '$lib/components/Clickable.svelte';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">
-		Provides a low level component for accepting click inputs to navigate (href) or do some action
-		(onclick). Provides a ripple effect.
-	</p>
+	<p class="body-small">Dividers are thin lines that group content in lists or other containers.</p>
 	<Divider />
 	<p class="title-small">Examples</p>
 

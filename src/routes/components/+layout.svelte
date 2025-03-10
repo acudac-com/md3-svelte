@@ -24,6 +24,7 @@
 	<Card type="filled" href="/components/Clickable">Clickable</Card>
 	<Card type="filled" href="/components/Divider">Divider</Card>
 	<Card type="filled" href="/components/Fab">Fab</Card>
+	<Card type="filled" href="/components/FabDialog">FabDialog</Card>
 	<Card type="filled" href="/components/Icon">Icon</Card>
 	<Card type="filled" href="/components/IconButton">IconButton</Card>
 	<Card type="filled" href="/components/IconDialog">IconDialog</Card>

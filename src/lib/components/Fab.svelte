@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-	let { class: cls, type = 'standard', ...p }: FabProps = $props();
+	let { class: cls, toggled = $bindable(false), type = 'standard', ...p }: FabProps = $props();
 </script>
 
 <Clickable
@@ -29,6 +29,7 @@
 		TextOnContainerColorClass(p.color),
 		cls
 	)}
+	bind:toggled
 	{...p}
 >
 	<Icon icon={p.icon} size={type == 'large' ? '36' : '24'} />
