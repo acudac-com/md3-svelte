@@ -1,0 +1,30 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	import type { LayoutData } from '../layouts/$types';
+	import { Card, ListDetailsLayout, Row } from '$lib';
+	import { page } from '$app/state';
+
+	let { data, children }: { data: LayoutData; children: Snippet } = $props();
+
+	let component = $derived.by(() => {
+		let parts = page.url.pathname.split('/');
+		return parts[parts.length - 1];
+	});
+</script>
+
+<ListDetailsLayout href="/components">
+	<p class="title-medium">Layouts</p>
+	<Card type="filled" href="/components/Button">Button</Card>
+	<Card type="filled" href="/components/ButtonDialog">ButtonDialog</Card>
+	<Card type="filled" href="/components/Card">Card</Card>
+
+	{#snippet detailsHeading()}
+		<Row class="title-small">
+			{component}
+		</Row>
+	{/snippet}
+
+	{#snippet details()}
+		{@render children()}
+	{/snippet}
+</ListDetailsLayout>

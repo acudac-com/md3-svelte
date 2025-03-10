@@ -13,10 +13,10 @@
 </script>
 
 <script lang="ts">
-	let { open = $bindable(), dialogType, class: cls, ...p }: ButtonDialogProps = $props();
+	let { open = $bindable(false), dialogType, class: cls, ...p }: ButtonDialogProps = $props();
 </script>
 
 <Button {...p} class={cls} bind:toggled={open} />
-<Dialog bind:open>
+<Dialog bind:open type={dialogType}>
 	{@render p.children()}
 </Dialog>

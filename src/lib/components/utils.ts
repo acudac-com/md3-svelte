@@ -65,7 +65,7 @@ export function hrefIsToggled(currentUrl: URL, href: string | undefined): boolea
                 return false
             }
             return true;
-        } else if (currentUrl.toString().startsWith(hrefUrl.toString().split('?')[0])) {
+        } else if (currentUrl.toString().startsWith(hrefUrl.toString().split('?')[0] + "/")) {
             return true;
         }
         return false;
