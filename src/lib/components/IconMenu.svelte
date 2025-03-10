@@ -16,11 +16,11 @@
 
 	export interface IconMenuProps extends Omit<MenuProps, 'trigger'> {
 		icon: Svg | Image;
-		iconType: 'standard' | 'tonal' | 'filled' | 'outlined';
-		color: MainColor;
+		iconType?: 'standard' | 'tonal' | 'filled' | 'outlined';
+		color?: MainColor;
 		badge?: boolean | string;
 		openIcon?: Svg | Image;
-		iconSize: IconSize;
+		iconSize?: IconSize;
 	}
 </script>
 
@@ -34,7 +34,7 @@
 		<div
 			class={twMerge(
 				[
-					'h-[40px] w-[40px] rounded-full ease-in-out',
+					'relative flex h-[40px] w-[40px] items-center justify-center rounded-full ease-in-out',
 					p.disabled
 						? 'text-on-surface/40'
 						: iconType == 'outlined'
