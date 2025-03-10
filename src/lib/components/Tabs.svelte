@@ -3,7 +3,7 @@
 	import { type Image, type Svg } from '$lib/icons';
 	import { twMerge, type ClassNameValue } from 'tailwind-merge';
 	import { BgHoverColorClass, BorderColorClass, TextColorClass, type MainColor } from '../colors';
-	import Clickable, { type ClickableProps } from './Clickable.svelte';
+	import { type ClickableProps } from './Clickable.svelte';
 	import { page } from '$app/state';
 
 	interface SecondaryTabOption
