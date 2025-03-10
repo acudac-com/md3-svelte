@@ -26,7 +26,7 @@
 </script>
 
 <script lang="ts">
-	let { class: cls, type = 'filled', ...p }: ButtonProps = $props();
+	let { class: cls, toggled = $bindable(false), type = 'filled', ...p }: ButtonProps = $props();
 
 	let defaultColor: MainColor = $derived(type == 'tonal' ? 'secondary' : 'primary');
 </script>
@@ -69,6 +69,7 @@
 		cls
 	)}
 	{...p}
+	bind:toggled
 >
 	{#snippet children()}
 		{#if p.prependIcon}
