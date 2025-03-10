@@ -6,9 +6,8 @@
 <Col wFull hFit gaps>
 	<p class="body-small">
 		A menu displays additional components on a temporary surface. It opens right next to the element
-		that triggers it. Most of the time you would rather use IconMenu, ChipMenu or ButtonMenu, but if
-		you need more control over the look of the trigger element, you can use this lower level
-		component.
+		that triggers it. Most of the time you would use the IconMenu component, unless you need more
+		control over the trigger.
 	</p>
 	<Divider />
 	<p class="title-small">Examples</p>
