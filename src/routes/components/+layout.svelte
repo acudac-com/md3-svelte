@@ -30,6 +30,7 @@
 	<Card type="filled" href="/components/IconDialog">IconDialog</Card>
 	<Card type="filled" href="/components/IconMenu">IconMenu</Card>
 	<Card type="filled" href="/components/LinearProgress">LinearProgress</Card>
+	<Card type="filled" href="/components/Link">Link</Card>
 	<Card type="filled" href="/components/NavBtn">NavBtn</Card>
 	<Card type="filled" href="/components/OutlinedTextArea">OutlinedTextArea</Card>
 	<Card type="filled" href="/components/OutlinedTextField">OutlinedTextField</Card>

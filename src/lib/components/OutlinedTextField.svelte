@@ -43,7 +43,7 @@
 		position: absolute;
 		left: 0.75rem;
 		color: rgb(var(--error, var(--md-sys-color-on-surface-variant)));
-		background-color: rgb(var(--m3-util-background, var(--md-sys-color-surface)));
+		background-color: transparent;
 		padding: 0 0.25rem;
 		pointer-events: none;
 		transition:
@@ -91,6 +91,7 @@
 
 	input:focus ~ label,
 	input:not(:placeholder-shown) ~ label {
+		background-color: rgb(var(--m3-util-background, var(--md-sys-color-surface)));
 		top: calc(1rem * -0.5);
 		font-size: 0.75rem;
 		line-height: 1rem;
