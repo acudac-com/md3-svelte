@@ -12,7 +12,7 @@
 	<Divider />
 	<p class="title-small">Examples</p>
 	<Example
-		title="Standard"
+		title=""
 		code={`<ListDetailsLayout href="/layouts">
 	<p class="title-medium">Layouts</p>
 	<Card type="filled" href="/layouts/row">Row</Card>
@@ -29,8 +29,8 @@
 </ListDetailsLayout>`}
 	>
 		<p>
-			The view you are looking at uses ListDetailsLayout, with list of components on the left and
-			their details on the right.
+			The view you are looking at uses ListDetailsLayout, with the list of components on the left
+			and their details on the right.
 		</p>
 	</Example>
 </Col>

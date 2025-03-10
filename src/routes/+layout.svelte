@@ -4,8 +4,9 @@
 	import { RootLayout, IconButton, Icon } from '$lib';
 	import {
 		deviconNpm,
-		mdiAboutVariant,
 		mdiGithub,
+		mdiMap,
+		mdiMapOutline,
 		mdiWhiteBalanceSunny,
 		solarMoon,
 		tablerLayout,
@@ -36,7 +37,7 @@
 <RootLayout
 	railWidth="100px"
 	navBtns={[
-		{ href: '/setup', icon: mdiAboutVariant, label: 'Setup' },
+		{ href: '/guide', icon: mdiMapOutline, toggledIcon: mdiMap, label: 'Guide' },
 		{ href: '/components', icon: uiwComponent, label: 'Components' },
 		{ href: '/layouts', icon: tablerLayout, toggledIcon: tablerLayoutFilled, label: 'Layouts' }
 	]}

@@ -14,4 +14,8 @@
 	let p: LinkProps = $props();
 </script>
 
-<a href={p.href} class={twMerge('text-primary', p.class)}>{@render p.children()}</a>
+<a
+	href={p.href}
+	class={twMerge('text-primary', p.class)}
+	target={p.href.startsWith('https') ? '_blank' : undefined}>{@render p.children()}</a
+>

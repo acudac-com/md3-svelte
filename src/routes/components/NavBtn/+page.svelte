@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Col, Divider, Row } from '$lib';
 	import NavBtn from '$lib/components/NavBtn.svelte';
-	import { mdiAboutVariant, uiwComponent } from '$lib/icons';
+	import { mdiAboutVariant, mdiMap, uiwComponent } from '$lib/icons';
 	import Example from '$lib/internal/Example.svelte';
 </script>
 
@@ -13,11 +13,11 @@
 	<p class="title-small">Examples</p>
 	<Example
 		title=""
-		code={`<NavBtn label="Setup" icon={mdiAboutVariant} href="/setup" />
+		code={`<NavBtn label="Guide" icon={mdiMap} href="/guide" />
 <NavBtn label="Components" icon={uiwComponent} href="/components" />`}
 	>
 		<Row gaps>
-			<NavBtn label="Setup" icon={mdiAboutVariant} href="/setup" />
+			<NavBtn label="Guide" icon={mdiMap} href="/guide" />
 			<NavBtn label="Components" icon={uiwComponent} href="/components" />
 		</Row>
 	</Example>
