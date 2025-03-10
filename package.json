@@ -10,6 +10,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package -o package",
+		"package-components": "vite build -c vite.config.lib.js",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -20,7 +22,7 @@
 	"exports": {
 		".": {
 			"types": "./package/index.d.ts",
-			"svelte": "./package/index.js"
+			"svelte": "./package/index.ts"
 		},
 		"./misc/styles.css": {
 			"import": "./package/misc/styles.css"
