@@ -8,7 +8,12 @@
 	<p class="body-small">A icon which opens a menu when clicked.</p>
 	<Divider />
 	<p class="title-small">Examples</p>
-	<Example title="" code={`<IconDialog icon={mdiSettings}>Open</IconDialog>`}>
+	<Example
+		title=""
+		code={`<IconMenu icon={mdiSettings}>
+	<Col class="rounded-sm bg-surface p-1 shadow-l1">Menu content</Col>
+</IconMenu>`}
+	>
 		<Row gaps>
 			<IconMenu icon={mdiSettings}>
 				<Col class="rounded-sm bg-surface p-1 shadow-l1">Menu content</Col>
