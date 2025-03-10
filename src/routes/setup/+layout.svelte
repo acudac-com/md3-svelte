@@ -343,16 +343,18 @@ export const deviconNpm: Svg = {
 export const pngGoogleMeet: Image = {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
     alt: 'Google meet image',
+	rounded: true
 }`;
 </script>
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from '../layouts/$types';
-	import { Col, Container, Row } from '$lib';
+	import { Col, Container, Menu, Row } from '$lib';
 	import { page } from '$app/state';
 	import IconMenu from '$lib/components/IconMenu.svelte';
 	import { mdiCode } from '$lib/icons';
+	import Link from '$lib/components/Link.svelte';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
@@ -405,31 +407,44 @@ export const pngGoogleMeet: Image = {
 	</Container>
 
 	<Container hFit wFull>
-		<Row justify>
-			<p class="title-medium">Icons</p>
-			<IconMenu icon={mdiCode} class="size-[30px]">
-				<pre
-					class="mr-4 max-h-[300px] max-w-[400px] overflow-scroll rounded-sm bg-surface p-1 shadow-l1">{iconsTs}</pre>
-			</IconMenu>
-		</Row>
+		<p class="title-medium mb-2">Icons</p>
 		<p>
-			All components that accept 'icon' attributes expect both SVGs and Images. The simplest pattern
-			for adding icons is to create an icons.ts file in your lib folder and export all your icons
-			from there. You can find icons at <a
-				class="text-primary"
-				href="https://icon-sets.iconify.design/">Iconify</a
-			> and simply paste the icons' raw JSON data in the icons.ts file. Refer to the example icons.ts
-			file content with the code menu above.
+			All components with 'icon' attributes accept both SVGs and Images. The simplest pattern for
+			adding icons is to create an icons.ts file in your lib folder and export all your icons from
+			there. You can find icons at <a class="text-primary" href="https://icon-sets.iconify.design/"
+				>Iconify</a
+			>
+			and simply paste the icons' raw JSON data in the icons.ts file. Refer to <Menu
+				class="font-bold text-primary"
+			>
+				{#snippet trigger()}
+					this
+				{/snippet}
+				<pre
+					class="ml-4 max-h-[400px] max-w-[500px] overflow-scroll rounded-sm bg-surface p-1 shadow-l1">{iconsTs}</pre></Menu
+			> example icons.ts.
 		</p>
 	</Container>
 
 	<Container hFit wFull>
-		<p class="title-medium">Building/customizing components</p>
+		<p class="title-medium mb-2">Dark mode</p>
+		<p>
+			Its recommended that you use the <Link href="https://www.npmjs.com/package/mode-watcher"
+				>'mode-watcher' npm library</Link
+			> for toggling between dark and light mode. See an example setup <Link
+				href="https://github.com/acudac-com/md3-svelte/blob/main/src/routes/%2Blayout.svelte"
+				>here</Link
+			>.
+		</p>
+	</Container>
+
+	<Container hFit wFull>
+		<p class="title-medium mb-2">Building/customizing components</p>
 		<p>
 			All components in this library have a 'class' attribute which you can use to customize the
-			styling of the component. This does required that you are familiar with TailwindCSS. As far as
-			possible try to use the MD3 colours (primary, secondary etc.) instead of the builtin 'red',
-			'blue' etc.
+			styling of the component. This does require that you are familiar with TailwindCSS. As far as
+			possible you should use the MD3 colours (primary, secondary etc.) instead of the builtin
+			'red', 'blue' etc.
 		</p>
 	</Container>
 </Col>

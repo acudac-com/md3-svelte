@@ -50,14 +50,14 @@
 			icon={deviconNpm}
 			tooltip="NPM Registry"
 			tooltipSide="right"
-			iconSize={28}
+			iconSize={24}
 			href="https://www.npmjs.com/package/@acudac/md3-svelte"
 		/>
 		<IconButton
 			icon={mdiGithub}
 			tooltip="Github Repo"
 			tooltipSide="right"
-			iconSize={28}
+			iconSize={30}
 			href="https://github.com/acudac-com/md3-svelte"
 		/>
 		<IconButton
