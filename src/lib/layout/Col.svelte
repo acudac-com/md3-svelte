@@ -1,7 +1,6 @@
 <script module lang="ts">
 	import { JustifyClass, type Justify } from '$lib/utils';
 	import type { Snippet } from 'svelte';
-	import { twMerge } from 'tailwind-merge';
 
 	export interface ColProps {
 		hFit?: boolean;
@@ -17,6 +16,7 @@
 </script>
 
 <script>
+	import { twMerge } from 'tailwind-merge';
 	let p: ColProps = $props();
 </script>
 
