@@ -17,6 +17,7 @@
 	<Card type="filled" href="/components/Button">Button</Card>
 	<Card type="filled" href="/components/ButtonDialog">ButtonDialog</Card>
 	<Card type="filled" href="/components/Card">Card</Card>
+	<Card type="filled" href="/components/Checkbox">Checkbox</Card>
 
 	{#snippet detailsHeading()}
 		<Row class="title-small">
