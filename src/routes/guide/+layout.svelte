@@ -364,9 +364,10 @@ export const pngGoogleMeet: Image = {
 		<p>
 			This <Link href="https://svelte.dev/docs">Svelte 5</Link> library implements the <Link
 				href="https://m3.material.io/">Material Design 3</Link
-			> open-source design system. It <Link href="https://tailwindcss.com/">TailwindCSS</Link> as far
-			as possible to allow for near 100% customization of all provided components. The latter is possible
-			thanks to <Link href="https://www.npmjs.com/package/tailwind-merge">tailwind-merge</Link>.
+			> open-source design system. It uses <Link href="https://tailwindcss.com/">TailwindCSS</Link> as
+			far as possible to allow customizing provided components. The latter is possible thanks to <Link
+				href="https://www.npmjs.com/package/tailwind-merge">tailwind-merge</Link
+			>.
 		</p>
 	</Container>
 	<Container hFit wFull>
@@ -376,8 +377,8 @@ export const pngGoogleMeet: Image = {
 			template and typescript.
 		</p>
 		<p>
-			2. Select prettier and tailwindcss as addons when prompted. Select typography when prompted
-			for tailwindcss plugins. Select your prefered package manager.
+			2. Select prettier and tailwindcss as plugins when prompted. Select typography when prompted
+			for tailwindcss plugins. Select pnpm as package manager.
 		</p>
 		<p>3. Run `pnpm add md3-svelte`</p>
 		<p>
