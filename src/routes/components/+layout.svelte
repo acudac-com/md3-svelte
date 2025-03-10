@@ -22,6 +22,12 @@
 	<Card type="filled" href="/components/ChipDialog">ChipDialog</Card>
 	<Card type="filled" href="/components/CircularProgress">CircularProgress</Card>
 	<Card type="filled" href="/components/Clickable">Clickable</Card>
+	<Card type="filled" href="/components/Divider">Divider</Card>
+	<Card type="filled" href="/components/Fab">Fab</Card>
+	<Card type="filled" href="/components/Icon">Icon</Card>
+	<Card type="filled" href="/components/IconButton">IconButton</Card>
+	<Card type="filled" href="/components/IconDialog">IconDialog</Card>
+	<Card type="filled" href="/components/IconMenu">IconMenu</Card>
 
 	{#snippet detailsHeading()}
 		<Row class="title-small">

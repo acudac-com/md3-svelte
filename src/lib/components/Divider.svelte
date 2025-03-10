@@ -13,9 +13,6 @@
 	let p: DividerProps = $props();
 </script>
 
-<hr
-	class={twMerge(
-		['my-[8px] w-full', BorderColorClass(p.color), !p.fullWidth ? 'mx-[16px]' : ''],
-		p.class
-	)}
-/>
+<div class={['my-[8px] w-full', !p.fullWidth ? 'px-[16px]' : '']}>
+	<hr class={twMerge(['w-full', BorderColorClass(p.color)], p.class)} />
+</div>
