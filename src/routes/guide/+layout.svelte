@@ -177,7 +177,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/@acudac/md3-svelte/**/*.{html,js,svelte,ts}'],
 
 	theme: {
 		extend: {
