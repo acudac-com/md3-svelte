@@ -116,11 +116,12 @@
 		/>
 	</div>
 	<Combobox.Portal>
-		<Combobox.Content sideOffset={8}>
+		<Combobox.Content sideOffset={10} align="center" side="bottom">
 			<Combobox.Viewport
 				class={twMerge(
 					[
-						'flex max-h-[200px] flex-col flex-nowrap overflow-y-auto rounded-xs bg-surface shadow-l1 dark:shadow-l2',
+						'flex max-h-[200px] w-[200px] flex-col flex-nowrap overflow-y-auto rounded-xs bg-surface shadow-l1 dark:shadow-l2',
+						p.prependIcon ? '' : 'ml-8',
 						widthClass
 					],
 					p.menuClass
