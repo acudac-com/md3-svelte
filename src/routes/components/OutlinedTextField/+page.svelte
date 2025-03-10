@@ -10,6 +10,27 @@
 	<Divider />
 
 	<Example title="" code={`<OutlinedTextField label="Example" bind:value />`}>
-		<OutlinedTextField label="Example" bind:value />
+		<Example
+			title="Types"
+			code={`<OutlinedTextField label="Example" bind:value />
+		<OutlinedTextField type="date" label="Example" />
+		<OutlinedTextField type="datetime-local" label="Example" />
+		<OutlinedTextField type="month" label="Example" />
+		<OutlinedTextField type="number" label="Example" />
+		<OutlinedTextField type="password" label="Example" />
+		<OutlinedTextField type="time" label="Example" />
+		<OutlinedTextField type="week" label="Example" />`}
+		>
+			<Col wFull gaps>
+				<OutlinedTextField label="Example" bind:value />
+				<OutlinedTextField type="date" label="Example" />
+				<OutlinedTextField type="datetime-local" label="Example" />
+				<OutlinedTextField type="month" label="Example" />
+				<OutlinedTextField type="number" label="Example" />
+				<OutlinedTextField type="password" label="Example" />
+				<OutlinedTextField type="time" label="Example" />
+				<OutlinedTextField type="week" label="Example" />
+			</Col>
+		</Example>
 	</Example>
 </Col>
