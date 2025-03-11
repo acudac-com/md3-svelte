@@ -20,11 +20,16 @@
 	};
 </script>
 
-<div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)} use:resize>
+<div
+	class={twMerge(['m3-container w-[300px] bg-surface', p.error ? 'error' : ''], p.class)}
+	use:resize
+>
 	<textarea class="body-large rounded-xs" placeholder=" " bind:value {id} disabled={p.disabled}
 	></textarea>
 	<div class="layer rounded-xs"></div>
-	<label class="body-large top-[12px]" for={id}>{p.label}</label>
+	<label class="body-large top-[12px] rounded-tl-xs rounded-tr-xs px-[2px]" for={id}
+		>{p.label}</label
+	>
 </div>
 
 <style>
@@ -51,8 +56,7 @@
 		left: 0.75rem;
 		color: rgb(var(--error, var(--md-sys-color-on-surface-variant)));
 		background-color: transparent;
-		border-radius: 10px;
-		padding: 0 0.25rem;
+		/* padding: 0 0.25rem; */
 		pointer-events: none;
 		transition:
 			all 200ms,
@@ -78,10 +82,10 @@
 
 	textarea:focus ~ label,
 	textarea:not(:placeholder-shown) ~ label {
-		background-color: rgb(var(--m3-util-background, var(--md-sys-color-surface)));
-		top: calc(var(--m3-font-body-small-height, 1rem) * -0.5);
+		background-color: inherit;
+		top: calc(var(--m3-font-body-small-height, 1rem) * -0.4);
 		font-size: var(--m3-font-body-small-size, 0.75rem);
-		line-height: var(--m3-font-body-small-height, 1rem);
+		line-height: var(--m3-font-body-small-height, 0.75rem);
 		letter-spacing: var(--m3-font-body-small-tracking, 0.4);
 	}
 	textarea:hover ~ label {

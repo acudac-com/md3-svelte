@@ -6,7 +6,7 @@
 	const id = crypto.randomUUID();
 </script>
 
-<div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)}>
+<div class={twMerge(['m3-container w-[300px] bg-surface', p.error ? 'error' : ''], p.class)}>
 	<input
 		onfocus={p.onfocus}
 		oninput={p.oninput}
@@ -18,7 +18,9 @@
 		disabled={p.disabled}
 	/>
 	<div class="layer rounded-xs"></div>
-	<label class="body-large top-[12px]" for={id}>{p.label}</label>
+	<label class="body-large top-[12px] rounded-tl-xs rounded-tr-xs px-[2px]" for={id}
+		>{p.label}</label
+	>
 </div>
 
 <style>
@@ -44,7 +46,7 @@
 		left: 0.75rem;
 		color: rgb(var(--error, var(--md-sys-color-on-surface-variant)));
 		background-color: transparent;
-		padding: 0 0.25rem;
+		/* padding: 0 0.25rem; */
 		pointer-events: none;
 		transition:
 			all 200ms,
@@ -91,10 +93,10 @@
 
 	input:focus ~ label,
 	input:not(:placeholder-shown) ~ label {
-		background-color: rgb(var(--m3-util-background, var(--md-sys-color-surface)));
-		top: calc(1rem * -0.5);
+		background-color: inherit;
+		top: calc(1rem * -0.4);
 		font-size: 0.75rem;
-		line-height: 1rem;
+		line-height: 0.75rem;
 		letter-spacing: 0.4;
 	}
 	input:hover ~ label {
