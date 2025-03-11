@@ -5,8 +5,8 @@
 
 <Row hFull justify="center">
 	<p class="text-center">
-		Welcome to @acudac/md3-svelte. If its your first time here, go to <Link href="/setup"
-			>Setup</Link
+		Welcome to @acudac/md3-svelte. If its your first time here, go to <Link href="/guide"
+			>Guide</Link
 		>. <br />Otherwise you can explore our <Link href="/components">Components</Link> or <Link
 			href="/layouts">Layouts</Link
 		>

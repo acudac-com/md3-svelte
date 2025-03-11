@@ -15,7 +15,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import { twMerge } from 'tailwind-merge';
 	let p: ColProps = $props();
 </script>

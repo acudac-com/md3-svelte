@@ -16,7 +16,7 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	let p: RowProps = $props();
 </script>
 

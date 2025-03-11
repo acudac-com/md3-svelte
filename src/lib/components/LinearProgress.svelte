@@ -14,7 +14,7 @@
 	let p: LinearProgressProps = $props();
 </script>
 
-<div class="px-[4px]">
+<div class="w-full px-[4px]">
 	<div
 		class={twMerge(
 			[

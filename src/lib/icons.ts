@@ -46,6 +46,12 @@ export const mdiArrowBack: Svg = {
     "body": "<path fill=\"currentColor\" d=\"M20 11v2H8l5.5 5.5l-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5L8 11z\" />"
 }
 
+export const mdiContentCopy: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12z\" />"
+}
+
 export const uiwComponent: Svg = {
     "width": 20,
     "height": 20,

@@ -352,8 +352,9 @@ export const pngGoogleMeet: Image = {
 	import type { LayoutData } from '../layouts/$types';
 	import { Col, Container, Menu, Row } from '$lib';
 	import IconMenu from '$lib/components/IconMenu.svelte';
-	import { mdiCode } from '$lib/icons';
+	import { mdiCode, mdiContentCopy } from '$lib/icons';
 	import Link from '$lib/components/Link.svelte';
+	import IconButton from '$lib/components/IconButton.svelte';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
@@ -380,7 +381,7 @@ export const pngGoogleMeet: Image = {
 			2. Select prettier and tailwindcss as plugins when prompted. Select typography when prompted
 			for tailwindcss plugins. Select pnpm as package manager.
 		</p>
-		<p>3. Run `pnpm add md3-svelte`</p>
+		<p>3. Run `pnpm add @acudac/md3-svelte`</p>
 		<p>
 			4. Pick and export your theme as CSS using the <Link
 				href="https://material-foundation.github.io/material-theme-builder/">MD3 Theme Builder</Link
@@ -392,25 +393,43 @@ export const pngGoogleMeet: Image = {
 			class="label-small pl-4 text-tertiary">{`"theme": "find src/theme -type f -exec sed -i '' -e 's/rgb(//g' -e 's/);/;/g' {} +"`}</pre>
 		<p>5. Override the following files' content with the provided code.</p>
 		<Row class="pl-4" gaps>
-			<p>src/app.html</p>
+			<p class="mr-10">src/app.html</p>
 			<IconMenu icon={mdiCode} class="size-[30px]">
 				<pre
 					class="mr-4 max-h-[400px] max-w-[400px] overflow-scroll rounded-sm bg-surface p-1 shadow-l1">{appHtml}</pre>
 			</IconMenu>
+			<IconButton
+				icon={mdiContentCopy}
+				onclick={(e) => {
+					navigator.clipboard.writeText(appHtml);
+				}}
+			/>
 		</Row>
 		<Row class="pl-4" gaps>
-			<p>src/app.css</p>
+			<p class="mr-12">src/app.css</p>
 			<IconMenu icon={mdiCode} class="size-[30px]">
 				<pre
 					class="mr-4 max-h-[400px] max-w-[400px] overflow-scroll rounded-sm bg-surface p-1 shadow-l1">{appCss}</pre>
 			</IconMenu>
+			<IconButton
+				icon={mdiContentCopy}
+				onclick={(e) => {
+					navigator.clipboard.writeText(appCss);
+				}}
+			/>
 		</Row>
 		<Row class="pl-4" gaps>
-			<p>tailwind.config.ts</p>
+			<p class="pr-2">tailwind.config.ts</p>
 			<IconMenu icon={mdiCode} class="size-[30px]">
 				<pre
 					class="mr-4 max-h-[400px] max-w-[400px] overflow-scroll rounded-sm bg-surface p-1 shadow-l1">{tailwindConfig}</pre>
 			</IconMenu>
+			<IconButton
+				icon={mdiContentCopy}
+				onclick={(e) => {
+					navigator.clipboard.writeText(tailwindConfig);
+				}}
+			/>
 		</Row>
 		<p>
 			6. Combine <Link href="/layouts">Layouts</Link> and <Link href="/components">Components</Link>
