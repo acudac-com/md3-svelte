@@ -18,14 +18,14 @@
 	<input
 		onfocus={p.onfocus}
 		oninput={p.oninput}
-		class={twMerge(['body-large', p.rounded ? 'rounded-full' : 'rounded-xs'], p.class)}
+		class={['body-large', p.rounded ? 'rounded-full' : 'rounded-xs']}
 		placeholder=" "
 		type={p.type}
 		bind:value
 		{id}
 		disabled={p.disabled}
 	/>
-	<div class={twMerge(['layer', p.rounded ? 'rounded-full' : 'rounded-xs'], p.class)}></div>
+	<div class={['layer', p.rounded ? 'rounded-full' : 'rounded-xs']}></div>
 	<label class="body-large top-[12px] rounded-tl-xs rounded-tr-xs px-[2px]" for={id}
 		>{p.label}</label
 	>

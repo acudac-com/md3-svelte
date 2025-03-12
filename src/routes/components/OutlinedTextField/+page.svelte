@@ -21,7 +21,7 @@
 		<OutlinedTextField type="week" label="Example" />`}
 	>
 		<Col wFull gaps>
-			<OutlinedTextField label="Example" bind:value rounded />
+			<OutlinedTextField label="Example" bind:value class="bg-surface-container-lowest" />
 			<OutlinedTextField type="date" label="Example" />
 			<OutlinedTextField type="datetime-local" label="Example" />
 			<OutlinedTextField type="month" label="Example" />
