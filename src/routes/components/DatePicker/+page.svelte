@@ -9,12 +9,12 @@
 	<p class="body-small">Allows a user to pick a date.</p>
 	<Divider />
 	<Example
-		class="h-full"
+		class="h-full items-center"
 		title="States"
 		code={`<DatePicker bind:value label="Birth date" disabled />
 <DatePicker bind:value label="Birth date" />`}
 	>
-		<Col gaps>
+		<Col gaps wFull>
 			<DatePicker bind:value label="Birth date" disabled />
 			<DatePicker bind:value label="Birth date" />
 		</Col>
