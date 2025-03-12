@@ -56,7 +56,7 @@ opacity: ${Math.min(t * 3, 1)};`
 <div
 	class={twMerge(
 		[
-			'm3-container h-[54px] w-[300px] min-w-[200px] rounded-tl-xs rounded-tr-xs',
+			'm3-container h-[54px] w-[300px] min-w-[200px] max-w-full rounded-tl-xs rounded-tr-xs',
 			p.disabled ? 'disabled' : ''
 		],
 		p.class
