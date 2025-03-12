@@ -3,6 +3,7 @@
 		value?: string;
 		disabled?: boolean;
 		label: string;
+		class?: string | string[];
 	}
 </script>
 
@@ -14,6 +15,7 @@
 	import { mdiCalendar } from '$lib/icons';
 	import DatePickerDocked from './DatePickerDocked.svelte';
 	import { easeEmphasized } from './easing';
+	import { twMerge } from 'tailwind-merge';
 
 	let { value = $bindable(''), ...p }: DatePickerProps = $props();
 	let required = false;
@@ -52,7 +54,13 @@ opacity: ${Math.min(t * 3, 1)};`
 </script>
 
 <div
-	class={['m3-container rounded-tl-xs rounded-tr-xs', p.disabled ? 'disabled' : '']}
+	class={twMerge(
+		[
+			'm3-container h-[54px] w-[300px] min-w-[200px] rounded-tl-xs rounded-tr-xs',
+			p.disabled ? 'disabled' : ''
+		],
+		p.class
+	)}
 	class:has-js={hasJs}
 	bind:this={container}
 >
@@ -81,8 +89,6 @@ opacity: ${Math.min(t * 3, 1)};`
 <style>
 	.m3-container {
 		position: relative;
-		height: 3.5rem;
-		min-width: 20rem;
 		background-color: rgb(var(--md-sys-color-surface-container-highest));
 		border-bottom: solid 0.0625rem rgb(var(--md-sys-color-on-surface-variant));
 	}

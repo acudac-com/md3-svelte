@@ -20,7 +20,7 @@
 		<TextField type="time" label="Example" />
 		<TextField type="week" label="Example" />`}
 	>
-		<Col wFull gaps>
+		<Col gaps wFull>
 			<TextField label="Example" bind:value />
 			<TextField type="date" label="Example" />
 			<TextField type="datetime-local" label="Example" />

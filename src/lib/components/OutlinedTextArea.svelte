@@ -21,7 +21,7 @@
 </script>
 
 <div
-	class={twMerge(['m3-container w-[300px] bg-surface', p.error ? 'error' : ''], p.class)}
+	class={twMerge(['m3-container w-[300px] max-w-full bg-surface', p.error ? 'error' : ''], p.class)}
 	use:resize
 >
 	<textarea class="body-large rounded-xs" placeholder=" " bind:value {id} disabled={p.disabled}

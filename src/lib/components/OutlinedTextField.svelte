@@ -11,7 +11,11 @@
 
 <div
 	class={twMerge(
-		['m3-container w-[300px] bg-surface', p.error ? 'error' : '', p.rounded ? 'rounded-full' : ''],
+		[
+			'm3-container h-[54px] w-[300px] max-w-full overflow-x-clip bg-surface',
+			p.error ? 'error' : '',
+			p.rounded ? 'rounded-full' : ''
+		],
 		p.class
 	)}
 >
@@ -35,8 +39,6 @@
 	.m3-container {
 		position: relative;
 		align-items: center;
-		height: 3.5rem;
-		min-width: 15rem;
 	}
 	input {
 		position: absolute;

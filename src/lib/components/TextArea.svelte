@@ -24,7 +24,10 @@
 	};
 </script>
 
-<div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)} use:resize>
+<div
+	class={twMerge(['m3-container w-[300px] max-w-full', p.error ? 'error' : ''], p.class)}
+	use:resize
+>
 	<textarea
 		class="m3-font-body-large rounded-tl-xs rounded-tr-xs"
 		placeholder=" "

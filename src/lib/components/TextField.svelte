@@ -18,7 +18,12 @@
 	const id = crypto.randomUUID();
 </script>
 
-<div class={twMerge(['m3-container w-[300px]', p.error ? 'error' : ''], p.class)}>
+<div
+	class={twMerge(
+		['m3-container h-[54px] w-[300px] max-w-full overflow-clip', p.error ? 'error' : ''],
+		p.class
+	)}
+>
 	<input
 		class="body-large rounded-tl-xs rounded-tr-xs"
 		onfocus={p.onfocus}
@@ -37,8 +42,6 @@
 	.m3-container {
 		position: relative;
 		align-items: center;
-		height: 3.5rem;
-		min-width: 15rem;
 	}
 	input {
 		position: absolute;
