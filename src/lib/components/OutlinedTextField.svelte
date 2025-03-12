@@ -2,7 +2,10 @@
 	import { twMerge } from 'tailwind-merge';
 	import type { TextFieldProps } from './TextField.svelte';
 
-	let { value = $bindable(), ...p }: TextFieldProps = $props();
+	interface OutlinedTextFieldProps extends TextFieldProps {
+		rounded?: boolean;
+	}
+	let { value = $bindable(), ...p }: OutlinedTextFieldProps = $props();
 	const id = crypto.randomUUID();
 </script>
 

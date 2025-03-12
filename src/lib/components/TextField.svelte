@@ -6,7 +6,6 @@
 		value?: string;
 		disabled?: boolean;
 		error?: boolean;
-		rounded?: boolean;
 		type?: 'date' | 'datetime-local' | 'month' | 'number' | 'password' | 'text' | 'time' | 'week';
 		class?: string | string[];
 		onfocus?: (e: Event) => void;
