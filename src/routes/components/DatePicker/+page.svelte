@@ -1,14 +1,22 @@
 <script lang="ts">
 	import { Col, DatePicker, Divider, Row } from '$lib';
 	import Example from '$lib/internal/Example.svelte';
+	let value = $state('');
+	$inspect(value);
 </script>
 
-<Col wFull hFit gaps>
+<Col wFull gaps>
 	<p class="body-small">Allows a user to pick a date.</p>
 	<Divider />
-	<Example title="" code={`<ChipDialog text="Primary">Open</ChipDialog>`}>
-		<Row gaps>
-			<DatePicker />
-		</Row>
+	<Example
+		class="h-full"
+		title="States"
+		code={`<DatePicker bind:value label="Birth date" disabled />
+<DatePicker bind:value label="Birth date" />`}
+	>
+		<Col gaps>
+			<DatePicker bind:value label="Birth date" disabled />
+			<DatePicker bind:value label="Birth date" />
+		</Col>
 	</Example>
 </Col>

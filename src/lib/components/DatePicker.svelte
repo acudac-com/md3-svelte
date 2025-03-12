@@ -1,6 +1,13 @@
+<script module lang="ts">
+	interface DatePickerProps {
+		value?: string;
+		disabled?: boolean;
+		label: string;
+	}
+</script>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { HTMLInputAttributes } from 'svelte/elements';
 	import type { TransitionConfig } from 'svelte/transition';
 
 	import { Icon } from '$lib';
@@ -8,18 +15,16 @@
 	import DatePickerDocked from './DatePickerDocked.svelte';
 	import { easeEmphasized } from './easing';
 
-	let label = 'Label';
-	export let date = '';
-	export let required = false;
-	export let disabled = false;
+	let { value = $bindable(''), ...p }: DatePickerProps = $props();
+	let required = false;
 
 	const id = crypto.randomUUID();
-	let hasJs = false;
+	let hasJs = $state(false);
 	onMount(() => {
 		hasJs = true;
 	});
 
-	let picker = false;
+	let picker = $state(false);
 	let container: HTMLDivElement;
 	const clickOutside = (_node: Node) => {
 		const handleClick = (event: Event) => {
@@ -47,23 +52,27 @@ opacity: ${Math.min(t * 3, 1)};`
 </script>
 
 <div
-	class="m3-container rounded-tl-xs rounded-tr-xs"
+	class={['m3-container rounded-tl-xs rounded-tr-xs', p.disabled ? 'disabled' : '']}
 	class:has-js={hasJs}
-	class:disabled
 	bind:this={container}
 >
-	<input type="date" class="body-medium" {disabled} {required} {id} bind:value={date} />
-	<label class="label-small pt-[4px]" style="font-size:12px" for={id}>{label}</label>
-	<button type="button" class="rounded-tr-xs" {disabled} on:click={() => (picker = !picker)}>
+	<input type="date" class="body-medium" disabled={p.disabled} {required} {id} bind:value />
+	<label class="label-small pt-[4px]" style="font-size:12px" for={id}>{p.label}</label>
+	<button
+		type="button"
+		class="rounded-tr-xs"
+		disabled={p.disabled}
+		onclick={() => (picker = !picker)}
+	>
 		<Icon icon={mdiCalendar} />
 	</button>
 	{#if picker}
 		<div class="picker z-50" use:clickOutside transition:enterExit>
 			<DatePickerDocked
 				clearable={!required}
-				bind:date
+				bind:date={value}
 				on:close={() => (picker = false)}
-				on:setDate={(e: any) => (date = e.detail)}
+				on:setDate={(e: any) => (value = e.detail)}
 			/>
 		</div>
 	{/if}
