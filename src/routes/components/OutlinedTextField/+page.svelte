@@ -20,8 +20,8 @@
 		<OutlinedTextField type="time" label="Example" />
 		<OutlinedTextField type="week" label="Example" />`}
 	>
-		<Col wFull gaps class="bg-surface-container">
-			<OutlinedTextField label="Example" bind:value />
+		<Col wFull gaps>
+			<OutlinedTextField label="Example" bind:value rounded />
 			<OutlinedTextField type="date" label="Example" />
 			<OutlinedTextField type="datetime-local" label="Example" />
 			<OutlinedTextField type="month" label="Example" />
@@ -32,3 +32,31 @@
 		</Col>
 	</Example>
 </Col>
+
+<style>
+	:-webkit-datetime-edit {
+		padding: 1em;
+	}
+	:-webkit-datetime-edit-fields-wrapper {
+		background: silver;
+	}
+	:-webkit-datetime-edit-text {
+		color: red;
+		padding: 0 0.3em;
+	}
+	:-webkit-datetime-edit-month-field {
+		color: blue;
+	}
+	:-webkit-datetime-edit-day-field {
+		color: green;
+	}
+	:-webkit-datetime-edit-year-field {
+		color: purple;
+	}
+	:-webkit-inner-spin-button {
+		display: none;
+	}
+	:-webkit-calendar-picker-indicator {
+		background: orange;
+	}
+</style>

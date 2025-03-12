@@ -6,18 +6,23 @@
 	const id = crypto.randomUUID();
 </script>
 
-<div class={twMerge(['m3-container w-[300px] bg-surface', p.error ? 'error' : ''], p.class)}>
+<div
+	class={twMerge(
+		['m3-container w-[300px] bg-surface', p.error ? 'error' : '', p.rounded ? 'rounded-full' : ''],
+		p.class
+	)}
+>
 	<input
 		onfocus={p.onfocus}
 		oninput={p.oninput}
-		class="body-large rounded-xs"
+		class={twMerge(['body-large', p.rounded ? 'rounded-full' : 'rounded-xs'], p.class)}
 		placeholder=" "
 		type={p.type}
 		bind:value
 		{id}
 		disabled={p.disabled}
 	/>
-	<div class="layer rounded-xs"></div>
+	<div class={twMerge(['layer', p.rounded ? 'rounded-full' : 'rounded-xs'], p.class)}></div>
 	<label class="body-large top-[12px] rounded-tl-xs rounded-tr-xs px-[2px]" for={id}
 		>{p.label}</label
 	>
@@ -43,7 +48,7 @@
 	}
 	label {
 		position: absolute;
-		left: 0.75rem;
+		left: 1rem;
 		color: rgb(var(--error, var(--md-sys-color-on-surface-variant)));
 		background-color: transparent;
 		/* padding: 0 0.25rem; */

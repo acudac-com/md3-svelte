@@ -116,3 +116,33 @@ export const pngGoogleMeet: Image = {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHYQvwh49wzcGC-_rouv-nSjd4btFc-zRp9w&s',
     alt: 'Google meet image',
 }
+
+export const mdiCalendar: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z\" />"
+}
+
+export const mdiChevronLeft: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z\" />"
+}
+
+export const mdiChevronRight: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z\" />"
+}
+
+export const mdiChevronDown: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z\" />"
+}
+
+export const mdiChevronUp: Svg = {
+    "width": 24,
+    "height": 24,
+    "body": "<path fill=\"currentColor\" d=\"M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6z\" />"
+}

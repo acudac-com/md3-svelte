@@ -19,6 +19,7 @@
 		extends Omit<ClickableProps, 'children' | 'tooltip' | 'tooltipSide'> {
 		text: string;
 		prependIcon?: Svg | Image;
+		textSize?: 'large' | 'medium' | 'small';
 		appendIcon?: Svg | Image;
 		type?: 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text' | 'toggled';
 		color?: MainColor;
@@ -26,14 +27,21 @@
 </script>
 
 <script lang="ts">
-	let { class: cls, toggled = $bindable(false), type = 'filled', ...p }: ButtonProps = $props();
+	let {
+		class: cls,
+		textSize = 'large',
+		toggled = $bindable(false),
+		type = 'filled',
+		...p
+	}: ButtonProps = $props();
 
 	let defaultColor: MainColor = $derived(type == 'tonal' ? 'secondary' : 'primary');
 </script>
 
 <Clickable
 	class={twMerge(
-		'label-large h-[40px] gap-[8px] rounded-full',
+		'h-[40px] gap-[8px] rounded-full',
+		textSize == 'large' ? 'label-large' : textSize == 'medium' ? 'label-medium' : 'label-small',
 		!p.prependIcon && !p.appendIcon
 			? 'px-[24px]'
 			: !p.prependIcon

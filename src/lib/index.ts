@@ -35,6 +35,7 @@ export { default as FabContainer } from './layout/FabContainer.svelte'
 export { default as Container } from './layout/Container.svelte'
 export { default as RootLayout } from './layout/RootLayout.svelte'
 export { default as Select } from './components/Select.svelte'
+export { default as DatePicker } from './components/DatePicker.svelte'
 export { default as ListDetailsLayout } from './layout/ListDetailsLayout.svelte'
 
 export type { Svg, Image } from './icons'

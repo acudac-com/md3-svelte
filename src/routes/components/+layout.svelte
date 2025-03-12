@@ -22,6 +22,7 @@
 	<Card type="filled" href="/components/ChipDialog">ChipDialog</Card>
 	<Card type="filled" href="/components/CircularProgress">CircularProgress</Card>
 	<Card type="filled" href="/components/Clickable">Clickable</Card>
+	<Card type="filled" href="/components/DatePicker">DatePicker</Card>
 	<Card type="filled" href="/components/Divider">Divider</Card>
 	<Card type="filled" href="/components/Fab">Fab</Card>
 	<Card type="filled" href="/components/FabDialog">FabDialog</Card>
