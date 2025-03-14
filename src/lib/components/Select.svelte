@@ -88,7 +88,7 @@
 	<div
 		class={twMerge(
 			[
-				'body-large relative flex items-center gap-2 rounded-xs border border-outline px-2 py-[4px]',
+				'body-large relative flex max-w-full items-center gap-2 rounded-xs border border-outline px-2 py-[4px]',
 				open ? 'border-2' : '',
 				widthClass
 			],
