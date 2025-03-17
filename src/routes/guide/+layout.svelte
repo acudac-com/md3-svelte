@@ -7,6 +7,11 @@
 	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<script type="module">
+  	if (!("anchorName" in document.documentElement.style)) {
+    	import("https://unpkg.com/@oddbird/css-anchor-positioning");
+  	}
+	</script>
 	%sveltekit.head%
 </head>
 

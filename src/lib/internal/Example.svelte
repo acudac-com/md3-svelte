@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import { Col, Container, Icon, Menu, Row } from '$lib';
+	import { Col, Container, Icon, IconButton, Menu, Row } from '$lib';
 	import { mdiCode } from '$lib/icons';
 	import type { Snippet } from 'svelte';
 	export interface ExampleProps {
@@ -12,24 +12,18 @@
 
 <script lang="ts">
 	let p: ExampleProps = $props();
-	let open = $state(false);
 </script>
 
 <Col wFull hFit class={p.class}>
-	<Row justify>
+	<Row justify class="mb-1">
 		<p>{p.title}</p>
-		<Menu bind:open>
-			{#snippet trigger()}
-				<Icon
-					icon={mdiCode}
-					class={[
-						'm-1 rounded-full p-[2px] hover:bg-primary-container',
-						open ? 'bg-primary-container' : ''
-					]}
-				/>
+
+		<Menu side="top" alignment="end-end">
+			{#snippet trigger(ms)}
+				<button style={ms.triggerStyle} popovertarget={ms.popOverTarget}>code</button>
+				<!-- <IconButton icon={mdiCode} bind:toggled={ms.open} anchorName={ms.anchorName} /> -->
 			{/snippet}
-			<pre
-				class="mx-4 max-h-[500px] max-w-[700px] overflow-scroll rounded-sm bg-surface p-2 shadow-l1">{p.code}</pre>
+			<pre class="mx-4 max-h-[500px] max-w-[700px] overflow-scroll">{p.code}</pre>
 		</Menu>
 	</Row>
 	<Container level="lowest" wFull class="rounded-md md:rounded-lg">
