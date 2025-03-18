@@ -1,19 +1,20 @@
 <script lang="ts">
 	import { Col, Divider, Icon, Select } from '$lib';
+	import MultiSelect from '$lib/components/MultiSelect.svelte';
 	import { mdiSettings } from '$lib/icons';
 	import Example from '$lib/internal/Example.svelte';
 	import Row from '$lib/layout/Row.svelte';
-	let value = $state('');
+	let value: string[] = $state([]);
 	$inspect(value);
 </script>
 
 <Col wFull hFit gaps>
-	<p class="body-small">Select lets users pick one item from a list.</p>
+	<p class="body-small">MultiSelect lets users pick one or more items from a list.</p>
 	<Divider />
 
 	<Example title="Basic" code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />`}>
 		<Col class="items-start" wFull gaps>
-			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />
+			<MultiSelect values={['Apple', 'Banana', 'Pear']} label="Fruit" />
 		</Col>
 	</Example>
 
@@ -34,7 +35,7 @@
 </Select>`}
 	>
 		<Col class="items-start" wFull gaps>
-			<Select
+			<MultiSelect
 				values={['Apple', 'Banana', 'Pear']}
 				label="Fruit"
 				bind:value
@@ -46,7 +47,7 @@
 						<Icon icon={mdiSettings} />
 					</Row>
 				{/snippet}
-			</Select>
+			</MultiSelect>
 		</Col>
 	</Example>
 </Col>

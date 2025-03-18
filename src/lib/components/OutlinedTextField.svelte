@@ -21,6 +21,7 @@
 >
 	<input
 		onfocus={p.onfocus}
+		onkeyup={p.onkeyup}
 		onfocusout={p.onfocusout}
 		oninput={p.oninput}
 		style={`anchor-name:${menuAnchorName}`}

@@ -11,6 +11,7 @@
 		onfocus?: (e: Event) => void;
 		onfocusout?: (e: Event) => void;
 		oninput?: (e: Event) => void;
+		onkeyup?: (e: KeyboardEvent) => void;
 		menuAnchorName?: string;
 		inputClass?: string | string[];
 	};
@@ -31,6 +32,7 @@
 		class={twMerge('body-large rounded-tl-xs rounded-tr-xs', p.inputClass)}
 		onfocus={p.onfocus}
 		onfocusout={p.onfocusout}
+		onkeyup={p.onkeyup}
 		style={`anchor-name:${menuAnchorName}`}
 		oninput={p.oninput}
 		placeholder=" "

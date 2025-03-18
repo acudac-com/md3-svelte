@@ -1,8 +1,12 @@
 <script module lang="ts">
-	import Layer from '$lib/ripple/Layer.svelte';
-	import { Divider, Icon } from '$lib';
-	import { twMerge } from 'tailwind-merge';
+	import { Icon, IconButton } from '$lib';
 	import type { Snippet } from 'svelte';
+	import { Menu } from '$lib';
+	import OutlinedTextField from './OutlinedTextField.svelte';
+	import Clickable from './Clickable.svelte';
+	import { mdiChevronDown, mdiClose } from '$lib/icons';
+	import Row from '$lib/layout/Row.svelte';
+	import { text } from '@sveltejs/kit';
 
 	export interface Value {
 		toString(): string;
@@ -15,27 +19,13 @@
 		class?: string | string[];
 		menuClass?: string | string[];
 		keepFocusOnSelect?: boolean;
-
+		clearable?: boolean;
 		itemSnippet?: Snippet<[T]>;
-		width?: ContainerSize;
 	}
 </script>
 
 <script lang="ts" generics="T extends Value">
-	import { Menu } from '$lib';
-	import { text } from '@sveltejs/kit';
-	import OutlinedTextField from './OutlinedTextField.svelte';
-	import Clickable from './Clickable.svelte';
-	import { ContainerWidthClass, type ContainerSize } from '$lib/utils';
-	import { mdiChevronDown } from '$lib/icons';
-	import Row from '$lib/layout/Row.svelte';
-
-	let {
-		open = $bindable(false),
-		width = '300px',
-		value = $bindable(),
-		...p
-	}: SelectProps<T> = $props();
+	let { open = $bindable(false), value = $bindable(), ...p }: SelectProps<T> = $props();
 
 	let searchValue = $state('');
 	let textValue = $state('');
@@ -82,7 +72,7 @@
 		<Row>
 			<OutlinedTextField
 				inputClass="cursor-pointer"
-				class={[ContainerWidthClass(width)]}
+				class={p.class}
 				menuAnchorName={md.anchorName}
 				label={p.label}
 				bind:value={searchValue}
@@ -109,8 +99,31 @@
 						}
 					}, 100);
 				}}
+				onkeyup={(e) => {
+					if (e.key == 'Enter' && filteredValues.length > 0) {
+						textValue = filteredValues[0].toString();
+						textValueOnFocus = textValue;
+						let htmlEl = e.target as HTMLInputElement;
+						htmlEl.blur();
+					}
+					if (e.key == 'Escape') {
+						let htmlEl = e.target as HTMLInputElement;
+						htmlEl.blur();
+					}
+				}}
 			/>
-			<Icon icon={mdiChevronDown} class="-mx-4" />
+			{#if textValue && p.clearable}
+				<IconButton
+					icon={mdiClose}
+					class="-mx-9 size-[30px]"
+					iconSize="18"
+					onclick={() => {
+						textValue = '';
+					}}
+				/>
+			{:else}
+				<Icon icon={mdiChevronDown} class="-mx-4" />
+			{/if}
 		</Row>
 	{/snippet}
 	{#each filteredValues as val, i (i + val.toString())}
