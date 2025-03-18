@@ -7,6 +7,7 @@
 
 	const now = new Date();
 
+	export let requireOk = false;
 	export let display = 'flex';
 	export let date = '';
 	export let clearable: boolean;
@@ -20,6 +21,10 @@
 		chosenDate: string;
 	$: chosenDate = date;
 
+	$: if (!requireOk) {
+		dispatch('setDate', chosenDate);
+	}
+
 	const getLongMonth = (month: number) =>
 		new Date(0, month).toLocaleDateString(undefined, { month: 'long' });
 	const dispatch = createEventDispatcher();
@@ -31,6 +36,7 @@
 		<CalendarPicker {focusedMonth} {focusedYear} {dateValidator} bind:chosenDate />
 		<Actions
 			{clearable}
+			{requireOk}
 			chosenDate={Boolean(chosenDate)}
 			on:clear={() => (chosenDate = '')}
 			on:cancel={() => {

@@ -2,6 +2,7 @@
 	import { Button } from '$lib';
 	import { createEventDispatcher } from 'svelte';
 
+	export let requireOk = false;
 	export let clearable: boolean;
 	export let chosenDate: boolean;
 	const dispatch = createEventDispatcher();
@@ -14,13 +15,15 @@
 		</span>
 	{/if}
 	<Button type="text" onclick={() => dispatch('cancel')} text="Cancel" />
-	<Button
-		type="text"
-		textSize="medium"
-		disabled={!clearable && !chosenDate}
-		onclick={() => dispatch('ok')}
-		text="OK"
-	/>
+	{#if requireOk}
+		<Button
+			type="text"
+			textSize="medium"
+			disabled={!clearable && !chosenDate}
+			onclick={() => dispatch('ok')}
+			text="OK"
+		/>
+	{/if}
 </div>
 
 <style>

@@ -3,6 +3,7 @@
 		value?: string;
 		disabled?: boolean;
 		label: string;
+		requireOk?: boolean;
 		class?: string | string[];
 	}
 </script>
@@ -77,6 +78,7 @@ opacity: ${Math.min(t * 3, 1)};`
 	{#if picker}
 		<div class="picker z-50" use:clickOutside transition:enterExit>
 			<DatePickerDocked
+				requireOk={p.requireOk}
 				clearable={!required}
 				bind:date={value}
 				on:close={() => (picker = false)}
