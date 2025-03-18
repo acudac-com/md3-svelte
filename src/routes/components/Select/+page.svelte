@@ -20,15 +20,6 @@
 	</Example>
 
 	<Example
-		title="Icon"
-		code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" prependIcon={mdiSettings} />`}
-	>
-		<Col class="items-start" wFull gaps>
-			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />
-		</Col>
-	</Example>
-
-	<Example
 		title="Custom item"
 		code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit">
 	{#snippet item(fruit)}
@@ -40,7 +31,7 @@
 </Select>`}
 	>
 		<Col class="items-start" wFull gaps>
-			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" bind:value width="full">
+			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" bind:value>
 				{#snippet itemSnippet(fruit)}
 					<Row justify>
 						{fruit} - {fruit}
