@@ -101,7 +101,7 @@
 		<Row>
 			<OutlinedTextField
 				inputClass="cursor-pointer text-ellipsis"
-				class={twMerge(['pr-8'], p.class)}
+				class={twMerge(['max-w-full pr-8'], p.class)}
 				menuAnchorName={md.anchorName}
 				label={p.label}
 				bind:value={searchValue}

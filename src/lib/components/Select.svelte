@@ -7,6 +7,7 @@
 	import { mdiChevronDown, mdiClose } from '$lib/icons';
 	import Row from '$lib/layout/Row.svelte';
 	import { ContainerMaxHeightClass, type ContainerSize } from '$lib/utils';
+	import { twMerge } from 'tailwind-merge';
 
 	export interface Value {
 		toString(): string;
@@ -83,7 +84,7 @@
 		<Row>
 			<OutlinedTextField
 				inputClass="cursor-pointer"
-				class={p.class}
+				class={twMerge('max-w-full', p.class)}
 				menuAnchorName={md.anchorName}
 				label={p.label}
 				bind:value={searchValue}
