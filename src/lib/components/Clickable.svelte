@@ -12,22 +12,33 @@
 		onclick?: (e: Event) => void;
 		href?: string;
 		toggled?: boolean;
-		noHrefAutoToggle?: boolean;
+		disableAutoToggle?: boolean;
 		class?: string | string[];
 		disabled?: boolean;
 		disabledTitle?: string;
 		tooltip?: string | string[];
+		tooltipOpenDelay?: number;
+		tooltipCloseDelay?: number;
 		tooltipSide?: 'top' | 'bottom' | 'left' | 'right';
+		anchorName?: string;
 	}
 </script>
 
 <script lang="ts">
-	let { toggled = $bindable(), tooltipSide = 'top', ...p }: ClickableProps = $props();
+	import Menu from '$lib/layout/Menu.svelte';
+
+	let {
+		toggled = $bindable(),
+		tooltipOpenDelay = 300,
+		tooltipCloseDelay = 600,
+		tooltipSide = 'top',
+		...p
+	}: ClickableProps = $props();
 
 	let href = $derived(newToggledHref(page.url, p.href));
 	$effect(() => {
 		if (href) {
-			if (!p.noHrefAutoToggle && hrefIsToggled(page.url, p.href)) {
+			if (!p.disableAutoToggle && hrefIsToggled(page.url, p.href)) {
 				toggled = true;
 			} else {
 				toggled = false;
@@ -58,77 +69,66 @@
 	});
 </script>
 
-{#if href != undefined}
-	<Tooltip.Provider>
-		<Tooltip.Root delayDuration={300}>
-			<Tooltip.Trigger
-				title={p.disabled && p.disabledTitle ? p.disabledTitle : undefined}
-				disabled={p.disabled}
+<Menu
+	anchorName={p.anchorName}
+	side={tooltipSide}
+	disableAutoClose
+	class="rounded-xs bg-inverse-surface p-1 text-inverse-on-surface"
+>
+	{#snippet trigger(md)}
+		{#if href != undefined}
+			<a
+				class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+				href={p.disabled ? undefined : href}
+				title={p.disabled ? p.disabledTitle : undefined}
+				bind:this={targetElement}
+				style={`anchor-name:${md.anchorName}`}
+				onmouseenter={() => {
+					if (tooltipText) {
+						md.show(tooltipOpenDelay);
+					}
+				}}
+				onmouseleave={() => {
+					md.hide(tooltipCloseDelay);
+				}}
 			>
-				<a
-					class={twMerge('relative flex w-fit items-center justify-center', p.class)}
-					href={p.disabled ? undefined : href}
-					title={p.disabled ? p.disabledTitle : undefined}
-					bind:this={targetElement}
-				>
-					{#if !p.disabled}
-						<Layer />
-					{/if}
-					{@render p.children()}
-				</a>
-			</Tooltip.Trigger>
-			<Tooltip.Portal>
-				<Tooltip.Content forceMount={true} side={tooltipSide} sideOffset={6}>
-					{#snippet child({ wrapperProps, props, open })}
-						{#if open && tooltipText}
-							<div {...wrapperProps}>
-								<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
-									<p
-										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] py-[2px] text-inverse-on-surface"
-									>
-										{@html tooltipText}
-									</p>
-								</div>
-							</div>
-						{/if}
-					{/snippet}
-				</Tooltip.Content>
-			</Tooltip.Portal>
-		</Tooltip.Root>
-	</Tooltip.Provider>
-{:else}
-	<Tooltip.Provider>
-		<Tooltip.Root delayDuration={300}>
-			<Tooltip.Trigger
+				{#if !p.disabled}
+					<Layer />
+				{/if}
+				{@render p.children()}
+			</a>
+		{:else}
+			<button
+				style={`anchor-name:${md.anchorName}`}
+				onmouseenter={() => {
+					if (tooltipText) {
+						md.show(tooltipOpenDelay);
+					}
+				}}
+				onmouseleave={() => {
+					md.hide(tooltipCloseDelay);
+				}}
 				title={p.disabled ? p.disabledTitle : undefined}
 				class={twMerge('relative flex w-fit items-center justify-center', p.class)}
 				disabled={p.disabled}
 				onclick={p.onclick != undefined
 					? p.onclick
 					: (e) => {
-							toggled = !toggled;
+							if (!p.disableAutoToggle) {
+								toggled = !toggled;
+							}
 						}}
 			>
 				<Layer />
 				{@render p.children()}
-			</Tooltip.Trigger>
-			<Tooltip.Portal>
-				<Tooltip.Content forceMount={true} side={tooltipSide} sideOffset={6}>
-					{#snippet child({ wrapperProps, props, open })}
-						{#if open && tooltipText}
-							<div {...wrapperProps}>
-								<div {...props} in:scale={{ delay: 10 }} out:scale={{ delay: 10 }}>
-									<p
-										class="label-small min-h-[24px] items-center rounded-xs bg-inverse-surface px-[8px] py-1 text-inverse-on-surface"
-									>
-										{@html tooltipText}
-									</p>
-								</div>
-							</div>
-						{/if}
-					{/snippet}
-				</Tooltip.Content>
-			</Tooltip.Portal>
-		</Tooltip.Root>
-	</Tooltip.Provider>
-{/if}
+			</button>
+		{/if}
+	{/snippet}
+
+	{#if p.tooltip}
+		<p>{p.tooltip}</p>
+	{/if}
+</Menu>
+
+<style>
+</style>

@@ -9,17 +9,17 @@
 	<Divider />
 
 	<Example
-		title="Colors"
-		code={`<IconButton icon={mdiSettings} />
-<IconButton icon={mdiSettings} color="secondary" />
-<IconButton icon={mdiSettings} color="tertiary" />
-<IconButton icon={mdiSettings} color="error" />`}
+		title="Colors and tooltips"
+		code={`<<IconButton icon={mdiSettings} tooltip="Settings" tooltipSide="left" />
+<IconButton icon={mdiSettings} color="secondary" tooltip="Settings" />
+<IconButton icon={mdiSettings} color="tertiary" tooltip="Settings" />
+<IconButton icon={mdiSettings} color="error" tooltip="Settings" />`}
 	>
 		<Row gaps scroll>
-			<IconButton icon={mdiSettings} />
-			<IconButton icon={mdiSettings} color="secondary" />
-			<IconButton icon={mdiSettings} color="tertiary" />
-			<IconButton icon={mdiSettings} color="error" />
+			<IconButton icon={mdiSettings} tooltip="Settings" tooltipSide="left" />
+			<IconButton icon={mdiSettings} color="secondary" tooltip="Settings" />
+			<IconButton icon={mdiSettings} color="tertiary" tooltip="Settings" />
+			<IconButton icon={mdiSettings} color="error" tooltip="Settings" />
 		</Row>
 	</Example>
 

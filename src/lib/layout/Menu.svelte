@@ -1,29 +1,57 @@
 <script module lang="ts">
-	import { onMount, type Snippet } from 'svelte';
+	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import { twMerge } from 'tailwind-merge';
+
+	let allMenus = new Map<string, MenuState>();
 
 	export class MenuState {
 		#open = $state(false);
-		#id: string = crypto.randomUUID();
-		constructor(open = false) {
+		readonly id: string;
+		#timeOut = 0;
+		constructor(id: string = crypto.randomUUID(), open = false) {
+			this.id = id;
 			this.open = open;
+			allMenus.set(id, this);
 		}
 		get open() {
 			return this.#open;
 		}
 		set open(value: boolean) {
 			if (this.#open != value) {
+				if (value) {
+					allMenus.forEach((menu) => {
+						if (menu.id != this.id) {
+							menu.open = false;
+						}
+					});
+				}
 				this.#open = value;
 			}
 		}
+		show(delay = 0) {
+			if (this.#timeOut) {
+				clearTimeout(this.#timeOut);
+			}
+			this.#timeOut = setTimeout(() => {
+				this.open = true;
+			}, delay);
+		}
+		hide(delay = 0) {
+			if (this.#timeOut) {
+				clearTimeout(this.#timeOut);
+			}
+			this.#timeOut = setTimeout(() => {
+				this.open = false;
+			}, delay);
+		}
 		get anchorName() {
-			return `--${this.#id}`;
+			return `--${this.id}`;
 		}
 		get triggerStyle() {
 			return `anchor-name: ${this.anchorName}`;
 		}
 		get popOverTarget() {
-			return this.#id;
+			return this.id;
 		}
 	}
 	export interface MenuProps {
@@ -39,12 +67,13 @@
 			| 'end-end';
 		class?: string | string[];
 		disableAutoClose?: boolean;
+		anchorName?: string;
 	}
 </script>
 
 <script lang="ts">
 	let { side = 'bottom', alignment = 'start-start', ...p }: MenuProps = $props();
-	let menuState = $state(new MenuState());
+	let menuState = $state(new MenuState(p.anchorName));
 	let toggled = false;
 
 	// find popover element
@@ -54,6 +83,9 @@
 		if (menuState.open && popover) {
 			popover.showPopover();
 		}
+	});
+	onDestroy(() => {
+		allMenus.delete(menuState.id);
 	});
 
 	// react to menuState.open changing
@@ -79,7 +111,7 @@
 	style={`position-anchor: ${menuState.anchorName};`}
 	class={twMerge(
 		[
-			`popover-${side}-${alignment}`,
+			`popover-${side}-${alignment} popover`,
 			'absolute inset-auto h-fit w-fit rounded-sm border-0 bg-surface p-0 shadow-l1',
 			side == 'top' || side == 'bottom' ? 'my-2' : 'mx-2'
 		],
@@ -90,6 +122,20 @@
 </div>
 
 <style>
+	div.popover {
+		opacity: 0;
+		transition:
+			display 300ms,
+			opacity 300ms;
+		transition-behaviour: allow-discrete;
+	}
+	div.popover:popover-open {
+		opacity: 1;
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
 	/* BOTTOM  */
 	div.popover-bottom-start-start {
 		top: anchor(bottom);

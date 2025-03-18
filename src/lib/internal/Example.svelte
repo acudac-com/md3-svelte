@@ -23,7 +23,7 @@
 				<button style={ms.triggerStyle} popovertarget={ms.popOverTarget}>code</button>
 				<!-- <IconButton icon={mdiCode} bind:toggled={ms.open} anchorName={ms.anchorName} /> -->
 			{/snippet}
-			<pre class="mx-4 max-h-[500px] max-w-[700px] overflow-scroll">{p.code}</pre>
+			<pre class="m-2 max-h-[500px] max-w-[700px] overflow-scroll">{p.code}</pre>
 		</Menu>
 	</Row>
 	<Container level="lowest" wFull class="rounded-md md:rounded-lg">
