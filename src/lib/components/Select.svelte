@@ -6,7 +6,7 @@
 	import Clickable from './Clickable.svelte';
 	import { mdiChevronDown, mdiClose } from '$lib/icons';
 	import Row from '$lib/layout/Row.svelte';
-	import { text } from '@sveltejs/kit';
+	import { ContainerMaxHeightClass, type ContainerSize } from '$lib/utils';
 
 	export interface Value {
 		toString(): string;
@@ -21,11 +21,17 @@
 		keepFocusOnSelect?: boolean;
 		clearable?: boolean;
 		itemSnippet?: Snippet<[T]>;
+		menuMaxH?: ContainerSize;
 	}
 </script>
 
 <script lang="ts" generics="T extends Value">
-	let { open = $bindable(false), value = $bindable(), ...p }: SelectProps<T> = $props();
+	let {
+		open = $bindable(false),
+		menuMaxH = '300px',
+		value = $bindable(),
+		...p
+	}: SelectProps<T> = $props();
 
 	let searchValue = $state('');
 	let textValue = $state('');
@@ -67,7 +73,12 @@
 	);
 </script>
 
-<Menu bind:open disableAutoClose class={['rounded-xs']} useTriggerWidth>
+<Menu
+	bind:open
+	disableAutoClose
+	class={['overflow-scroll rounded-xs', ContainerMaxHeightClass(menuMaxH)]}
+	useTriggerWidth
+>
 	{#snippet trigger(md)}
 		<Row>
 			<OutlinedTextField

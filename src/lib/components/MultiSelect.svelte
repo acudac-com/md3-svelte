@@ -8,6 +8,7 @@
 	import Row from '$lib/layout/Row.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import IconButton from './IconButton.svelte';
+	import { ContainerMaxHeightClass, type ContainerSize } from '$lib/utils';
 
 	export interface Value {
 		toString(): string;
@@ -20,11 +21,17 @@
 		class?: string | string[];
 		menuClass?: string | string[];
 		itemSnippet?: Snippet<[T]>;
+		menuMaxH?: ContainerSize;
 	}
 </script>
 
 <script lang="ts" generics="T extends Value">
-	let { open = $bindable(false), value = $bindable([]), ...p }: SelectProps<T> = $props();
+	let {
+		open = $bindable(false),
+		menuMaxH = '300px',
+		value = $bindable([]),
+		...p
+	}: SelectProps<T> = $props();
 
 	let searchValue = $state('');
 	let textValues: string[] = $state([]);
@@ -84,7 +91,12 @@
 	);
 </script>
 
-<Menu bind:open disableAutoClose class={['rounded-xs']} useTriggerWidth>
+<Menu
+	bind:open
+	disableAutoClose
+	class={['rounded-xs', 'overflow-scroll', ContainerMaxHeightClass(menuMaxH)]}
+	useTriggerWidth
+>
 	{#snippet trigger(md)}
 		<Row>
 			<OutlinedTextField
