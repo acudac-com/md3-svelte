@@ -12,7 +12,10 @@
 	<p class="body-small">MultiSelect lets users pick one or more items from a list.</p>
 	<Divider />
 
-	<Example title="Basic" code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />`}>
+	<Example
+		title="Basic"
+		code={`<MultiSelect values={['Apple', 'Banana', 'Pear']} label="Fruit" />`}
+	>
 		<Col class="items-start" wFull gaps>
 			<MultiSelect values={['Apple', 'Banana', 'Pear']} label="Fruit" />
 		</Col>
@@ -20,7 +23,7 @@
 
 	<Example
 		title="Customize"
-		code={`<Select
+		code={`<MultiSelect
 	values={['Apple', 'Banana', 'Pear']}
 	label="Fruit"
 	bind:value
@@ -32,7 +35,7 @@
 			<Icon icon={mdiSettings} />
 		</Row>
 	{/snippet}
-</Select>`}
+</MultiSelect>`}
 	>
 		<Col class="items-start" wFull gaps>
 			<MultiSelect
