@@ -15,7 +15,7 @@
 </IconMenu>`}
 	>
 		<Row gaps>
-			<IconMenu icon={mdiSettings}>
+			<IconMenu icon={mdiSettings} tooltip={['This is a menu.', 'You can click on it.']}>
 				<Col class="rounded-sm bg-surface p-1 shadow-l1">Menu content</Col>
 			</IconMenu>
 		</Row>

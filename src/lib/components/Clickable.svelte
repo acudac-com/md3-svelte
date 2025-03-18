@@ -1,9 +1,7 @@
 <script module lang="ts">
 	import { page } from '$app/state';
 	import Layer from '$lib/ripple/Layer.svelte';
-	import { Tooltip } from 'bits-ui';
 	import { onMount, type Snippet } from 'svelte';
-	import { scale } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
 	import { hrefIsToggled, newToggledHref } from './utils';
 
@@ -20,7 +18,7 @@
 		tooltipOpenDelay?: number;
 		tooltipCloseDelay?: number;
 		tooltipSide?: 'top' | 'bottom' | 'left' | 'right';
-		anchorName?: string;
+		menuAnchorName?: string;
 	}
 </script>
 
@@ -32,6 +30,7 @@
 		tooltipOpenDelay = 300,
 		tooltipCloseDelay = 600,
 		tooltipSide = 'top',
+		menuAnchorName = '--0',
 		...p
 	}: ClickableProps = $props();
 
@@ -69,66 +68,96 @@
 	});
 </script>
 
-<Menu
-	anchorName={p.anchorName}
-	side={tooltipSide}
-	disableAutoClose
-	class="rounded-xs bg-inverse-surface p-1 text-inverse-on-surface"
->
-	{#snippet trigger(md)}
-		{#if href != undefined}
-			<a
-				class={twMerge('relative flex w-fit items-center justify-center', p.class)}
-				href={p.disabled ? undefined : href}
-				title={p.disabled ? p.disabledTitle : undefined}
-				bind:this={targetElement}
-				style={`anchor-name:${md.anchorName}`}
-				onmouseenter={() => {
-					if (tooltipText) {
-						md.show(tooltipOpenDelay);
-					}
-				}}
-				onmouseleave={() => {
-					md.hide(tooltipCloseDelay);
-				}}
-			>
-				{#if !p.disabled}
+{#if p.tooltip}
+	<Menu
+		priority={-1}
+		side={tooltipSide}
+		disableAutoClose
+		class="rounded-xs bg-inverse-surface p-1 text-inverse-on-surface"
+	>
+		{#snippet trigger(md)}
+			{#if href != undefined}
+				<a
+					class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+					href={p.disabled ? undefined : href}
+					title={p.disabled ? p.disabledTitle : undefined}
+					bind:this={targetElement}
+					style={`anchor-name:${md.anchorName},${menuAnchorName}`}
+					onmouseenter={() => {
+						if (tooltipText) {
+							md.show(tooltipOpenDelay);
+						}
+					}}
+					onmouseleave={() => {
+						md.hide(tooltipCloseDelay);
+					}}
+				>
+					{#if !p.disabled}
+						<Layer />
+					{/if}
+					{@render p.children()}
+				</a>
+			{:else}
+				<button
+					style={`anchor-name:${md.anchorName},${menuAnchorName}`}
+					onmouseenter={() => {
+						if (tooltipText) {
+							md.show(tooltipOpenDelay);
+						}
+					}}
+					onmouseleave={() => {
+						md.hide(tooltipCloseDelay);
+					}}
+					title={p.disabled ? p.disabledTitle : undefined}
+					class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+					disabled={p.disabled}
+					onclick={p.onclick != undefined
+						? p.onclick
+						: (e) => {
+								if (!p.disableAutoToggle) {
+									toggled = !toggled;
+								}
+							}}
+				>
 					<Layer />
-				{/if}
-				{@render p.children()}
-			</a>
-		{:else}
-			<button
-				style={`anchor-name:${md.anchorName}`}
-				onmouseenter={() => {
-					if (tooltipText) {
-						md.show(tooltipOpenDelay);
+					{@render p.children()}
+				</button>
+			{/if}
+		{/snippet}
+
+		{#if p.tooltip}
+			<p>{@html tooltipText}</p>
+		{/if}
+	</Menu>
+{:else if href != undefined}
+	<a
+		class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+		href={p.disabled ? undefined : href}
+		title={p.disabled ? p.disabledTitle : undefined}
+		bind:this={targetElement}
+	>
+		{#if !p.disabled}
+			<Layer />
+		{/if}
+		{@render p.children()}
+	</a>
+{:else}
+	<button
+		title={p.disabled ? p.disabledTitle : undefined}
+		class={twMerge('relative flex w-fit items-center justify-center', p.class)}
+		disabled={p.disabled}
+		onclick={p.onclick != undefined
+			? p.onclick
+			: (e) => {
+					if (!p.disableAutoToggle) {
+						toggled = !toggled;
 					}
 				}}
-				onmouseleave={() => {
-					md.hide(tooltipCloseDelay);
-				}}
-				title={p.disabled ? p.disabledTitle : undefined}
-				class={twMerge('relative flex w-fit items-center justify-center', p.class)}
-				disabled={p.disabled}
-				onclick={p.onclick != undefined
-					? p.onclick
-					: (e) => {
-							if (!p.disableAutoToggle) {
-								toggled = !toggled;
-							}
-						}}
-			>
-				<Layer />
-				{@render p.children()}
-			</button>
-		{/if}
-	{/snippet}
-
-	{#if p.tooltip}
-		<p>{p.tooltip}</p>
-	{/if}
-</Menu>
+	>
+		<Layer />
+		{@render p.children()}
+	</button>
+{/if}
 
 <style>
 </style>

@@ -13,6 +13,7 @@
 		type MainColor
 	} from '../colors';
 	import { Icon } from '$lib';
+	import type { IconSize } from './Icon.svelte';
 
 	export interface IconButtonProps extends Omit<ClickableProps, 'children'> {
 		icon: Svg | Image;
@@ -20,7 +21,7 @@
 		badge?: boolean | string;
 		type?: 'standard' | 'filled' | 'tonal' | 'outlined';
 		color?: MainColor;
-		iconSize?: number;
+		iconSize?: IconSize;
 	}
 </script>
 

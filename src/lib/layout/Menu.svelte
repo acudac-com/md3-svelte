@@ -8,9 +8,11 @@
 		#open = $state(false);
 		readonly id: string;
 		#timeOut = 0;
-		constructor(id: string = crypto.randomUUID(), open = false) {
+		readonly priority: number;
+		constructor(id: string = crypto.randomUUID(), open = false, priority = 0) {
 			this.id = id;
 			this.open = open;
+			this.priority = priority;
 			allMenus.set(id, this);
 		}
 		get open() {
@@ -19,11 +21,14 @@
 		set open(value: boolean) {
 			if (this.#open != value) {
 				if (value) {
-					allMenus.forEach((menu) => {
-						if (menu.id != this.id) {
+					for (let [_, menu] of allMenus) {
+						if (menu.id != this.id && menu.open) {
+							if (menu.priority > this.priority) {
+								return;
+							}
 							menu.open = false;
 						}
-					});
+					}
 				}
 				this.#open = value;
 			}
@@ -66,15 +71,22 @@
 			| 'end-center'
 			| 'end-end';
 		class?: string | string[];
+		open?: boolean;
 		disableAutoClose?: boolean;
-		anchorName?: string;
+		anchorId?: string;
+		priority?: number;
+		disabled?: boolean;
 	}
 </script>
 
 <script lang="ts">
-	let { side = 'bottom', alignment = 'start-start', ...p }: MenuProps = $props();
-	let menuState = $state(new MenuState(p.anchorName));
-	let toggled = false;
+	let {
+		side = 'bottom',
+		open = $bindable(),
+		alignment = 'start-start',
+		...p
+	}: MenuProps = $props();
+	let menuState = $state(new MenuState(p.anchorId, open, p.priority));
 
 	// find popover element
 	let popover: HTMLElement | null = $state(null);
@@ -90,7 +102,7 @@
 
 	// react to menuState.open changing
 	$effect(() => {
-		if (toggled != menuState.open && popover) {
+		if (open != menuState.open && popover) {
 			if (menuState.open) {
 				popover.showPopover();
 			} else {
@@ -101,25 +113,27 @@
 </script>
 
 {@render p.trigger(menuState)}
-<div
-	popover={p.disableAutoClose ? 'manual' : 'auto'}
-	ontoggle={(e) => {
-		toggled = e.newState == 'open';
-		menuState.open = e.newState == 'open';
-	}}
-	id={menuState.popOverTarget}
-	style={`position-anchor: ${menuState.anchorName};`}
-	class={twMerge(
-		[
-			`popover-${side}-${alignment} popover`,
-			'absolute inset-auto h-fit w-fit rounded-sm border-0 bg-surface p-0 shadow-l1',
-			side == 'top' || side == 'bottom' ? 'my-2' : 'mx-2'
-		],
-		p.class
-	)}
->
-	{@render p.children()}
-</div>
+{#if !p.disabled}
+	<div
+		popover={p.disableAutoClose ? 'manual' : 'auto'}
+		ontoggle={(e) => {
+			open = e.newState == 'open';
+			menuState.open = e.newState == 'open';
+		}}
+		id={menuState.popOverTarget}
+		style={`position-anchor: ${menuState.anchorName};`}
+		class={twMerge(
+			[
+				`popover-${side}-${alignment} popover`,
+				'absolute inset-auto h-fit w-fit rounded-sm border-0 bg-surface p-0 shadow-l1',
+				side == 'top' || side == 'bottom' ? 'my-2' : 'mx-2'
+			],
+			p.class
+		)}
+	>
+		{@render p.children()}
+	</div>
+{/if}
 
 <style>
 	div.popover {
