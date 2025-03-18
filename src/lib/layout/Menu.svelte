@@ -37,17 +37,25 @@
 			if (this.#timeOut) {
 				clearTimeout(this.#timeOut);
 			}
-			this.#timeOut = setTimeout(() => {
+			if (delay) {
+				this.#timeOut = setTimeout(() => {
+					this.open = true;
+				}, delay);
+			} else {
 				this.open = true;
-			}, delay);
+			}
 		}
 		hide(delay = 0) {
 			if (this.#timeOut) {
 				clearTimeout(this.#timeOut);
 			}
-			this.#timeOut = setTimeout(() => {
+			if (delay) {
+				this.#timeOut = setTimeout(() => {
+					this.open = false;
+				}, delay);
+			} else {
 				this.open = false;
-			}, delay);
+			}
 		}
 		get anchorName() {
 			return `--${this.id}`;
@@ -76,6 +84,8 @@
 		anchorId?: string;
 		priority?: number;
 		disabled?: boolean;
+		useTriggerWidth?: boolean;
+		useTriggerHeight?: boolean;
 	}
 </script>
 
@@ -124,6 +134,8 @@
 		style={`position-anchor: ${menuState.anchorName};`}
 		class={twMerge(
 			[
+				p.useTriggerWidth ? 'popover-same-width' : '',
+				p.useTriggerHeight ? 'popover-same-height' : '',
 				`popover-${side}-${alignment} popover`,
 				'absolute inset-auto h-fit w-fit rounded-sm border-0 bg-surface p-0 shadow-l1',
 				side == 'top' || side == 'bottom' ? 'my-2' : 'mx-2'
@@ -150,10 +162,17 @@
 		}
 	}
 
+	div.popover-same-width {
+		width: anchor-size(width);
+	}
+	div.popover-same-height {
+		height: anchor-size(height);
+	}
 	/* BOTTOM  */
 	div.popover-bottom-start-start {
 		top: anchor(bottom);
 		left: anchor(left);
+		/* right: anchor(right); */
 		position-try-fallbacks: --top-start-start, --bottom-end-end, --top-end-end;
 	}
 	@position-try --bottom-start-start {

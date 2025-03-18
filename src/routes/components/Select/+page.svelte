@@ -4,6 +4,7 @@
 	import Example from '$lib/internal/Example.svelte';
 	import Row from '$lib/layout/Row.svelte';
 	let value = $state('');
+	$inspect(value);
 </script>
 
 <Col wFull hFit gaps>
@@ -23,7 +24,7 @@
 		code={`<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" prependIcon={mdiSettings} />`}
 	>
 		<Col class="items-start" wFull gaps>
-			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" prependIcon={mdiSettings} />
+			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" />
 		</Col>
 	</Example>
 
@@ -39,8 +40,8 @@
 </Select>`}
 	>
 		<Col class="items-start" wFull gaps>
-			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit">
-				{#snippet item(fruit)}
+			<Select values={['Apple', 'Banana', 'Pear']} label="Fruit" bind:value width="full">
+				{#snippet itemSnippet(fruit)}
 					<Row justify>
 						{fruit} - {fruit}
 						<Icon icon={mdiSettings} />

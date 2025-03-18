@@ -9,12 +9,15 @@
 		type?: 'date' | 'datetime-local' | 'month' | 'number' | 'password' | 'text' | 'time' | 'week';
 		class?: string | string[];
 		onfocus?: (e: Event) => void;
+		onfocusout?: (e: Event) => void;
 		oninput?: (e: Event) => void;
+		menuAnchorName?: string;
+		inputClass?: string | string[];
 	};
 </script>
 
 <script lang="ts">
-	let { value = $bindable(), ...p }: TextFieldProps = $props();
+	let { value = $bindable(), menuAnchorName = '--0', ...p }: TextFieldProps = $props();
 	const id = crypto.randomUUID();
 </script>
 
@@ -25,8 +28,10 @@
 	)}
 >
 	<input
-		class="body-large rounded-tl-xs rounded-tr-xs"
+		class={twMerge('body-large rounded-tl-xs rounded-tr-xs', p.inputClass)}
 		onfocus={p.onfocus}
+		onfocusout={p.onfocusout}
+		style={`anchor-name:${menuAnchorName}`}
 		oninput={p.oninput}
 		placeholder=" "
 		type={p.type}

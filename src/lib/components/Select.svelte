@@ -1,8 +1,6 @@
 <script module lang="ts">
-	import { Combobox } from 'bits-ui';
 	import Layer from '$lib/ripple/Layer.svelte';
-	import { Icon } from '$lib';
-	import type { Svg, Image } from '$lib/icons';
+	import { Divider, Icon } from '$lib';
 	import { twMerge } from 'tailwind-merge';
 	import type { Snippet } from 'svelte';
 
@@ -14,19 +12,34 @@
 		values: T[];
 		label: string;
 		open?: boolean;
-		prependIcon?: Svg | Image;
 		class?: string | string[];
 		menuClass?: string | string[];
-		item?: Snippet<[T]>;
-		width?: '100px' | '200px' | '300px' | '400px' | '500px' | '600px';
+		keepFocusOnSelect?: boolean;
+
+		itemSnippet?: Snippet<[T]>;
+		width?: ContainerSize;
 	}
 </script>
 
 <script lang="ts" generics="T extends Value">
-	let { open = $bindable(false), value = $bindable(), ...p }: SelectProps<T> = $props();
+	import { Menu } from '$lib';
+	import { text } from '@sveltejs/kit';
+	import OutlinedTextField from './OutlinedTextField.svelte';
+	import Clickable from './Clickable.svelte';
+	import { ContainerWidthClass, type ContainerSize } from '$lib/utils';
+	import { mdiChevronDown } from '$lib/icons';
+	import Row from '$lib/layout/Row.svelte';
+
+	let {
+		open = $bindable(false),
+		width = '300px',
+		value = $bindable(),
+		...p
+	}: SelectProps<T> = $props();
 
 	let searchValue = $state('');
 	let textValue = $state('');
+	let textValueOnFocus = $state('');
 
 	if (value) {
 		textValue = value.toString();
@@ -51,99 +64,72 @@
 		}
 	});
 
+	$effect(() => {
+		if (!open) {
+			searchValue = textValue;
+		}
+	});
+
 	const filteredValues = $derived(
 		searchValue === ''
 			? p.values
 			: p.values.filter((val) => val.toString().toLowerCase().includes(searchValue.toLowerCase()))
 	);
-
-	const widthClass = $derived.by(() => {
-		switch (p.width) {
-			case '100px':
-				return 'w-[100px]';
-			case '200px':
-				return 'w-[200px]';
-			case '300px':
-				return 'w-[300px]';
-			case '400px':
-				return 'w-[400px]';
-			case '500px':
-				return 'w-[500px]';
-			case '600px':
-				return 'w-[600px]';
-			default:
-				return 'w-[300px]';
-		}
-	});
 </script>
 
-<Combobox.Root
-	type="single"
-	onOpenChange={(o) => {
-		if (!o) searchValue = '';
-	}}
-	bind:value={textValue}
-	bind:open
->
-	<div
-		class={twMerge(
-			[
-				'body-large relative flex max-w-full items-center gap-2 rounded-xs border border-outline px-2 py-[4px]',
-				open ? 'border-2' : '',
-				widthClass
-			],
-			p.class
-		)}
-	>
-		{#if p.prependIcon}
-			<Icon icon={p.prependIcon} />
-		{/if}
-		<Combobox.Input
-			onfocus={() => {
-				open = true;
-			}}
-			defaultValue={textValue}
-			class="body-large w-full bg-transparent outline-none"
-			oninput={(e) => (searchValue = e.currentTarget.value)}
-			placeholder={p.label}
-			aria-label={p.label}
-		/>
-		<Combobox.Arrow
+<Menu bind:open disableAutoClose class={['rounded-xs']} useTriggerWidth>
+	{#snippet trigger(md)}
+		<Row>
+			<OutlinedTextField
+				inputClass="cursor-pointer"
+				class={[ContainerWidthClass(width)]}
+				menuAnchorName={md.anchorName}
+				label={p.label}
+				bind:value={searchValue}
+				onfocus={() => {
+					if (md.open) {
+						return;
+					}
+					searchValue = '';
+					textValueOnFocus = textValue;
+					md.show();
+				}}
+				onfocusout={(e) => {
+					if (!md.open) {
+						return;
+					}
+					let thisHtmlEl = e.target as HTMLInputElement;
+					thisHtmlEl.focus();
+					setTimeout(() => {
+						if (textValue == textValueOnFocus || !p.keepFocusOnSelect) {
+							md.open = false;
+							thisHtmlEl.blur();
+						} else {
+							textValueOnFocus = textValue;
+						}
+					}, 100);
+				}}
+			/>
+			<Icon icon={mdiChevronDown} class="-mx-4" />
+		</Row>
+	{/snippet}
+	{#each filteredValues as val, i (i + val.toString())}
+		<Clickable
+			class={[
+				'w-full justify-start p-3 hover:bg-on-surface/10',
+				val.toString() == textValue ? 'bg-on-surface/15' : ''
+			]}
 			onclick={() => {
-				open = true;
+				textValue = val.toString();
 			}}
-			class="cursor-pointer p-2"
-		/>
-	</div>
-	<Combobox.Portal>
-		<Combobox.Content sideOffset={10} align="center" side="bottom">
-			<Combobox.Viewport
-				class={twMerge(
-					[
-						'flex max-h-[200px] w-[200px] flex-col flex-nowrap overflow-y-auto rounded-xs bg-surface shadow-l1 dark:shadow-l2',
-						p.prependIcon ? '' : 'ml-8',
-						widthClass
-					],
-					p.menuClass
-				)}
-			>
-				{#each filteredValues as val, i (i + val.toString())}
-					<Combobox.Item
-						value={val.toString()}
-						label={val.toString()}
-						class="relative p-[4px] hover:bg-on-surface/10"
-					>
-						<Layer />
-						{#if p.item != undefined}
-							{@render p.item(val)}
-						{:else}
-							{val.toString()}
-						{/if}
-					</Combobox.Item>
-				{:else}
-					<span class="block px-5 py-2 text-sm text-muted-foreground"> No results </span>
-				{/each}
-			</Combobox.Viewport>
-		</Combobox.Content>
-	</Combobox.Portal>
-</Combobox.Root>
+		>
+			{#if p.itemSnippet != undefined}
+				{@render p.itemSnippet(val)}
+			{:else}
+				{val.toString()}
+			{/if}
+		</Clickable>
+	{:else}
+		<span class="block px-5 py-2 text-sm text-muted-foreground"> No results </span>
+	{/each}
+</Menu>

@@ -5,7 +5,7 @@
 	interface OutlinedTextFieldProps extends TextFieldProps {
 		rounded?: boolean;
 	}
-	let { value = $bindable(), ...p }: OutlinedTextFieldProps = $props();
+	let { value = $bindable(), menuAnchorName = '--0', ...p }: OutlinedTextFieldProps = $props();
 	const id = crypto.randomUUID();
 </script>
 
@@ -21,8 +21,10 @@
 >
 	<input
 		onfocus={p.onfocus}
+		onfocusout={p.onfocusout}
 		oninput={p.oninput}
-		class={['body-large', p.rounded ? 'rounded-full' : 'rounded-xs']}
+		style={`anchor-name:${menuAnchorName}`}
+		class={twMerge(['body-large', p.rounded ? 'rounded-full' : 'rounded-xs'], p.inputClass)}
 		placeholder=" "
 		type={p.type}
 		bind:value
