@@ -11,6 +11,8 @@
 </script>
 
 <script lang="ts">
+	import IconMenu from '$lib/components/IconMenu.svelte';
+
 	let p: ExampleProps = $props();
 </script>
 
@@ -18,13 +20,9 @@
 	<Row justify class="mb-1">
 		<p>{p.title}</p>
 
-		<Menu side="top" alignment="end-end">
-			{#snippet trigger(ms)}
-				<button style={ms.triggerStyle} popovertarget={ms.popOverTarget}>code</button>
-				<!-- <IconButton icon={mdiCode} bind:toggled={ms.open} anchorName={ms.anchorName} /> -->
-			{/snippet}
+		<IconMenu icon={mdiCode} side="top">
 			<pre class="m-2 max-h-[500px] max-w-[700px] overflow-scroll">{p.code}</pre>
-		</Menu>
+		</IconMenu>
 	</Row>
 	<Container level="lowest" wFull class="rounded-md md:rounded-lg">
 		{@render p.children()}

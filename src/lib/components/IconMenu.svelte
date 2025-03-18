@@ -24,7 +24,16 @@
 	let { open = $bindable(false), ...p }: IconMenuProps = $props();
 </script>
 
-<Menu bind:open class={p.menuClass}>
+<Menu
+	bind:open
+	class={p.menuClass}
+	side={p.side}
+	alignment={p.alignment}
+	disableAutoClose={p.disableAutoClose}
+	priority={p.priority}
+	disabled={p.disabled}
+	anchorId={p.anchorId}
+>
 	{#snippet trigger(md)}
 		<IconButton
 			class={p.class}

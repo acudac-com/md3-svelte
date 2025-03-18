@@ -126,7 +126,7 @@
 		{/snippet}
 
 		{#if p.tooltip}
-			<p>{@html tooltipText}</p>
+			<p class="whitespace-nowrap">{@html tooltipText}</p>
 		{/if}
 	</Menu>
 {:else if href != undefined}
@@ -134,6 +134,7 @@
 		class={twMerge('relative flex w-fit items-center justify-center', p.class)}
 		href={p.disabled ? undefined : href}
 		title={p.disabled ? p.disabledTitle : undefined}
+		style={`anchor-name:${menuAnchorName}`}
 		bind:this={targetElement}
 	>
 		{#if !p.disabled}
@@ -146,6 +147,7 @@
 		title={p.disabled ? p.disabledTitle : undefined}
 		class={twMerge('relative flex w-fit items-center justify-center', p.class)}
 		disabled={p.disabled}
+		style={`anchor-name:${menuAnchorName}`}
 		onclick={p.onclick != undefined
 			? p.onclick
 			: (e) => {
