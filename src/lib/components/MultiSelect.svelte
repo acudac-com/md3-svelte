@@ -91,6 +91,9 @@
 			? p.values
 			: p.values.filter((val) => val.toString().toLowerCase().includes(searchValue.toLowerCase()))
 	);
+
+	let textInputHtml: HTMLInputElement | undefined = $state(undefined);
+	let inputTo: number;
 </script>
 
 <Menu
@@ -107,7 +110,8 @@
 				menuAnchorName={md.anchorName}
 				label={p.label}
 				bind:value={searchValue}
-				onfocus={() => {
+				onfocus={(e) => {
+					textInputHtml = e.target as HTMLInputElement;
 					setTimeout(() => {
 						searchValue = '';
 					}, 100);
@@ -124,7 +128,8 @@
 					}
 					let thisHtmlEl = e.target as HTMLInputElement;
 					thisHtmlEl.focus();
-					setTimeout(() => {
+					clearTimeout(inputTo);
+					inputTo = setTimeout(() => {
 						if (textValues.join(', ') == textValuesOnFocus) {
 							md.open = false;
 							thisHtmlEl.blur();
@@ -137,7 +142,6 @@
 					// enter: add first item in filter list if any
 					if (e.key == 'Enter' && filteredValues.length > 0) {
 						let textVal = filteredValues[0].toString();
-						console.log(textVal);
 						if (!textValues.includes(textVal)) {
 							textValues.push(textVal);
 						} else {
@@ -171,12 +175,13 @@
 	{#each filteredValues as val, i (i + val.toString())}
 		<Clickable
 			class={[
-				'w-full justify-start px-2 py-3 ',
+				'w-full justify-between p-3',
 				textValues.includes(val.toString())
 					? 'bg-on-surface/15 hover:bg-on-surface/10'
 					: 'hover:bg-on-surface/5'
 			]}
 			onclick={() => {
+				textInputHtml?.focus();
 				if (!textValues.includes(val.toString())) {
 					textValues.push(val.toString());
 				} else {
@@ -187,8 +192,10 @@
 			{#if p.itemSnippet != undefined}
 				{@render p.itemSnippet(val)}
 			{:else}
-				<Checkbox checked={textValues.includes(val.toString())} />
 				{val.toString()}
+				{#if textValues.includes(val.toString())}
+					<Icon icon={mdiCheck} size={22} />
+				{/if}
 			{/if}
 		</Clickable>
 	{:else}
