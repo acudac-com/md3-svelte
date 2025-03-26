@@ -4,7 +4,7 @@
 	import { Menu } from '$lib';
 	import OutlinedTextField from './OutlinedTextField.svelte';
 	import Clickable from './Clickable.svelte';
-	import { mdiChevronDown, mdiClose } from '$lib/icons';
+	import { mdiCheck, mdiChevronDown, mdiClose } from '$lib/icons';
 	import Row from '$lib/layout/Row.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import IconButton from './IconButton.svelte';
@@ -26,6 +26,8 @@
 </script>
 
 <script lang="ts" generics="T extends Value">
+	import { Checkbox } from '$lib';
+
 	let {
 		open = $bindable(false),
 		menuMaxH = '300px',
@@ -169,7 +171,7 @@
 	{#each filteredValues as val, i (i + val.toString())}
 		<Clickable
 			class={[
-				'w-full justify-start p-3 ',
+				'w-full justify-start px-2 py-3 ',
 				textValues.includes(val.toString())
 					? 'bg-on-surface/15 hover:bg-on-surface/10'
 					: 'hover:bg-on-surface/5'
@@ -185,6 +187,7 @@
 			{#if p.itemSnippet != undefined}
 				{@render p.itemSnippet(val)}
 			{:else}
+				<Checkbox checked={textValues.includes(val.toString())} />
 				{val.toString()}
 			{/if}
 		</Clickable>
