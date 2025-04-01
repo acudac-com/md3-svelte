@@ -17,7 +17,19 @@
 		code={`<MultiSelect values={['Apple', 'Banana', 'Pear']} label="Fruit" />`}
 	>
 		<Col class="items-start" wFull gaps>
-			<MultiSelect values={['Apple', 'Banana', 'Pear']} label="Fruit" />
+			<MultiSelect
+				values={[
+					'Apple',
+					'Banana',
+					'Pear',
+					'aasdfasdf',
+					'bqwerqwer',
+					'cqwerqwer',
+					'dqwerqwer',
+					'e'
+				]}
+				label="Fruit"
+			/>
 		</Col>
 	</Example>
 

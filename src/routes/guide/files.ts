@@ -36,7 +36,7 @@ export let appCss = `@import 'tailwindcss/base';
 .display-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 57pt;
+    font-size: 54pt;
     line-height: 64pt;
     letter-spacing: -0.25pt;
 }
@@ -44,7 +44,7 @@ export let appCss = `@import 'tailwindcss/base';
 .display-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 45pt;
+    font-size: 42pt;
     line-height: 52pt;
     letter-spacing: 0pt;
 }
@@ -52,7 +52,7 @@ export let appCss = `@import 'tailwindcss/base';
 .display-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 36pt;
+    font-size: 34pt;
     line-height: 44pt;
     letter-spacing: 0pt;
 }
@@ -60,7 +60,7 @@ export let appCss = `@import 'tailwindcss/base';
 .headline-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 32pt;
+    font-size: 30pt;
     line-height: 40pt;
     letter-spacing: 0pt;
 }
@@ -68,7 +68,7 @@ export let appCss = `@import 'tailwindcss/base';
 .headline-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 28pt;
+    font-size: 26pt;
     line-height: 36pt;
     letter-spacing: 0pt;
 }
@@ -76,7 +76,7 @@ export let appCss = `@import 'tailwindcss/base';
 .headline-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 24pt;
+    font-size: 22pt;
     line-height: 32pt;
     letter-spacing: 0pt;
 }
@@ -92,7 +92,7 @@ export let appCss = `@import 'tailwindcss/base';
 .title-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 16pt;
+    font-size: 15pt;
     line-height: 24pt;
     letter-spacing: 0.15pt;
 }
@@ -100,7 +100,7 @@ export let appCss = `@import 'tailwindcss/base';
 .title-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 14pt;
+    font-size: 13pt;
     line-height: 20pt;
     letter-spacing: 0.1pt;
 }
@@ -108,7 +108,7 @@ export let appCss = `@import 'tailwindcss/base';
 .body-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 16pt;
+    font-size: 15pt;
     line-height: 24pt;
     letter-spacing: 0.5pt;
 }
@@ -116,7 +116,7 @@ export let appCss = `@import 'tailwindcss/base';
 .body-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 14pt;
+    font-size: 13pt;
     line-height: 20pt;
     letter-spacing: 0.25pt;
 }
@@ -124,7 +124,7 @@ export let appCss = `@import 'tailwindcss/base';
 .body-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 12pt;
+    font-size: 11pt;
     line-height: 16pt;
     letter-spacing: 0.4pt;
 }
@@ -132,7 +132,7 @@ export let appCss = `@import 'tailwindcss/base';
 .label-large {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 14pt;
+    font-size: 13pt;
     line-height: 20pt;
     letter-spacing: 0.1pt;
 }
@@ -140,7 +140,7 @@ export let appCss = `@import 'tailwindcss/base';
 .label-medium {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 12pt;
+    font-size: 11pt;
     line-height: 16pt;
     letter-spacing: 0.5pt;
 }
@@ -148,7 +148,7 @@ export let appCss = `@import 'tailwindcss/base';
 .label-small {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 11pt;
+    font-size: 10pt;
     line-height: 16pt;
     letter-spacing: 0.5pt;
 }

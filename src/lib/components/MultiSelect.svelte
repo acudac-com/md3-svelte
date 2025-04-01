@@ -4,7 +4,7 @@
 	import { Menu } from '$lib';
 	import OutlinedTextField from './OutlinedTextField.svelte';
 	import Clickable from './Clickable.svelte';
-	import { mdiCheck, mdiChevronDown, mdiClose } from '$lib/icons';
+	import { mdiCheck, mdiChevronDown, mdiChevronUp, mdiClose } from '$lib/icons';
 	import Row from '$lib/layout/Row.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import IconButton from './IconButton.svelte';
@@ -26,8 +26,6 @@
 </script>
 
 <script lang="ts" generics="T extends Value">
-	import { Checkbox } from '$lib';
-
 	let {
 		open = $bindable(false),
 		menuMaxH = '300px',
@@ -35,9 +33,7 @@
 		...p
 	}: SelectProps<T> = $props();
 
-	let searchValue = $state('');
 	let textValues: string[] = $state([]);
-	let textValuesOnFocus: string = $state('');
 
 	if (value) {
 		value.forEach((val) => {
@@ -85,94 +81,57 @@
 			});
 		}
 	});
-
-	const filteredValues = $derived(
-		searchValue === ''
-			? p.values
-			: p.values.filter((val) => val.toString().toLowerCase().includes(searchValue.toLowerCase()))
-	);
-
-	let textInputHtml: HTMLInputElement | undefined = $state(undefined);
-	let inputTo: number;
 </script>
 
 <Menu
 	bind:open
-	disableAutoClose
 	class={['rounded-xs', 'overflow-scroll', ContainerMaxHeightClass(menuMaxH)]}
 	useTriggerWidth
 >
 	{#snippet trigger(md)}
-		<Row>
-			<OutlinedTextField
-				inputClass="cursor-pointer text-ellipsis"
-				class={twMerge(['max-w-full'], p.class)}
-				menuAnchorName={md.anchorName}
-				label={p.label}
-				bind:value={searchValue}
-				onfocus={(e) => {
-					textInputHtml = e.target as HTMLInputElement;
-					setTimeout(() => {
-						searchValue = '';
-					}, 100);
-					if (md.open) {
-						return;
-					}
-					textValuesOnFocus = textValues.join(',');
-					md.show();
-				}}
-				onfocusout={(e) => {
-					if (!md.open) {
-						searchValue = textValues.join(', ');
-						return;
-					}
-					let thisHtmlEl = e.target as HTMLInputElement;
-					thisHtmlEl.focus();
-					clearTimeout(inputTo);
-					inputTo = setTimeout(() => {
-						if (textValues.join(', ') == textValuesOnFocus) {
-							md.open = false;
-							thisHtmlEl.blur();
-						} else {
-							textValuesOnFocus = textValues.join(', ');
-						}
-					}, 100);
-				}}
-				onkeyup={(e) => {
-					// enter: add first item in filter list if any
-					if (e.key == 'Enter' && filteredValues.length > 0) {
-						let textVal = filteredValues[0].toString();
-						if (!textValues.includes(textVal)) {
-							textValues.push(textVal);
-						} else {
-							textValues = textValues.filter((textValue) => textValue != textVal);
-						}
-						searchValue = '';
-						textValuesOnFocus = textValues.join(', ');
-					}
-					// escape: loose focus
-					if (e.key == 'Escape') {
-						let htmlEl = e.target as HTMLInputElement;
-						htmlEl.blur();
-					}
-				}}
-			/>
-			{#if textValues.length}
+		<Clickable
+			menuAnchorName={md.anchorName}
+			class={twMerge(
+				[
+					'h-fit min-h-[44px] w-[300px] justify-between rounded-xs border bg-surface px-2',
+					md.open ? 'border-primary' : 'border-on-surface/20 hover:border-primary/50'
+				],
+				p.class
+			)}
+			onclick={() => {
+				md.show();
+			}}
+		>
+			<p
+				class={[
+					'absolute bg-inherit px-[3px] leading-3',
+					md.open || textValues.length > 0
+						? 'top-0 -mt-[5px] text-[8pt] text-on-surface/80'
+						: 'text-[12pt] text-on-surface/70'
+				]}
+			>
+				{p.label}
+			</p>
+			<p class="label-large max-w-full text-ellipsis px-1 pb-[6px] pt-[8px]">
+				{textValues.join(', ')}
+			</p>
+			{#if textValues.length > 0}
 				<IconButton
 					icon={mdiClose}
-					class="-mx-9 size-[30px]"
+					class="min-size-[30px] max-size-[30px] size-[30px]"
 					iconSize="18"
 					onclick={() => {
 						textValues = [];
-						searchValue = '';
 					}}
 				/>
+			{:else if md.open}
+				<Icon icon={mdiChevronUp} />
 			{:else}
-				<Icon icon={mdiChevronDown} class="-mx-4" />
-			{/if}
-		</Row>
+				<Icon icon={mdiChevronDown} />
+			{/if}</Clickable
+		>
 	{/snippet}
-	{#each filteredValues as val, i (i + val.toString())}
+	{#each p.values as val, i (i + val.toString())}
 		<Clickable
 			class={[
 				'w-full justify-between p-3',
@@ -181,7 +140,6 @@
 					: 'hover:bg-on-surface/5'
 			]}
 			onclick={() => {
-				textInputHtml?.focus();
 				if (!textValues.includes(val.toString())) {
 					textValues.push(val.toString());
 				} else {
