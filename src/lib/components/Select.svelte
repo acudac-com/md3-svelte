@@ -59,7 +59,7 @@
 			menuAnchorName={md.anchorName}
 			class={twMerge(
 				[
-					'h-[44px] w-[300px] justify-between rounded-xs border bg-surface px-2',
+					'h-[44px] w-[300px] max-w-full justify-between rounded-xs border bg-surface px-2',
 					md.open ? 'border-primary' : 'border-on-surface/20 hover:border-primary/50'
 				],
 				p.class
